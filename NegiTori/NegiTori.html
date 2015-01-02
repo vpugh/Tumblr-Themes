@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+{MobileAppHeaders}
 {block:Description} <meta name="description" content="{MetaDescription}" /> {/block:Description}
 <title>{block:TagPage}{Tag} - {/block:TagPage} {block:SearchPage}{lang:Search results for SearchQuery} - {/block:SearchPage}{block:PostSummary}{PostSummary} - {/block:PostSummary}{Title}</title>
 
+<meta name="if:Avatar Visible" content="1"/>
 <meta name="image:Body Image" content=""/>
 <meta name="color:Body Color" content="#ddd"/>
 <meta name="image:Masthead" content=""/>
@@ -35,6 +37,7 @@ iframe, img, embed, object, video {
 #sidebar { position:fixed;top:0; background:#222; padding:0 30px; height:100%; width:400px; color:{color:Sidebar Text};}
 #masthead {background: {color:Masthead background};margin-bottom: 5%;padding: 1% 0;text-align: center; width:100%;}
 #masthead img { max-width:100%;}
+.avatar-icon {float:left; clear:right; margin-right:10px; border:3px solid {color:Masthead Background};}
 .blog-name, .blog-name a {color:{color:Masthead Text}; text-decoration:none; margin:26px 0; line-height:1.05em; text-align:center; padding:0 4px;}
 form {padding-bottom:20px; border-bottom:1px solid #444;}
 nav ul.sidebar-navigation {padding:0; width:100%; }
@@ -63,9 +66,10 @@ blockquote {border-left: 3px solid #ddd;color: #555;font-style: italic;margin: 0
 .tags {padding:10px 0; margin:0;}
 .tags li {display:inline; font-style:italic; font-size:13px; margin-right:6px;}
 .hover-meta {display:none;}
+.hover-meta.no-hover {display:block;}
 article:hover .hover-meta {display:block; transition:all 3s ease-out; border-top:1px solid #ddd;}
-#pagination {border-top:2px solid {color:Links}; margin:20px 0; width:530px;}
-#pagination ul {padding:0;}
+#pagination {border-top:2px solid {color:Links}; margin:20px 0; padding:20px 0 40px 0; width:530px;}
+#pagination ul {padding:0 0 10px 0;}
 #pagination li {list-style:none;border:0; }
 #pagination a {color:{color:Links};}
 .prev-page {float:left; display:block;}
@@ -87,7 +91,6 @@ a.jump_page, .current_page {display: inline-block;width: 17%;}
 .audio .with-caption+.post-extra.has-reblog,.audio .with-caption+.post-extra.has-source,.audio .with-caption+.post-extra.has-tags{margin-top:0}.audio_container{overflow:hidden;position:relative;width:100%}
 
 .theme-creation {position:absolute;bottom:4%;left:0; font-size:11px; width:100%; text-align:center;}
-
 </style>
 
 </head>
@@ -100,12 +103,12 @@ a.jump_page, .current_page {display: inline-block;width: 17%;}
         <h1 class="blog-name"><a href="/" title="{lang:Home}">{Title}</a></h1>
     </header>
     <div class="item">
+        {block:IfAvatarVisible}
+        <div class="avatar-icon"><img src="{PortraitURL-96}"/></div>
+        {/block:IfAvatarVisible}
         {block:Description}
             <p>{Description}</p>
         {block:Description}
-        <!--<form action="/search" method="get">
-        <input type="text" name="q" value="{SearchQuery}" placeholder="{lang:Search}"/>
-        </form>-->
         <nav>
             <ul class="sidebar-navigation">
                 <li><a href="/">Home</a></li>
@@ -209,9 +212,9 @@ a.jump_page, .current_page {display: inline-block;width: 17%;}
             </div>
         </div>
     {/block:Answerer}
-    <!--<div class="replies">{Replies}</div>-->
+    <div class="replies">{Replies}</div>
 
-{/block:Answer}
+	{/block:Answer}
             {block:RebloggedFrom} 
             <div class="reblog-parent">
                 (via) <a href="{ReblogParentURL}">{ReblogParentName}</a>
@@ -226,27 +229,23 @@ a.jump_page, .current_page {display: inline-block;width: 17%;}
                 {block:Tags}<li><a href="{TagURL}">#{Tag}</a> </li>{/block:Tags}
             </ul>
             {/block:HasTags}
-            {block:IndexPage}
-            <div class="hover-meta">
-            <ul class="metadata-content">
-                {block:NoteCount}<li><a class="notecount" href="{Permalink}#notes">{NoteCountWithLabel}</a></li>{/block:NoteCount}
-                {block:ContentSource}
-                 <li>
-                    <a href="{SourceURL}">{lang:Source}:{block:NoSourceLogo}{SourceTitle}{/block:NoSourceLogo}
-                {block:SourceLogo}<img src="{BlackLogoURL}" width="{LogoWidth}"height="{LogoHeight}" alt="{SourceTitle}" />{/block:SourceLogo}</a></li>
-                {/block:ContentSource} 
-            </ul>
-            <ul class="like_and_reblog_buttons">
-              <li>{ReblogButton}</li>
-              <li>{LikeButton}</li>
-            </ul>
+                <div class="hover-meta {block:PermalinkPage} no-hover {/block:PermalinkPage}">
+                <ul class="metadata-content">
+                    {block:NoteCount}<li><a class="notecount" href="{Permalink}#notes">{NoteCountWithLabel}</a></li>{/block:NoteCount}
+                    {block:ContentSource}
+                     <li>
+                        <a href="{SourceURL}">{lang:Source}:{block:NoSourceLogo}{SourceTitle}{/block:NoSourceLogo}
+                    {block:SourceLogo}<img src="{BlackLogoURL}" width="{LogoWidth}"height="{LogoHeight}" alt="{SourceTitle}" />{/block:SourceLogo}</a></li>
+                    {/block:ContentSource} 
+                </ul>
+                <ul class="like_and_reblog_buttons">
+                  <li>{ReblogButton}</li>
+                  <li>{LikeButton}</li>
+                </ul>
                 </div>
-                {/block:IndexPage}
             {block:PermalinkPage}
             {block:PostNotes}
-            <div id="notes">
-                {PostNotes}
-            </div>
+            	<div id="notes">{PostNotes}</div>
             {/block:PostNotes} 
             {/block:PermalinkPage}
         </footer>
