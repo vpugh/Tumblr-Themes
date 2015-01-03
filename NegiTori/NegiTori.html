@@ -13,10 +13,14 @@
 <meta name="image:Masthead" content=""/>
 <meta name="color:Masthead background" content="#333"/>
 <meta name="color:Masthead Text" content="#fff"/>
+<meta name="select:Creator" content="#888" title="Grey"/>
+<meta name="select:Creator" content="#000" title="Black"/>
+<meta name="select:Creator" content="#fff" title="White"/>
 <meta name="color:Sidebar Text" content="#666"/>
 <meta name="color:Sidebar BG" content="#222"/>
 <meta name="color:Text" content="#666"/>
 <meta name="color:Links" content="#888"/>
+<meta name="color:Pagination Divider" content="888"/>
 
 <link rel="shortcut icon" href="{Favicon}"/>
 <link rel="alternate" type="application/rss+xml" title="{Title} RSS" href="{RSS}"/>
@@ -102,19 +106,31 @@ ol.notes li.note .answer_content {font-weight: normal;}
 ol.notes li.note blockquote {border-color: #eee;padding: 4px 10px;margin: 10px 0px 0px 25px;}
 ol.notes li.note blockquote a {text-decoration: none;}
 
+/* Chat */
+.chat ul {list-style:none; padding:0;}
+.chat li{padding:0 0 0 4px;}
+.chat li.even{font-style:italic;}
+
 /* Pagination */
-#pagination {border-top:2px solid {color:Links}; margin:20px 0; padding:20px 0 40px 0; width:530px;}
+#pagination {border-top:2px solid {color:Pagination Divider}; margin:20px 0; padding:20px 0 40px 0; width:530px; position:absolute;}
 #pagination ul {padding:0 0 10px 0; display:block; overflow:hidden; margin:0;}
 #pagination li {list-style:none;border:0; }
 #pagination a {color:{color:Links};}
-.prev-page {float:left; display:block;}
-.next-page {float:right; display:block;}
-.jump-pagination {float:left; margin:0 auto; width:58%;text-align:left;}
-a.jump_page, .current_page {display: inline-block;width: 6%;}
+.prev-page {display:inline-block; position:absolute;left:0;}
+.next-page {display:inline-block; position:absolute;right:0;}
+.jump-pagination {display:inline-block; margin:0 auto; width:58%;text-align:center;position:relative;left:24%;}
+a.jump_page, .current_page {display: inline-block;width: 10%;}
 .current_page {font-weight:bold;}
 
+/* Links */
+.link-media {margin:13px 0 10px 0; background:{color:Masthead background};padding:10px;}
+.link-container{height: 100%;padding: 10px 20px;overflow: hidden;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;}
+.link-text-outer{display: table;width: 100%;min-height: 100%;height: 108px;}
+.link-text{display: table-cell;width: 100%;vertical-align: middle;text-align: center;}
+
 /* Creator Styling */
-.theme-creation {position:absolute;bottom:4%;left:0; font-size:11px; width:100%; text-align:center;}
+.theme-creation {position:absolute;bottom:4%;left:0; font-size:11px; width:100%; text-align:center; color:{select:Creator};}
+.theme-creation a {color:{select:Creator}; border-bottom:1px solid;}
 
 {CustomCSS}
 </style>
@@ -219,7 +235,15 @@ a.jump_page, .current_page {display: inline-block;width: 6%;}
 
         {block:Link}
         <div class="link post" id="{PostID}">
-            <h1 class="title"><a href="{URL}">{Name}</a></h1>
+            <div class="link-media">
+                <div class="link-container">
+                    <div class="link-text-outer">
+                        <div class="link-text">
+                            <a class="link-title" href="{URL}">{Name}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
             {block:Description}{Description}{/block:Description}
             {block:RebloggedFrom} 
             <div class="reblog-parent">
@@ -231,6 +255,7 @@ a.jump_page, .current_page {display: inline-block;width: 6%;}
 
         {block:Chat}
         <div class="chat post" id="{PostID}">
+            {block:Title}<h1 class="title"><a href="{Permalink}">{Title}</a></h1>{/block:Title}
             <ul>
                 {block:Lines}<li class="{Alt}"><p>{block:Label}<strong>{Label}</strong>{/block:Label} {Line} </p></li>{/block:Lines}
             </ul>
