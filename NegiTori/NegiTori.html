@@ -1,7 +1,5 @@
 <!DOCTYPE html>
-<html>
 <head>
-{MobileAppHeaders}
 {block:Description} <meta name="description" content="{MetaDescription}" /> {/block:Description}
 <title>{block:TagPage}{Tag} - {/block:TagPage} {block:SearchPage}{lang:Search results for SearchQuery} - {/block:SearchPage}{block:PostSummary}{PostSummary} - {/block:PostSummary}{Title}</title>
 
@@ -20,10 +18,40 @@
 <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,900,400italic" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="http://static.tumblr.com/hznqxps/ivOmgjf8v/normalize.css" />
 <script src="http://static.tumblr.com/2qikcqj/rJxnhj4dg/jquery-2.1.1.js"></script>
+{block:PermalinkPage}<script src="http://l.yimg.com/ss/rapid-3.18.1.js"></script>{/block:PermalinkPage}
 <script>
     $(document).ready(function(){
     var sidebarWidth = $('#sidebar').width() + 100;
     $('#content').css("margin-left", sidebarWidth + "px");
+    });
+</script>
+<script>
+    $(document).ready(function(){
+        function addNextPage(oj) {
+            if (oj.status == 404) {
+                tAP.remainFlg = false;
+                return;
+            }
+            var d = document.createElement("div");
+            d.innerHTML = oj.responseText;
+            var posts = tAP.gP(d.getElementsByTagName("*"));
+            if (posts.length < 2) {
+                tAP.rF = false;
+                return;
+            }
+            d = document.createElement("div");
+            d.className = "tumblrAutoPager_page_info";
+            tAP.pp.appendChild(d);
+            for (var i = 0; i < posts.length; i++) {
+                tAP.pp.appendChild(posts[i]);
+            }
+            var footer = $("footer");
+            footer ? footer.parentNode.appendChild(footer) : null;
+            tAP.rF = true;
+
+            //Get Like Button status of newly appended page
+            Tumblr.LikeButton.get_status_by_page(p);
+        }
     });
 </script>
 
@@ -89,7 +117,6 @@ a.jump_page, .current_page {display: inline-block;width: 17%;}
 .note-item .avatar img{border-radius:2px;width:40px;height:40px}
 .answer .replies,.audio .post-extra.has-reblog,.audio .post-extra.has-source,.audio .post-extra.has-tags{margin-top:20px}
 .audio .with-caption+.post-extra.has-reblog,.audio .with-caption+.post-extra.has-source,.audio .with-caption+.post-extra.has-tags{margin-top:0}.audio_container{overflow:hidden;position:relative;width:100%}
-
 .theme-creation {position:absolute;bottom:4%;left:0; font-size:11px; width:100%; text-align:center;}
 </style>
 
@@ -139,45 +166,46 @@ a.jump_page, .current_page {display: inline-block;width: 17%;}
                 {ShortDayOfWeek} {Month} | {TimeAgo}
             {/block:Date}
         </div>
+        
         {block:Text}
-        <div class="text post">
+        <div class="text post" id="{PostID}">
             {block:Title}<h1 class="title"><a href="{Permalink}">{Title}</a></h1>{/block:Title}
             {Body}
         {/block:Text}
 
         {block:Photo}
-        <div class="photo post">
+        <div class="photo post" id="{PostID}">
             {LinkOpenTag}<img src="{PhotoURL-HighRes}" alt="{PhotoAlt}" />{LinkCloseTag}
             {block:Caption}{Caption}{/block:Caption}
         {/block:Photo}
 
         {block:Photoset}
-        <div class="photoset post">
+        <div class="photoset post" id="{PostID}">
             {Photoset-500}
             {block:Caption}{Caption}{/block:Caption}
         {/block:Photoset}
 
         {block:Quote}
-        <div class="quote post">
+        <div class="quote post" id="{PostID}">
             <blockquote>{Quote}</blockquote>
             {block:Source}<cite> {Source} </cite>{/block:Source}
         {/block:Quote}
 
         {block:Link}
-        <div class="link post">
+        <div class="link post" id="{PostID}">
             <h1 class="title"><a href="{URL}">{Name}</a></h1>
             {block:Description}{Description}{/block:Description}
         {/block:Link}
 
         {block:Chat}
-        <div class="chat post">
+        <div class="chat post" id="{PostID}">
             <ul>
                 {block:Lines}<li class="{Alt}"><p>{block:Label}<strong>{Label}</strong>{/block:Label} {Line} </p></li>{/block:Lines}
             </ul>
         {/block:Chat}
 
         {block:Audio}
-        <div class="audio post">
+        <div class="audio post" id="{PostID}">
             {block:TrackName}<h1 class="title"><a href="{Permalink}">{TrackName}</a></h1>{/block:TrackName}
             {block:AlbumArt}<img src="{AlbumArtURL}" width="500" height="500"/>{/block:AlbumArt}
             {AudioPlayerBlack}
@@ -185,22 +213,22 @@ a.jump_page, .current_page {display: inline-block;width: 17%;}
         {/block:Audio}
 
         {block:Video}
-        <div class="video post">
+        <div class="video post" id="{PostID}">
             {Video-500}
             {block:Caption}{Caption}{/block:Caption}
         {/block:Video}
 
         {block:Answer}
-<div class="answer post">
-    <div class="note-item note-item-asker">
-        <div class="text-note">
-            <p class="asker"><strong>{Asker}</strong> asked:</p>
-            <div class="asker-question">{Question}</div>
-        </div>
-        <div class="avatar">
-            <img class="asker-avatar" src="{AskerPortraitURL-96}" alt="">
-        </div>
-    </div>
+        <div class="answer post" id="{PostID}">
+          <div class="note-item note-item-asker">
+              <div class="text-note">
+                  <p class="asker"><strong>{Asker}</strong> asked:</p>
+                  <div class="asker-question">{Question}</div>
+              </div>
+              <div class="avatar">
+                  <img class="asker-avatar" src="{AskerPortraitURL-96}" alt="">
+              </div>
+          </div>
     {block:Answerer}
         <div class="note-item note-item-answerer">
             <div class="text-note">
@@ -212,13 +240,14 @@ a.jump_page, .current_page {display: inline-block;width: 17%;}
             </div>
         </div>
     {/block:Answerer}
+    
     <div class="replies">{Replies}</div>
-
 	{/block:Answer}
+    
             {block:RebloggedFrom} 
-            <div class="reblog-parent">
-                (via) <a href="{ReblogParentURL}">{ReblogParentName}</a>
-            </div>
+                <div class="reblog-parent">
+                    (via) <a href="{ReblogParentURL}">{ReblogParentName}</a>
+                </div>
             {/block:RebloggedFrom}
         </div>
 
@@ -229,7 +258,7 @@ a.jump_page, .current_page {display: inline-block;width: 17%;}
                 {block:Tags}<li><a href="{TagURL}">#{Tag}</a> </li>{/block:Tags}
             </ul>
             {/block:HasTags}
-                <div class="hover-meta {block:PermalinkPage} no-hover {/block:PermalinkPage}">
+                <div class="hover-meta">
                 <ul class="metadata-content">
                     {block:NoteCount}<li><a class="notecount" href="{Permalink}#notes">{NoteCountWithLabel}</a></li>{/block:NoteCount}
                     {block:ContentSource}
@@ -243,13 +272,13 @@ a.jump_page, .current_page {display: inline-block;width: 17%;}
                   <li>{LikeButton}</li>
                 </ul>
                 </div>
-            {block:PermalinkPage}
+                {block:PermalinkPage}
             {block:PostNotes}
             	<div id="notes">{PostNotes}</div>
             {/block:PostNotes} 
             {/block:PermalinkPage}
         </footer>
-        {/block:Date}
+        {/block:Date} 
      </article>
     {/block:Posts}
     {block:Pagination}
