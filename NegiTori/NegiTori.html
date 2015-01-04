@@ -29,10 +29,44 @@
 <script src="http://static.tumblr.com/2qikcqj/rJxnhj4dg/jquery-2.1.1.js"></script>
 <script>
     $(document).ready(function(){
+        if($(window).width() < 768) {
+            var sidebarHeight = $("#sidebar").height() + 30;
+            $("#content").css("margin", sidebarHeight + "px auto 0 auto");
+        } else {
     var sidebarWidth = $('#sidebar').width() + 100;
     $('#content').css("margin-left", sidebarWidth + "px");
+	$(window).resize(function () {
+			if($(window).width() < 768) {
+			    var sidebarHeight = $("#sidebar").height() + 30;
+				$("#content").css("margin", sidebarHeight + "px auto 0 auto");
+			} else {
+            var sidebarWidth = $('#sidebar').width() + 100;
+            $('#content').css("margin-left", sidebarWidth + "px");
+			}
+        });
+	}
     });
 </script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		//open/close primary navigation
+	$('.nav-trigger').on('click', function(){
+		$('.mobile-menu').toggleClass('is-clicked'); 
+		$('.sidebar-navigation').toggleClass('menu-is-open');
+		
+		//in firefox transitions break when parent overflow is changed, so we need to wait for the end of the trasition to give the body an overflow hidden
+		if( $('.nav').hasClass('is-visible') ) {
+			$('.nav').removeClass('is-visible').one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend',function(){
+				$('body').removeClass('overflow-hidden');
+			});
+		} else {
+			$('.nav').addClass('is-visible').one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend',function(){
+				$('body').addClass('overflow-hidden');
+			});	
+		}
+	});
+});
+	</script>
 
 <style>
 
@@ -50,19 +84,24 @@ h1 {margin-top:0;}
 .description-row p {margin:0;padding:0;}
 .avatar-icon {float:left; clear:right; margin-right:10px; border:3px solid {color:Masthead Background};}
 .blog-name, .blog-name a {color:{color:Masthead Text}; text-decoration:none; margin:26px 0; line-height:1.05em; text-align:center; padding:0 4px;}
-nav ul.sidebar-navigation {padding:0; width:100%; }
-nav ul.sidebar-navigation li {list-style:none; text-align:left; margin:6px 0; background:{color:Masthead Background};}
-nav ul.sidebar-navigation a {padding:12px 8px;display:block;color:{color:Masthead Text};}
+
+/* Navigation */
+.sidebar-navigation {padding:0; width:100%; }
+.sidebar-navigation li {list-style:none; text-align:left; margin:6px 0; background:{color:Masthead Background};}
+.sidebar-navigation a {padding:12px 8px;display:block;color:{color:Masthead Text};}
+ .nav-trigger, .mobile-nav, .mobile-icon {
+    	display: none;
+  }
 
 /* Posts */
 
-article, .answer {width:500px;}
+article  {width:500px;}
 article:last-child {margin:0 0 20px 0;}
 
 .post-top{ margin:20px 0 5px 0; font-size:11px;}
 
 .post {background:#fff;padding:15px;}
-.photoset, .text, .photo, .video, .chat, .audio, .link, .quote {width:100%;}
+.photoset, .text, .photo, .video, .chat, .audio, .link, .quote,.answer {width:100%;}
 
 .hover-meta {display:none; overflow:hidden;}
 .no-hover {display:block; transition:none; border-top:1px solid #ddd;}
@@ -132,6 +171,54 @@ a.jump_page, .current_page {display: inline-block;width: 10%;}
 .theme-creation {position:absolute;bottom:2%;left:0; font-size:11px; width:100%; text-align:center; color:{select:Creator};}
 .theme-creation a {color:{select:Creator}; border-bottom:1px solid;}
 
+@media (max-width:960px){
+   #sidebar { width:200px;}
+   .avatar-icon {display:none;}
+}
+
+@media (max-width:768px){
+    aside#sidebar {width:100%; height:80px; padding:0; z-index:12;}
+    #masthead, .description-row, .theme-creation {display:none;}
+    .sidebar-navigation{margin:0; display:none;position:absolute;top:100%;}
+    .sidebar-navigation li a {margin:0;padding:0;}
+    .sidebar-navigation li {margin:0;padding: 15px;border-bottom: 1px solid #888;}
+    article {width:80%;margin:0 auto;}
+    .text, .photo, .video, .chat, .audio, .link, .quote,.answer {width:initial;}
+    .photoset .photoset_row {width: 100% !important;height: auto !important; }
+    .photoset .photoset_row.photoset_row_2{width:50% !important;}
+    .photoset .photoset_row.photoset_row_1{width:100% !important;}
+    .photoset .photoset_row .photoset_photo {width: 50%;}
+    .photoset .photoset_row .photoset_photo img{ width:100% !important;}
+    .metadata {width:auto;}
+    .nav-trigger, .mobile-nav, .mobile-icon {display: block;}
+   .nav-trigger {
+      position: absolute;
+      right: 4%;
+      top: 0;
+      height: 100%;
+      width: 80px;
+    }
+    .nav-trigger .mobile-nav {
+      color: white;
+      text-transform: uppercase;
+      font-weight: 700;
+      display: none;
+    }
+    .mobile-menu {
+      position: absolute;
+      right: 7px;
+      top: 20%;
+      padding: 9px 18px;
+      border: 1px solid #fff;
+      border-radius: 4px;
+      font-weight: bold;
+    }
+    .menu-is-open {
+    	display:block;
+    }
+
+}
+
 {CustomCSS}
 </style>
 </head>
@@ -152,6 +239,9 @@ a.jump_page, .current_page {display: inline-block;width: 10%;}
         	<p>{Description}</p>
         {block:Description}
         </div>
+        <a class="nav-trigger" href="#0">
+          <span class="mobile-menu">Menu</span>
+        </a>
         <nav>
             <ul class="sidebar-navigation">
                 <li><a href="/">Home</a></li>
