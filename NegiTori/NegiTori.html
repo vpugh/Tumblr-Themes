@@ -7,10 +7,12 @@
 {/block:Description}
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+{block:Hidden}
 <meta name="if:Avatar Visible" content="1"/>
-<meta name="image:Body Image" content=""/>
+<meta name="if:Background Image" content="0"/>
+<meta name="image:Background Image" content=""/>
 <meta name="color:Body Color" content="#ddd"/>
-<meta name="image:Masthead" content=""/>
+<meta name="image:Masthead Image" content=""/>
 <meta name="color:Masthead background" content="#333"/>
 <meta name="color:Masthead Text" content="#fff"/>
 <meta name="select:Creator" content="#888" title="Grey"/>
@@ -21,6 +23,7 @@
 <meta name="color:Text" content="#666"/>
 <meta name="color:Links" content="#888"/>
 <meta name="color:Pagination Divider" content="888"/>
+{/block:Hidden}
 
 <link rel="shortcut icon" href="{Favicon}"/>
 <link rel="alternate" type="application/rss+xml" title="{Title} RSS" href="{RSS}"/>
@@ -71,7 +74,7 @@
 <style>
 
 /* Overall Setting */
-body { background:{color:Body Color}; background:{image:Body Image};color:{color:Text}; font-size:16px; line-height:1.3em; font-family:"Lato", Helvetica, Arial, sans-serif;}
+body { background:{color:Body Color}; {block:IfBackgroundImage}background:url({image:Background Image});{/block:IfBackgroundImage}color:{color:Text}; font-size:16px; line-height:1.3em; font-family:"Lato", Helvetica, Arial, sans-serif;}
 a {color:{color:Links}; text-decoration:none;}
 iframe, img, embed, object, video {max-width: 100%;}
 h1 {margin-top:0;}
@@ -191,32 +194,11 @@ a.jump_page, .current_page {display: inline-block;width: 10%;}
     .photoset .photoset_row .photoset_photo img{ width:100% !important;}
     .metadata {width:auto;}
     .nav-trigger, .mobile-nav, .mobile-icon {display: block;}
-   .nav-trigger {
-      position: absolute;
-      right: 4%;
-      top: 0;
-      height: 100%;
-      width: 80px;
-    }
-    .nav-trigger .mobile-nav {
-      color: white;
-      text-transform: uppercase;
-      font-weight: 700;
-      display: none;
-    }
-    .mobile-menu {
-      position: absolute;
-      right: 7px;
-      top: 20%;
-      padding: 9px 18px;
-      border: 1px solid #fff;
-      border-radius: 4px;
-      font-weight: bold;
-    }
-    .menu-is-open {
-    	display:block;
-    }
-
+   .nav-trigger {position: absolute; right: 4%; top: 0; height: 100%; width: 80px; }
+    .nav-trigger .mobile-nav {color: white;text-transform: uppercase;font-weight: 700;display: none; }
+    .mobile-menu { position: absolute; right: 7px; top: 20%; padding: 9px 18px; border: 1px solid #fff;border-radius: 4px;font-weight: bold;}
+    .menu-is-open {	display:block; }
+    #pagination {width:80%;margin:0 auto;position:relative;}
 }
 
 {CustomCSS}
@@ -227,7 +209,7 @@ a.jump_page, .current_page {display: inline-block;width: 10%;}
 
 <aside id="sidebar">
     <header id="masthead">
-        <img src="{image:Masthead}"/>
+        <img src="{image:Masthead Image}"/>
         <h1 class="blog-name"><a href="/" title="{lang:Home}">{Title}</a></h1>
     </header>
     <div class="item">
