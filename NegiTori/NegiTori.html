@@ -68,7 +68,24 @@
 			});	
 		}
 	});
+	
 });
+	</script>
+	<script type="text/javascript">
+	        $(document).ready(function() {
+    $('iframe.photoset').load(function() {
+    	if ( $("iframe.photoset").length =! false){
+		  $("iframe.photoset").contents().find(".photoset_row.photoset_row_2" ).css('cssText', 'width: 100% !important');
+		  $("iframe.photoset").contents().find(".photoset .photoset_row").css('cssText', 'width: 100% !important');
+		  $("iframe.photoset").contents().find(".photoset_row .photoset_photo img").css('cssText', 'width: 100% !important');
+		  $("iframe.photoset").contents().find(".photoset_row.photoset_row_2 .photoset_photo").css('cssText', 'width:50% !important');	
+	  }
+	  $("iframe.photoset").each(function() {
+var photosetHeight = $(this).contents().find(".photoset").height() ;
+$('iframe.photoset').css('cssText', 'height:' + photosetHeight + "px");
+});
+    });
+})
 	</script>
 
 <style>
@@ -187,11 +204,8 @@ a.jump_page, .current_page {display: inline-block;width: 10%;}
     .sidebar-navigation li {margin:0;padding: 15px;border-bottom: 1px solid #888;}
     article {width:80%;margin:0 auto;}
     .text, .photo, .video, .chat, .audio, .link, .quote,.answer {width:initial;}
-    .photoset .photoset_row {width: 100% !important;height: auto !important; }
-    .photoset .photoset_row.photoset_row_2{width:50% !important;}
-    .photoset .photoset_row.photoset_row_1{width:100% !important;}
-    .photoset .photoset_row .photoset_photo {width: 50%;}
-    .photoset .photoset_row .photoset_photo img{ width:100% !important;}
+    .tumblr_video_container{width:100% !important;}
+    .photoset.post {width:auto;}
     .metadata {width:auto;}
     .nav-trigger, .mobile-nav, .mobile-icon {display: block;}
    .nav-trigger {position: absolute; right: 4%; top: 0; height: 100%; width: 80px; }
@@ -292,6 +306,19 @@ a.jump_page, .current_page {display: inline-block;width: 10%;}
         {/block:RebloggedFrom}
         </div>
         {/block:Photoset}
+        
+        <!--{block:Photoset}
+            <div id="post" id="{PostID}">
+                    <div class="photoset">
+                        {block:Photos}
+                            <img src="{PhotoURL-HighRes}" class="highres">
+                        {/block:Photos}
+                    </div>
+                    {block:Caption}
+                        <div class="text">{Caption}</div>
+                    {/block:Caption}
+                </div>
+        {/block:Photoset}-->
 
         {block:Quote}
         <div class="quote post" id="{PostID}">
