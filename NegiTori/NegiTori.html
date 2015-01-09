@@ -22,7 +22,7 @@
 <meta name="color:Sidebar BG" content="#222"/>
 <meta name="color:Text" content="#666"/>
 <meta name="color:Links" content="#888"/>
-<meta name="color:Pagination Divider" content="888"/>
+<meta name="color:Pagination Divider" content="#888"/>
 {/block:Hidden}
 
 <link rel="shortcut icon" href="{Favicon}"/>
@@ -36,23 +36,18 @@
             var sidebarHeight = $("#sidebar").height() + 30;
             $("#content").css("margin", sidebarHeight + "px auto 0 auto");
         } else {
-    var sidebarWidth = $('#sidebar').width() + 100;
+    var sidebarWidth = $('#sidebar').width() + 60;
     $('#content').css("margin-left", sidebarWidth + "px");
 	$(window).resize(function () {
 			if($(window).width() < 768) {
 			    var sidebarHeight = $("#sidebar").height() + 30;
 				$("#content").css("margin", sidebarHeight + "px auto 0 auto");
 			} else {
-            var sidebarWidth = $('#sidebar').width() + 100;
+            var sidebarWidth = $('#sidebar').width() + 60;
             $('#content').css("margin-left", sidebarWidth + "px");
 			}
         });
 	}
-    });
-</script>
-<script type="text/javascript">
-	$(document).ready(function() {
-		//open/close primary navigation
 	$('.nav-trigger').on('click', function(){
 		$('.mobile-menu').toggleClass('is-clicked'); 
 		$('.sidebar-navigation').toggleClass('menu-is-open');
@@ -71,22 +66,7 @@
 	
 });
 	</script>
-	<script type="text/javascript">
-	        $(document).ready(function() {
-    $('iframe.photoset').load(function() {
-    	if ( $("iframe.photoset").length =! false){
-		  $("iframe.photoset").contents().find(".photoset_row.photoset_row_2" ).css('cssText', 'width: 100% !important');
-		  $("iframe.photoset").contents().find(".photoset .photoset_row").css('cssText', 'width: 100% !important');
-		  $("iframe.photoset").contents().find(".photoset_row .photoset_photo img").css('cssText', 'width: 100% !important');
-		  $("iframe.photoset").contents().find(".photoset_row.photoset_row_2 .photoset_photo").css('cssText', 'width:50% !important');	
-	  }
-	  $("iframe.photoset").each(function() {
-var photosetHeight = $(this).contents().find(".photoset").height() ;
-$('iframe.photoset').css('cssText', 'height:' + photosetHeight + "px");
-});
-    });
-})
-	</script>
+
 
 <style>
 
@@ -115,7 +95,7 @@ h1 {margin-top:0;}
 
 /* Posts */
 
-article  {width:500px;}
+article  {width:500px; margin:0 auto;}
 article:last-child {margin:0 0 20px 0;}
 
 .post-top{ margin:20px 0 5px 0; font-size:11px;}
@@ -144,6 +124,12 @@ blockquote {border-left: 3px solid #ddd;color: #555;font-style: italic;margin: 0
 .tags {padding:10px 0; margin:0;}
 .tags li {display:inline; font-style:italic; font-size:13px; margin-right:6px;}
 
+/* Quote */
+.quote-org {font-size:24px; line-height:28px;}
+.quote p {margin:5px 0 0 0;}
+.quote .reblog-parent {margin:10px 0 0 0;}
+blockquote p {margin:5px 0 0 0;}
+
 /* Answer */
 .answer .post-content{padding:20px}
 .note-item{margin-top:15px;position:relative}
@@ -171,6 +157,7 @@ ol.notes li.note blockquote a {text-decoration: none;}
 .chat li p{margin:6px 0;}
 
 /* Pagination */
+.pagination-holder{position:relative;margin:0 auto;width:500px;}
 #pagination {border-top:2px solid {color:Pagination Divider}; margin:20px 0; padding:20px 0 40px 0; width:530px; position:absolute;}
 #pagination ul {padding:0 0 10px 0; display:block; overflow:hidden; margin:0;}
 #pagination li {list-style:none;border:0; }
@@ -186,11 +173,13 @@ a.jump_page, .current_page {display: inline-block;width: 10%;}
 .link-container{height: 100%;padding: 10px 20px;overflow: hidden;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;}
 .link-text-outer{display: table;width: 100%;min-height: 100%;height: 108px;}
 .link-text{display: table-cell;width: 100%;vertical-align: middle;text-align: center;}
+.link-text a {color:#fff;}
 
 /* Creator Styling */
 .theme-creation {position:absolute;bottom:2%;left:0; font-size:11px; width:100%; text-align:center; color:{select:Creator};}
 .theme-creation a {color:{select:Creator}; border-bottom:1px solid;}
 
+/* Responsive */
 @media (max-width:960px){
    #sidebar { width:200px;}
    .avatar-icon {display:none;}
@@ -322,7 +311,7 @@ a.jump_page, .current_page {display: inline-block;width: 10%;}
 
         {block:Quote}
         <div class="quote post" id="{PostID}">
-            <blockquote>{Quote}</blockquote>
+            <span class="quote-org">&#8220;{Quote}&#8221;</span>
             {block:Source}<cite> {Source} </cite>{/block:Source}
             {block:RebloggedFrom} 
             <div class="reblog-parent">
@@ -454,22 +443,24 @@ a.jump_page, .current_page {display: inline-block;width: 10%;}
 	</article>
     {/block:Posts}
     {block:Pagination}
-    <nav id="pagination">
-        <ul>
-            {block:PreviousPage}<li class="prev-page"><a href="{PreviousPage}">← Previous page</a></li>{/block:PreviousPage}
-                <div class="jump-pagination">
-                {block:JumpPagination length="5"}
-                {block:CurrentPage}
-                    <span class="current_page">{PageNumber}</span>
-                {/block:CurrentPage}
-                {block:JumpPage}
-                    <a class="jump_page" href="{URL}">{PageNumber}</a>
-                {/block:JumpPage}
-                {/block:JumpPagination}
-                 </div>
-            {block:NextPage}<li class="next-page"><a href="{NextPage}">Next page →</a></li>{/block:NextPage}
-        </ul>
-    </nav>
+    <div class="pagination-holder">
+        <nav id="pagination">
+            <ul>
+                {block:PreviousPage}<li class="prev-page"><a href="{PreviousPage}">← Previous page</a></li>{/block:PreviousPage}
+                    <div class="jump-pagination">
+                    {block:JumpPagination length="5"}
+                    {block:CurrentPage}
+                        <span class="current_page">{PageNumber}</span>
+                    {/block:CurrentPage}
+                    {block:JumpPage}
+                        <a class="jump_page" href="{URL}">{PageNumber}</a>
+                    {/block:JumpPage}
+                    {/block:JumpPagination}
+                     </div>
+                {block:NextPage}<li class="next-page"><a href="{NextPage}">Next page →</a></li>{/block:NextPage}
+            </ul>
+        </nav>
+    </div>
     {/block:Pagination}
 </div>
 </body>
