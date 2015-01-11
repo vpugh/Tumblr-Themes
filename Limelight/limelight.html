@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<title>{Title}{block:SearchPage} ({lang:Search results for SearchQuery}){/block:SearchPage}{block:PermalinkPage}{block:PostSummary} — {PostSummary}{/block:PostSummary}{/block:PermalinkPage}</title>
+{block:Description}
+<!------------------------------
+
+	Limelight Theme by Tkaa
+	Tkaa-themes.tumblr.com
+    
+-------------------------------->
+<meta name="description" content="{MetaDescription}">
+{/block:Description}
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+{block:Hidden}
+
+{/block:Hidden}
+<link rel="shortcut icon" href="{Favicon}"/>
+<link rel="stylesheet" href="http://static.tumblr.com/hznqxps/ivOmgjf8v/normalize.css" />
+<link href='http://fonts.googleapis.com/css?family=Raleway:600,700,400' rel='stylesheet' type='text/css'>
+
+<style>
+body{background:#dedede;font-family:'Raleway',Helvetica Neue,Helvetica, Arial,sans-serif;}
+iframe, img, embed, object, video{max-width:100%;}
+p{margin:5px 0;font-size:14px;}
+a{text-decoration:none;color:#000;}
+.post-wrapper{width:920px; margin:20px auto; overflow:hidden;position:relative;}
+article{background:#fff;}
+article.grid-1-3{width:31.333%;float:left;margin:0 9px 10px 9px;}
+
+.post{padding:10px;}
+.photo.post, .photoset.post{padding:0;margin:0 0 15px 0;}
+.inner-content{padding:15px 10px;}
+h1,h2,h3,h4 {margin:0 0 10px 0;font-size:16px;color:#000;line-height:1.1em;text-transform:uppercase;}
+blockquote{margin:0 0 10px 0;padding:0 10px 0 10px;border-left:1px solid #000;}
+blockquote p{margin:0;padding:1px 0 3px 0;font-size:.8em;}
+</style>
+</head>
+
+<body>
+	<div class="post-wrapper">
+    	{block:Posts}
+        	<article class="grid-1-3">
+            
+            	{block:Text}
+                <div class="text post">
+                    <div class="inner-content">
+                    {block:Title}<h2 class="title"><a href="{Permalink}">{Title}</a></h2>{/block:Title}
+                    
+                    {block:Body}
+                    {Body}
+                    {block:RebloggedFrom} 
+                    <div class="reblog-parent">
+                        (via) <a href="{ReblogParentURL}">{ReblogParentName}</a>
+                    </div>
+                    {/block:RebloggedFrom}
+                    {/block:Body}
+                    </div>
+                 </div>
+                {/block:Text}
+                
+                {block:Photo}
+                    <div class="photo post">
+                        {LinkOpenTag}<img src="{PhotoURL-HighRes}" alt="{PhotoAlt}" />{LinkCloseTag}
+                        <div class="inner-content">
+                        {block:Caption}{Caption}{/block:Caption}
+                        {block:RebloggedFrom} 
+                        <div class="reblog-parent">
+                            (via) <a href="{ReblogParentURL}">{ReblogParentName}</a>
+                        </div>
+                    {/block:RebloggedFrom}
+                        </div>
+                    </div>
+                {/block:Photo}
+                
+                {block:Photoset}
+                    <div class="photoset post">
+                        {Photoset}
+                        <div class="inner-content">
+                            {block:Caption}{Caption}{/block:Caption}
+                        </div>
+                    </div>
+                
+                {/block:Photoset}
+                
+                {block:Quote}
+                <div class="quote post">
+                    <div class="inner-content">
+                    <span class="quote-org">&#8220;{Quote}&#8221;</span>
+                    
+                        {block:Source}<cite> {Source} </cite>{/block:Source}
+                        {block:RebloggedFrom} 
+                        <div class="reblog-parent">
+                            (via) <a href="{ReblogParentURL}">{ReblogParentName}</a>
+                        </div>
+                        {/block:RebloggedFrom}  
+                    </div>
+                    
+                 </div>
+                {/block:Quote}
+                
+                {block:Link}
+                <div class="link post">
+                    <div class="link-media">
+                        <div class="link-container">
+                            <div class="link-text-outer">
+                                <div class="link-text">
+                                    <a class="link-title" href="{URL}">{Name}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="inner-content">
+                        {block:Description}{Description}{/block:Description}
+                        {block:RebloggedFrom} 
+                        <div class="reblog-parent">
+                            (via) <a href="{ReblogParentURL}">{ReblogParentName}</a>
+                        </div>
+                        {/block:RebloggedFrom}    
+                    </div>
+                    
+                 </div>
+                {/block:Link}
+                
+            </article>
+        {/block:Posts}
+    </div>
+</body>
+</html>
