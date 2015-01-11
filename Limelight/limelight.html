@@ -21,20 +21,30 @@
 <link href='http://fonts.googleapis.com/css?family=Raleway:600,700,400' rel='stylesheet' type='text/css'>
 
 <style>
-body{background:#dedede;font-family:'Raleway',Helvetica Neue,Helvetica, Arial,sans-serif;}
+body{background:#dedede;font-family:'Raleway',Helvetica Neue,Helvetica, Arial,sans-serif;font-size:14px;color:#888;}
 iframe, img, embed, object, video{max-width:100%;}
 p{margin:5px 0;font-size:14px;}
 a{text-decoration:none;color:#000;}
-.post-wrapper{width:920px; margin:20px auto; overflow:hidden;position:relative;}
-article{background:#fff;}
-article.grid-1-3{width:31.333%;float:left;margin:0 9px 10px 9px;}
+.post-wrapper{width:920px; margin:40px auto; overflow:hidden;position:relative;}
 
-.post{padding:10px;}
+article{background:#fff;}
+article.grid-1-3{width:40%;float:left;margin:0 9px 10px 9px;}
+
+.post{padding:10px; position:relative;}
 .photo.post, .photoset.post{padding:0;margin:0 0 15px 0;}
-.inner-content{padding:15px 10px;}
+.inner-content{padding:10px;}
+img{height:auto;width:auto;}
 h1,h2,h3,h4 {margin:0 0 10px 0;font-size:16px;color:#000;line-height:1.1em;text-transform:uppercase;}
 blockquote{margin:0 0 10px 0;padding:0 10px 0 10px;border-left:1px solid #000;}
 blockquote p{margin:0;padding:1px 0 3px 0;font-size:.8em;}
+.reblog-parent{font-size: 12px;margin: 7px 0 0;border: 1px solid #EBEAEA;
+padding: 8px;background: #F7F7F7;}
+.quote-org {font-size: 18px;font-weight: bold;}
+.pagination-holder{width:960px;margin:0 auto;overflow:hidden;}
+#pagination ul{padding:0 0 0 29px;}
+.prev-page {list-style: none;display: inline-block;padding: 12px 30px;background: #888;float: left;}
+.next-page {list-style: none;display: inline-block;padding: 12px 30px;background: #888;float: right;}
+.video-frame iframe{width:70% !important;}
 </style>
 </head>
 
@@ -123,8 +133,126 @@ blockquote p{margin:0;padding:1px 0 3px 0;font-size:.8em;}
                  </div>
                 {/block:Link}
                 
+                <!-- Clean up later -->
+                
+                {block:Chat}
+        <div class="chat post" id="{PostID}">
+            {block:Title}<h1 class="title"><a href="{Permalink}">{Title}</a></h1>{/block:Title}
+            <ul>
+                {block:Lines}<li class="{Alt}"><p>{block:Label}<strong>{Label}</strong>{/block:Label} {Line} </p></li>{/block:Lines}
+            </ul>
+            {block:RebloggedFrom} 
+            <div class="reblog-parent">
+                (via) <a href="{ReblogParentURL}">{ReblogParentName}</a>
+            </div>
+        {/block:RebloggedFrom}
+        </div>
+        {/block:Chat}
+
+        {block:Audio}
+        <div class="audio post" id="{PostID}">
+            {block:TrackName}<h1 class="title"><a href="{Permalink}">{TrackName}</a></h1>{/block:TrackName}
+            {block:AlbumArt}<img src="{AlbumArtURL}" width="500" height="500"/>{/block:AlbumArt}
+            {AudioPlayerBlack}
+            {block:Caption}{Caption}{/block:Caption}
+            {block:RebloggedFrom} 
+            <div class="reblog-parent">
+                (via) <a href="{ReblogParentURL}">{ReblogParentName}</a>
+            </div>
+            {/block:RebloggedFrom}
+        </div>
+        {/block:Audio}
+
+        {block:Video}
+        <div class="video post" id="{PostID}">
+            <div class="video-frame">{Video-500}</div>
+            {block:Caption}{Caption}{/block:Caption}
+            {block:RebloggedFrom} 
+            <div class="reblog-parent">
+                (via) <a href="{ReblogParentURL}">{ReblogParentName}</a>
+            </div>
+        {/block:RebloggedFrom}
+        </div>
+        {/block:Video}
+
+        {block:Answer}
+        <div class="answer post" id="{PostID}">
+          <div class="note-item note-item-asker">
+              <div class="text-note">
+                  <p class="asker"><strong>{Asker}</strong> asked:</p>
+                  <div class="asker-question">{Question}</div>
+              </div>
+              <div class="avatar">
+                  <img class="asker-avatar" src="{AskerPortraitURL-96}" alt="">
+              </div>
+          </div>
+    		{block:Answerer}
+            <div class="note-item note-item-answerer">
+                <div class="text-note">
+                    <p class="answerer"><strong>{Answerer}</strong> answered:</p>
+                    <div class="answerer-answer">{Answer}</div>
+                </div>
+                <div class="avatar">
+                    <img class="answerer-avatar" src="{AnswererPortraitURL-96}" alt="">
+                </div>
+            </div>
+        	{/block:Answerer}
+        	<div class="replies">{Replies}</div>
+            {block:RebloggedFrom} 
+            <div class="reblog-parent">
+                (via) <a href="{ReblogParentURL}">{ReblogParentName}</a>
+            </div>
+        {/block:RebloggedFrom}
+        </div>
+        {/block:Answer}
+                
             </article>
         {/block:Posts}
+        
+       <!-- -->
     </div>
+    {block:Pagination}
+    <div class="pagination-holder">
+        <nav id="pagination">
+            <ul>
+                {block:PreviousPage}<li class="prev-page"><a href="{PreviousPage}">← Previous page</a></li>{/block:PreviousPage}
+                {block:NextPage}<li class="next-page"><a href="{NextPage}">Next page →</a></li>{/block:NextPage}
+            </ul>
+        </nav>
+    </div>
+    {/block:Pagination}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="http://static.tumblr.com/iwtk77u/Yhym2yygt/jquery.imagesloaded.min.js"></script>
+<script src="http://static.tumblr.com/wgijwsy/Ebfm2v4gy/jquery.masonry.min.js"></script>
+<script src="http://static.tumblr.com/wgijwsy/u2vm2hxv6/jquery.infinitescroll.min.js"></script>
+<script>
+    (function () {
+    var $tumblelog = $('.post-wrapper');
+    $tumblelog.infinitescroll({
+        navSelector: ".pagination",
+        nextSelector: ".next-page",
+        itemSelector: "article",
+    },
+
+    function (newElements) {
+        var $newElems = $(newElements).css({
+            opacity: 0
+        });
+        $newElems.imagesLoaded(function () {
+            $newElems.animate({
+                opacity: 1
+            });
+            $tumblelog.masonry('appended', $newElems);
+        });
+    });
+    $tumblelog.imagesLoaded(function () {
+        $tumblelog.masonry({
+            columnWidth: function (containerWidth) {
+                return containerWidth / 100;
+            }
+        });
+    });
+})();
+</script>
 </body>
 </html>
