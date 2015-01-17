@@ -76,14 +76,31 @@ a.link-title {word-break: break-word;color: #fff;font-size: 18px;text-overflow: 
 /* Hover Content */
 .hover-container{position:relative;}
 .hover-content{opacity:0;position:absolute;background:rgba(0,0,0,.75);height:100%;width:100%;z-index: 66;transition:.4s;}
-.hover-link{position:relative;display:block;width:100%;height:100%;}
+.hover-link{position:absolute;display:block;width:100%;height:100%;}
 article:hover .hover-content{opacity:1;}
 .meta-content {position: relative;text-align: right;}
 .metadata-content,.like_and_reblog_buttons,.tags{margin: 15px 0 0 0;
 padding: 0 18px;}
 .metadata-content li,.like_and_reblog_buttons li,.tags li{list-style:none;margin:0;padding:0;font-size:12px;}
 .metadata-content li a, .tags li a, .like_and_reblog_buttons li a{color:#fff;font-size:16px;line-height:1.4em;}
-.tags.inline{margin:0;padding:0 10px 10px;}
+.metadata-content.inline {
+margin: -10px 0 0;
+padding: 0 10px 10px 21px;
+}
+.metadata-content.inline li {
+display: inline-block;
+margin: 6px 0 0;
+}
+.metadata-content.inline li a {
+color: #888;
+font-size: 12px;
+}
+.like_and_reblog_buttons.inline {
+margin: 0;
+padding-bottom: 12px;
+}
+.tags.inline{margin: -10px 0 0;
+padding: 0 10px 10px 21px;}
 .tags.inline li a{color:#888;font-size:12px;}
 .tags li{display: inline;margin-right: 5px;}
 .like_and_reblog_buttons li{display:inline-block;}
@@ -112,13 +129,13 @@ padding: 0 18px;}
     -webkit-transition: visibility 0s 0s;
     -moz-transition: visibility 0s 0s;
     transition: visibility 0s 0s;
+    background: rgba(0,0,0,.75);
 }
  
 .cd-panel-header {
 	position: fixed;
     width: 47%;
     width:400px;
-    height: 50px;
     line-height: 50px;
     background: rgba(255, 255, 255, 0.96);
     z-index: 2;
@@ -335,6 +352,18 @@ content: '';
                             {/block:Tags}
                         </ul>
                      {/block:HasTags}
+                     <ul class="metadata-content inline">
+                                        {block:NoteCount}<li><a class="notecount" href="{Permalink}#notes">{NoteCountWithLabel}</a></li>{/block:NoteCount}
+                                        {block:ContentSource}
+                                         <li>
+                                            <a href="{SourceURL}">{lang:Source}:{block:NoSourceLogo}{SourceTitle}{/block:NoSourceLogo}
+                                        {block:SourceLogo}<img src="{BlackLogoURL}" width="{LogoWidth}"height="{LogoHeight}" alt="{SourceTitle}" />{/block:SourceLogo}</a></li>
+                                        {/block:ContentSource} 
+                                    </ul>
+                                    <ul class="like_and_reblog_buttons inline">
+                                      <li>{ReblogButton}</li>
+                                      <li>{LikeButton}</li>
+                                    </ul> 
                  </div>
                 {/block:Text}
                 
@@ -583,9 +612,10 @@ content: '';
         </nav>
     </div>
     {/block:Pagination}
+    
+    <script type="text/javascript" src="http://static.tumblr.com/2qikcqj/W24nic56g/jquery-2.1.1.js"></script>
+<script type="text/javascript" src="http://static.tumblr.com/2qikcqj/IqGnic5vd/main.js"></script>
 {block:IndexPage}
-
-<script type="text/javascript" src="http://static.tumblr.com/d0qlne1/DiAl6ekb7/jquery-1.4.2.min.js"></script>
 <script type="text/javascript" src="http://static.tumblr.com/2qikcqj/vBJni91zp/masonry.pkgd.min.js"></script>
 <script src="http://static.tumblr.com/iwtk77u/Yhym2yygt/jquery.imagesloaded.min.js"></script>
 <script type="text/javascript">
@@ -597,10 +627,12 @@ content: '';
           });
         });
         $('.hover-link').css('position', 'absolute');
+        var headerHeight = $('.cd-panel-header').height() + 20;
+        $('.cd-panel-container').css('top',headerHeight);
     });
 </script>
+
 {/block:IndexPage}
-<script type="text/javascript" src="http://static.tumblr.com/2qikcqj/W24nic56g/jquery-2.1.1.js"></script>
-<script type="text/javascript" src="http://static.tumblr.com/2qikcqj/IqGnic5vd/main.js"></script>
+
 </body>
 </html>
