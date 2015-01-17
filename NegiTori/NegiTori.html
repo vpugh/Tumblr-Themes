@@ -2,11 +2,7 @@
 <meta charset="utf-8">
 <title>{Title}{block:SearchPage} ({lang:Search results for SearchQuery}){/block:SearchPage}{block:PermalinkPage}{block:PostSummary} — {PostSummary}{/block:PostSummary}{/block:PermalinkPage}</title>
 {block:Description}
-
-<!------------------------------
-	NegiTori Theme by Tkaa
-	Tkaa-themes.tumblr.com
--------------------------------->
+	
 <meta name="description" content="{MetaDescription}">
 {/block:Description}
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -98,7 +94,7 @@ h1 {margin-top:0;}
 
 /* Posts */
 
-article  {width:500px; margin:0 auto;}
+article  {width:500px; margin:0 auto;margin-bottom:61px;}
 article:last-child {margin-bottom:20px;}
 
 .post-top{ margin:20px 0 5px 0; font-size:11px;}
@@ -109,7 +105,8 @@ article:last-child {margin-bottom:20px;}
 .hover-meta {display:none; overflow:hidden;}
 .no-hover {display:block; transition:none; border-top:1px solid #ddd;}
 article:hover .hover-meta {display:block; transition:all 3s ease-out; border-top:1px solid #ddd;}
-.metadata {background: #eee;width: 506px;padding: 0 12px; overflow:hidden;}
+.metadata {background: #eee;width: 506px;padding: 0 12px; overflow:hidden;margin-bottom:41px;}
+article:hover .metadata{margin-bottom:-41px;}
 .metadata-content {list-style: none;display: inline; float:left;padding:0; margin:10px 0 5px 0;}
 .metadata-content li {display:inline; float:left;}
 .metadata-content a { text-decoration:none; color:#888; font-size:14px;}
@@ -176,6 +173,7 @@ a.jump_page, .current_page {display: inline-block;width: 10%;}
 .link-container{height: 100%;padding: 10px 20px;overflow: hidden;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;}
 .link-text-outer{display: table;width: 100%;min-height: 100%;height: 108px;}
 .link-text{display: table-cell;width: 100%;vertical-align: middle;text-align: center;}
+a.link-title {word-break: break-word;color: #fff;font-size: 18px;text-overflow: ellipsis;}
 
 /* Creator Styling */
 .theme-creation {position:absolute;bottom:2%;left:0; font-size:11px; width:100%; text-align:center; color:{select:Creator};}
@@ -437,10 +435,10 @@ a.jump_page, .current_page {display: inline-block;width: 10%;}
                 </ul>
                 </div>
                 {block:PermalinkPage}
-                    {block:PostNotes}
-                        <div id="notes">{PostNotes}</div>
-                    {/block:PostNotes} 
-                {/block:PermalinkPage}
+            {block:PostNotes}
+            	<div id="notes">{PostNotes}</div>
+            {/block:PostNotes} 
+            {/block:PermalinkPage}
         </footer>
         {/block:Date} 
 	</article>

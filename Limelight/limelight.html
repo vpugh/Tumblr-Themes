@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<head>
+<!DOCTYPE html><head>
 <meta charset="utf-8">
 <title>{Title}{block:SearchPage} ({lang:Search results for SearchQuery}){/block:SearchPage}{block:PermalinkPage}{block:PostSummary} — {PostSummary}{/block:PostSummary}{/block:PermalinkPage}</title>
 {block:Description}
@@ -9,6 +8,7 @@
 	Tkaa-themes.tumblr.com
     
 -------------------------------->
+
 <meta name="description" content="{MetaDescription}">
 {/block:Description}
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -93,7 +93,6 @@ padding: 0 18px;}
 	<div class="post-wrapper">
     	{block:Posts}
         	<article class="grid-1-3">
-                <div class="hover-container">
                     
             	{block:Text}
                 <div class="text post">
@@ -122,6 +121,7 @@ padding: 0 18px;}
                 {/block:Text}
                 
                 {block:Photo}
+                	<div class="hover-container">
                     <a href="{Permalink}">
                     <div class="hover-content">
                         <div class="meta-content">
@@ -148,18 +148,20 @@ padding: 0 18px;}
                     <div class="photo post">
                         <a href="{Permalink}" target="_blank"><img src="{PhotoURL-HighRes}" alt="{PhotoAlt}" /></a>
                         <div class="inner-content">
-                        {block:Caption}{Caption}{/block:Caption}
+                        
+                        </div>
+                    </div>
+                    </a>
+                   {block:Caption}{Caption}{/block:Caption}
                         {block:RebloggedFrom} 
                         <div class="reblog-parent">
                             (via) <a href="{ReblogParentURL}">{ReblogParentName}</a>
                         </div>
                     {/block:RebloggedFrom}
-                        </div>
-                    </div>
-                    </a>
                 {/block:Photo}
                 
                 {block:Photoset}
+                	<div class="hover-container">
                     <a href="{PhotoURL-500}">
                         <div class="hover-content">
                         <div class="meta-content">
@@ -185,14 +187,14 @@ padding: 0 18px;}
                         </div>
                     <div class="photoset post">
                         {Photoset}
-                        {block:Caption}
-                        <div class="inner-content">
-                            {Caption}
-                        </div>
-                        {/block:Caption}
                     </div>
                     </a>
-                
+                	</div>
+                	{block:Caption}
+                            <div class="inner-content">
+                                {Caption}
+                            </div>
+                            {/block:Caption}
                 {/block:Photoset}
                 
                 {block:Quote}
@@ -240,7 +242,7 @@ padding: 0 18px;}
                 <!-- Clean up later -->
                 
                 {block:Chat}
-        <div class="chat post" id="{PostID}">
+        <div class="chat post">
             {block:Title}<h1 class="title"><a href="{Permalink}">{Title}</a></h1>{/block:Title}
             <ul>
                 {block:Lines}<li class="{Alt}"><p>{block:Label}<strong>{Label}</strong>{/block:Label} {Line} </p></li>{/block:Lines}
@@ -254,9 +256,33 @@ padding: 0 18px;}
         {/block:Chat}
 
         {block:Audio}
-        <div class="audio post" id="{PostID}">
+        <div class="audio post">
+            <div class="hover-container">
+                <div class="hover-content">
+                        <div class="meta-content">
+                           {block:HasTags}
+                        <ul class="tags">
+                            {block:Tags}
+                            <li><a href="{TagURL}">#{Tag}</a></li>{/block:Tags}
+                        </ul>
+                        {/block:HasTags}
+                            <ul class="metadata-content">
+                                {block:NoteCount}<li><a class="notecount" href="{Permalink}#notes">{NoteCountWithLabel}</a></li>{/block:NoteCount}
+                                {block:ContentSource}
+                                 <li>
+                                    <a href="{SourceURL}">{lang:Source}:{block:NoSourceLogo}{SourceTitle}{/block:NoSourceLogo}
+                                {block:SourceLogo}<img src="{BlackLogoURL}" width="{LogoWidth}"height="{LogoHeight}" alt="{SourceTitle}" />{/block:SourceLogo}</a></li>
+                                {/block:ContentSource} 
+                            </ul>
+                            <ul class="like_and_reblog_buttons">
+                              <li>{ReblogButton}</li>
+                              <li>{LikeButton}</li>
+                            </ul> 
+                        </div>
+                        </div>
             {block:TrackName}<h1 class="title"><a href="{Permalink}">{TrackName}</a></h1>{/block:TrackName}
             {block:AlbumArt}<img src="{AlbumArtURL}" width="500" height="500"/>{/block:AlbumArt}
+            </div>
             {AudioPlayerBlack}
             {block:Caption}{Caption}{/block:Caption}
             {block:RebloggedFrom} 
@@ -268,7 +294,7 @@ padding: 0 18px;}
         {/block:Audio}
 
         {block:Video}
-        <div class="video post" id="{PostID}">
+        <div class="video post">
             <div class="video-frame">{Video-500}</div>
             {block:Caption}{Caption}{/block:Caption}
             {block:RebloggedFrom} 
@@ -310,7 +336,6 @@ padding: 0 18px;}
         </div>
         {/block:Answer}
                 
-               </div>
             </article>
         {/block:Posts}
         {block:PermalinkPage}
