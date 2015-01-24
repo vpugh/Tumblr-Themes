@@ -53,7 +53,7 @@ padding: 8px;background: #F7F7F7;}
 .video-frame iframe{width:412px !important;}
 
 /* Chat */
-.chat ul {list-style:none; padding:0;margin-bottom:0;}
+.chat ul {list-style:none; padding:0;margin:0;}
 .chat li{padding:0;margin:0;}
 .chat li p{margin:6px 0;}
 /* Links */
@@ -78,16 +78,13 @@ a.link-title {word-break: break-word;color: #fff;font-size: 18px;text-overflow: 
 .hover-content{opacity:0;position:absolute;background:rgba(0,0,0,.75);height:100%;width:100%;z-index: 66;transition:.4s;}
 .hover-link{position:absolute;display:block;width:100%;height:100%;}
 article:hover .hover-content{opacity:1;}
-.meta-content {position: relative;text-align: right;}
-.metadata-content,.like_and_reblog_buttons,.tags{margin: 15px 0 0 0;
-padding: 0 18px;}
+.meta-content {position: relative;width:100%;top:2%;}
+.metadata-content,.like_and_reblog_buttons,.tags{padding: 0 23%;text-align:center;}
 .metadata-content li,.like_and_reblog_buttons li,.tags li{list-style:none;margin:0;padding:0;font-size:12px;}
 .metadata-content li a, .tags li a, .like_and_reblog_buttons li a{color:#fff;font-size:16px;line-height:1.4em;}
 .metadata-content.inline {
 margin: -10px 0 0;
-padding: 6px 10px 10px 21px;
-display:inline-block;
-float:left;
+padding: 0 10px 10px 21px;
 }
 .metadata-content.inline li {
 display: inline-block;
@@ -99,16 +96,40 @@ font-size: 12px;
 }
 .like_and_reblog_buttons.inline {
 margin: 0;
-padding:0 0 12px 0;
-display:inline-block;
-float:left;
+padding-bottom: 12px;
 }
 .tags.inline{margin: -10px 0 0;
 padding: 0 10px 10px 21px;}
 .tags.inline li a{color:#888;font-size:12px;}
 .tags li{display: inline;margin-right: 5px;}
 .like_and_reblog_buttons li{display:inline-block;}
-.tags.inline.pad-top{margin-top:0;}
+.bottom-data .tags li{
+    display: inline;
+}
+.bottom-data .metadata-content li {
+    float:left;
+}
+.bottom-data .like_and_reblog_buttons li{
+    float:right;
+    text-align:right;
+    padding:0 6px 4px 6px
+}
+.bottom-data .tags li a, .bottom-data .metadata-content li a, .bottom-data .like_and_reblog_buttons li a {
+    color: #000;
+    font-size: 12px;
+}
+.bottom-data .tags, .bottom-data .metadata-content {
+    text-align: left;
+    padding: 0;
+}
+.bottom-data .like_and_reblog_buttons{
+    text-align:right;
+    padding:0;
+}
+.bottom-data .meta-content{
+    width: auto;
+    top: initial;
+}
 /* Notes */
 .notes-container{;width:460px;margin:0 auto;padding:20px;background:#fff;}
 
@@ -123,9 +144,9 @@ padding: 0 10px 10px 21px;}
     height: 100%;
     width: 100%;
     visibility: hidden;
-    -webkit-transition: visibility 0s 0.6s;
-    -moz-transition: visibility 0s 0.6s;
-    transition: visibility 0s 0.6s;
+    -webkit-transition: visibility 0s 0.2s;
+    -moz-transition: visibility 0s 0.2s;
+    transition: visibility 0s 0.2s;
     z-index:90;
 }
  
@@ -138,7 +159,7 @@ padding: 0 10px 10px 21px;}
 }
  
 .cd-panel-header {
-	position: absolute;
+	position: fixed;
     width: 47%;
     width:400px;
     line-height: 50px;
@@ -148,22 +169,12 @@ padding: 0 10px 10px 21px;}
     -webkit-transition: top 0.3s 0s;
     -moz-transition: top 0.3s 0s;
     transition: top 0.3s 0s;
-    padding:20px 20px 4px 20px;
+    padding:20px 20px 0 20px;
 }
-.from-right .cd-panel-header {
-right: 0;
-}
-.from-left .cd-panel-header {
-left: 0;
-}
- .from-right .cd-panel-header, .from-left .cd-panel-header {
-top: -50px;
-}
+ 
 .is-visible .cd-panel-header {
 	top: 0;
-    -webkit-transition: top 0.3s 0.3s;
-    -moz-transition: top 0.3s 0.3s;
-    transition: top 0.3s 0.3s;
+	transition: top 0.3s 0.3s;
 }
  
 .cd-panel-container {
@@ -171,8 +182,9 @@ top: -50px;
     width: 47%;
     width:400px;
     height: 100%;
+    top:60px;
     background: #dbe2e9;
-    z-index: 90;
+    z-index: 1;
     -webkit-transition-property: -webkit-transform;
     -moz-transition-property: -moz-transform;
     transition-property: transform;
@@ -186,14 +198,8 @@ top: -50px;
 }
  
 .is-visible .cd-panel-container {
-	-webkit-transform: translate3d(0, 0, 0);
--moz-transform: translate3d(0, 0, 0);
--ms-transform: translate3d(0, 0, 0);
--o-transform: translate3d(0, 0, 0);
-transform: translate3d(0, 0, 0);
--webkit-transition-delay: 0s;
--moz-transition-delay: 0s;
-transition-delay: 0s;
+	transform: translate3d(0, 0, 0);
+	transition-delay: 0s;
 }
 .cd-btn{display:block;}
 .cd-panel-close {
@@ -216,20 +222,6 @@ width: 20px;
 background-color: #424f5c;
 -webkit-backface-visibility: hidden;
 backface-visibility: hidden;
-}
-.cd-panel-close::before{
-    -webkit-transform: rotate(45deg);
--moz-transform: rotate(45deg);
--ms-transform: rotate(45deg);
--o-transform: rotate(45deg);
-transform: rotate(45deg);
-}
-.cd-panel-close::after{
-    -webkit-transform: rotate(-45deg);
--moz-transform: rotate(-45deg);
--ms-transform: rotate(-45deg);
--o-transform: rotate(-45deg);
-transform: rotate(-45deg);
 }
 .cd-panel.is-visible .cd-panel-close::before {
   -webkit-animation: cd-close-1 0.6s 0.3s;
@@ -309,10 +301,9 @@ transform: rotate(-45deg);
 .cd-panel-close::after, .cd-panel-close::before {
 content: '';
 }
-.navigation {margin:0;padding:0;}
-.navigation li {
+
+.cd-panel-content li {
     list-style:none;
-    margin:3px 0;
 }
 .description{
     padding: 0 20px 10px 0;
@@ -338,22 +329,20 @@ content: '';
 			        <div class="description">
         	            <p>{Description}</p>
 			        </div>
-			    {/block:Description}
-			    <ul class="navigation">
-				    <li><a href="/">Home</a></li>
-                    <li><a href="/archive">Archive</a></li>
-                    {block:HasPages}
-                        {block:Pages}
-                            <li> <a href="{URL}">{Label}</a></li>
-                        {/block:Pages}
-                    {/block:HasPages}
-                    {block:SubmissionsEnabled}
-                        <li> <a href="/submit">{SubmitLabel}</a></li>
-                    {/block:SubmissionsEnabled}
-                    {block:AskEnabled}
-                        <li> <a href="/ask">{AskLabel}</a></li>
-                    {/block:AskEnabled}
-                </ul>
+			    {block:Description}
+				<li><a href="/">Home</a></li>
+                <li><a href="/archive">Archive</a></li>
+                {block:HasPages}
+                    {block:Pages}
+                        <li> <a href="{URL}">{Label}</a></li>
+                    {/block:Pages}
+                {/block:HasPages}
+                {block:SubmissionsEnabled}
+                    <li> <a href="/submit">{SubmitLabel}</a></li>
+                {/block:SubmissionsEnabled}
+                {block:AskEnabled}
+                    <li> <a href="/ask">{AskLabel}</a></li>
+                {/block:AskEnabled}
 			</div> <!-- cd-panel-content -->
 		</div> <!-- cd-panel-container -->
 	</div>
@@ -367,7 +356,7 @@ content: '';
         	<article class="grid-1-3 {block:PermalinkPage}permalink{/block:PermalinkPage}">
                     
             	{block:Text}
-                <div class="text post">
+                <div class="text post bottom-data">
                     <div class="inner-content">
                     {block:Title}<h2 class="title"><a href="{Permalink}">{Title}</a></h2>{/block:Title}
                     
@@ -379,36 +368,36 @@ content: '';
                     </div>
                     {/block:RebloggedFrom}
                     {/block:Body}
+                    <div class="meta-content">
+                           {block:HasTags}
+                        <ul class="tags">
+                            {block:Tags}
+                            <li><a href="{TagURL}">#{Tag}</a></li>{/block:Tags}
+                        </ul>
+                        {/block:HasTags}
+                            <ul class="metadata-content">
+                                {block:NoteCount}<li><a class="notecount" href="{Permalink}#notes">{NoteCountWithLabel}</a></li>{/block:NoteCount}
+                                {block:ContentSource}
+                                 <li>
+                                    <a href="{SourceURL}">{lang:Source}:{block:NoSourceLogo}{SourceTitle}{/block:NoSourceLogo}
+                                {block:SourceLogo}<img src="{BlackLogoURL}" width="{LogoWidth}"height="{LogoHeight}" alt="{SourceTitle}" />{/block:SourceLogo}</a></li>
+                                {/block:ContentSource} 
+                            </ul>
+                            <ul class="like_and_reblog_buttons">
+                              <li>{ReblogButton}</li>
+                              <li>{LikeButton}</li>
+                            </ul> 
+                        </div>
                     </div>
                  </div>
-                 <div class="footer">
-                     {block:HasTags}
-                        <ul class="tags inline">
-                            {block:Tags}
-                                <li><a href="{TagURL}">#{Tag}</a></li>
-                            {/block:Tags}
-                        </ul>
-                     {/block:HasTags}
-                     <ul class="metadata-content inline">
-                                        {block:NoteCount}<li><a class="notecount" href="{Permalink}#notes">{NoteCountWithLabel}</a></li>{/block:NoteCount}
-                                        {block:ContentSource}
-                                         <li>
-                                            <a href="{SourceURL}">{lang:Source}:{block:NoSourceLogo}{SourceTitle}{/block:NoSourceLogo}
-                                        {block:SourceLogo}<img src="{BlackLogoURL}" width="{LogoWidth}"height="{LogoHeight}" alt="{SourceTitle}" />{/block:SourceLogo}</a></li>
-                                        {/block:ContentSource} 
-                                    </ul>
-                                    <ul class="like_and_reblog_buttons inline">
-                                      <li>{ReblogButton}</li>
-                                      <li>{LikeButton}</li>
-                                    </ul> 
-                 </div>
+                 
                 {/block:Text}
                 
                {block:Photo}
                     
                 	<div class="hover-container">
-                        <a class="hover-link" href="{block:IndexPage}{Permalink}{/block:IndexPage}{block:Permalink}{PhotoURL-HighRes}{/block:Permalink}">
                         {block:IndexPage}
+                        <a class="hover-link" href="{Permalink}">
                             <div class="hover-content">
                                 <div class="meta-content">
                                    {block:HasTags}
@@ -490,7 +479,7 @@ content: '';
                 {/block:Photoset}
                 
                 {block:Quote}
-                <div class="quote post">
+                <div class="quote post bottom-data">
                     <div class="inner-content">
                     <span class="quote-org">&#8220;{Quote}&#8221;</span>
                     
@@ -500,120 +489,6 @@ content: '';
                             (via) <a href="{ReblogParentURL}">{ReblogParentName}</a>
                         </div>
                         {/block:RebloggedFrom}  
-                    </div>
-                    
-                 </div>
-                 <div class="footer">
-                     {block:HasTags}
-                        <ul class="tags inline">
-                            {block:Tags}
-                                <li><a href="{TagURL}">#{Tag}</a></li>
-                            {/block:Tags}
-                        </ul>
-                     {/block:HasTags}
-                     <ul class="metadata-content inline">
-                                        {block:NoteCount}<li><a class="notecount" href="{Permalink}#notes">{NoteCountWithLabel}</a></li>{/block:NoteCount}
-                                        {block:ContentSource}
-                                         <li>
-                                            <a href="{SourceURL}">{lang:Source}:{block:NoSourceLogo}{SourceTitle}{/block:NoSourceLogo}
-                                        {block:SourceLogo}<img src="{BlackLogoURL}" width="{LogoWidth}"height="{LogoHeight}" alt="{SourceTitle}" />{/block:SourceLogo}</a></li>
-                                        {/block:ContentSource} 
-                                    </ul>
-                                    <ul class="like_and_reblog_buttons inline">
-                                      <li>{ReblogButton}</li>
-                                      <li>{LikeButton}</li>
-                                    </ul> 
-                 </div>
-                {/block:Quote}
-                
-                {block:Link}
-                <div class="link post">
-                    <div class="link-media">
-                        <div class="link-container">
-                            <div class="link-text-outer">
-                                <div class="link-text">
-                                    <a class="link-title" href="{URL}">{Name}</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="inner-content">
-                        {block:Description}{Description}{/block:Description}
-                        <div class="inner-content">
-                        {block:RebloggedFrom} 
-                        <div class="reblog-parent">
-                            (via) <a href="{ReblogParentURL}">{ReblogParentName}</a>
-                        </div>
-                        {/block:RebloggedFrom}
-                            
-                        </div>    
-                    </div>
-                    
-                 </div>
-                 <div class="footer">
-                     {block:HasTags}
-                        <ul class="tags inline">
-                            {block:Tags}
-                                <li><a href="{TagURL}">#{Tag}</a></li>
-                            {/block:Tags}
-                        </ul>
-                     {/block:HasTags}
-                     <ul class="metadata-content inline">
-                                        {block:NoteCount}<li><a class="notecount" href="{Permalink}#notes">{NoteCountWithLabel}</a></li>{/block:NoteCount}
-                                        {block:ContentSource}
-                                         <li>
-                                            <a href="{SourceURL}">{lang:Source}:{block:NoSourceLogo}{SourceTitle}{/block:NoSourceLogo}
-                                        {block:SourceLogo}<img src="{BlackLogoURL}" width="{LogoWidth}"height="{LogoHeight}" alt="{SourceTitle}" />{/block:SourceLogo}</a></li>
-                                        {/block:ContentSource} 
-                                    </ul>
-                                    <ul class="like_and_reblog_buttons inline">
-                                      <li>{ReblogButton}</li>
-                                      <li>{LikeButton}</li>
-                                    </ul> 
-                 </div>
-                {/block:Link}
-                
-                <!-- Clean up later -->
-                
-                {block:Chat}
-        <div class="chat post">
-            {block:Title}<h1 class="title"><a href="{Permalink}">{Title}</a></h1>{/block:Title}
-            <ul>
-                {block:Lines}<li class="{Alt}"><p>{block:Label}<strong>{Label}</strong>{/block:Label} {Line} </p></li>{/block:Lines}
-            </ul>
-            {block:RebloggedFrom} 
-            <div class="reblog-parent">
-                (via) <a href="{ReblogParentURL}">{ReblogParentName}</a>
-            </div>
-        {/block:RebloggedFrom}
-        </div>
-        <div class="footer">
-                     {block:HasTags}
-                        <ul class="tags inline pad-top">
-                            {block:Tags}
-                                <li><a href="{TagURL}">#{Tag}</a></li>
-                            {/block:Tags}
-                        </ul>
-                     {/block:HasTags}
-                     <ul class="metadata-content inline">
-                                        {block:NoteCount}<li><a class="notecount" href="{Permalink}#notes">{NoteCountWithLabel}</a></li>{/block:NoteCount}
-                                        {block:ContentSource}
-                                         <li>
-                                            <a href="{SourceURL}">{lang:Source}:{block:NoSourceLogo}{SourceTitle}{/block:NoSourceLogo}
-                                        {block:SourceLogo}<img src="{BlackLogoURL}" width="{LogoWidth}"height="{LogoHeight}" alt="{SourceTitle}" />{/block:SourceLogo}</a></li>
-                                        {/block:ContentSource} 
-                                    </ul>
-                                    <ul class="like_and_reblog_buttons inline">
-                                      <li>{ReblogButton}</li>
-                                      <li>{LikeButton}</li>
-                                    </ul> 
-                 </div>
-        {/block:Chat}
-
-        {block:Audio}
-        <div class="audio post">
-            <div class="hover-container">
-                <div class="hover-content">
                         <div class="meta-content">
                            {block:HasTags}
                         <ul class="tags">
@@ -634,76 +509,164 @@ content: '';
                               <li>{LikeButton}</li>
                             </ul> 
                         </div>
+                    </div>
+                    
+                 </div>
+                {/block:Quote}
+                
+                {block:Link}
+                <div class="link post bottom-data">
+                    <div class="link-media">
+                        <div class="link-container">
+                            <div class="link-text-outer">
+                                <div class="link-text">
+                                    <a class="link-title" href="{URL}">{Name}</a>
+                                </div>
+                            </div>
                         </div>
+                    </div>
+                    <div class="inner-content">
+                        {block:Description}{Description}{/block:Description}
+                        <div class="inner-content">
+                        {block:RebloggedFrom} 
+                        <div class="reblog-parent">
+                            (via) <a href="{ReblogParentURL}">{ReblogParentName}</a>
+                        </div>
+                        {/block:RebloggedFrom}
+                        <div class="meta-content">
+                           {block:HasTags}
+                        <ul class="tags">
+                            {block:Tags}
+                            <li><a href="{TagURL}">#{Tag}</a></li>{/block:Tags}
+                        </ul>
+                        {/block:HasTags}
+                            <ul class="metadata-content">
+                                {block:NoteCount}<li><a class="notecount" href="{Permalink}#notes">{NoteCountWithLabel}</a></li>{/block:NoteCount}
+                                {block:ContentSource}
+                                 <li>
+                                    <a href="{SourceURL}">{lang:Source}:{block:NoSourceLogo}{SourceTitle}{/block:NoSourceLogo}
+                                {block:SourceLogo}<img src="{BlackLogoURL}" width="{LogoWidth}"height="{LogoHeight}" alt="{SourceTitle}" />{/block:SourceLogo}</a></li>
+                                {/block:ContentSource} 
+                            </ul>
+                            <ul class="like_and_reblog_buttons">
+                              <li>{ReblogButton}</li>
+                              <li>{LikeButton}</li>
+                            </ul> 
+                        </div>
+                        </div>    
+                    </div>
+                    
+                 </div>
+                {/block:Link}
+                
+                <!-- Clean up later -->
+                
+                {block:Chat}
+        <div class="chat post bottom-data">
+            <div class="inner-content">
+            {block:Title}<h1 class="title"><a href="{Permalink}">{Title}</a></h1>{/block:Title}
+            <ul>
+                {block:Lines}<li class="{Alt}"><p>{block:Label}<strong>{Label}</strong>{/block:Label} {Line} </p></li>{/block:Lines}
+            </ul>
+            {block:RebloggedFrom} 
+            <div class="reblog-parent">
+                (via) <a href="{ReblogParentURL}">{ReblogParentName}</a>
+            </div>
+            </div>
+        {/block:RebloggedFrom}
+        <div class="meta-content">
+                           {block:HasTags}
+                        <ul class="tags">
+                            {block:Tags}
+                            <li><a href="{TagURL}">#{Tag}</a></li>{/block:Tags}
+                        </ul>
+                        {/block:HasTags}
+                            <ul class="metadata-content">
+                                {block:NoteCount}<li><a class="notecount" href="{Permalink}#notes">{NoteCountWithLabel}</a></li>{/block:NoteCount}
+                                {block:ContentSource}
+                                 <li>
+                                    <a href="{SourceURL}">{lang:Source}:{block:NoSourceLogo}{SourceTitle}{/block:NoSourceLogo}
+                                {block:SourceLogo}<img src="{BlackLogoURL}" width="{LogoWidth}"height="{LogoHeight}" alt="{SourceTitle}" />{/block:SourceLogo}</a></li>
+                                {/block:ContentSource} 
+                            </ul>
+                            <ul class="like_and_reblog_buttons">
+                              <li>{ReblogButton}</li>
+                              <li>{LikeButton}</li>
+                            </ul> 
+                        </div>
+        </div>
+        {/block:Chat}
+
+        {block:Audio}
+        <div class="audio post bottom-data">
             {block:TrackName}<h1 class="title"><a href="{Permalink}">{TrackName}</a></h1>{/block:TrackName}
             {block:AlbumArt}<img src="{AlbumArtURL}" width="500" height="500"/>{/block:AlbumArt}
-            </div>
-            {AudioPlayerBlack}
+            {block:IndexPage}{AudioEmbed}{/block:IndexPage}{block:permalinkpage}{AudioEmbed-640}{/block:permalinkpage}
             {block:Caption}{Caption}{/block:Caption}
             {block:RebloggedFrom} 
             <div class="reblog-parent">
                 (via) <a href="{ReblogParentURL}">{ReblogParentName}</a>
             </div>
             {/block:RebloggedFrom}
-        </div>
-        <div class="footer">
-                     {block:HasTags}
-                        <ul class="tags inline">
+            <div class="meta-content">
+                           {block:HasTags}
+                        <ul class="tags">
                             {block:Tags}
-                                <li><a href="{TagURL}">#{Tag}</a></li>
-                            {/block:Tags}
+                            <li><a href="{TagURL}">#{Tag}</a></li>{/block:Tags}
                         </ul>
-                     {/block:HasTags}
-                     <ul class="metadata-content inline">
-                                        {block:NoteCount}<li><a class="notecount" href="{Permalink}#notes">{NoteCountWithLabel}</a></li>{/block:NoteCount}
-                                        {block:ContentSource}
-                                         <li>
-                                            <a href="{SourceURL}">{lang:Source}:{block:NoSourceLogo}{SourceTitle}{/block:NoSourceLogo}
-                                        {block:SourceLogo}<img src="{BlackLogoURL}" width="{LogoWidth}"height="{LogoHeight}" alt="{SourceTitle}" />{/block:SourceLogo}</a></li>
-                                        {/block:ContentSource} 
-                                    </ul>
-                                    <ul class="like_and_reblog_buttons inline">
-                                      <li>{ReblogButton}</li>
-                                      <li>{LikeButton}</li>
-                                    </ul> 
-                 </div>
+                        {/block:HasTags}
+                            <ul class="metadata-content">
+                                {block:NoteCount}<li><a class="notecount" href="{Permalink}#notes">{NoteCountWithLabel}</a></li>{/block:NoteCount}
+                                {block:ContentSource}
+                                 <li>
+                                    <a href="{SourceURL}">{lang:Source}:{block:NoSourceLogo}{SourceTitle}{/block:NoSourceLogo}
+                                {block:SourceLogo}<img src="{BlackLogoURL}" width="{LogoWidth}"height="{LogoHeight}" alt="{SourceTitle}" />{/block:SourceLogo}</a></li>
+                                {/block:ContentSource} 
+                            </ul>
+                            <ul class="like_and_reblog_buttons">
+                              <li>{ReblogButton}</li>
+                              <li>{LikeButton}</li>
+                            </ul> 
+                        </div>
+        </div>
         {/block:Audio}
 
         {block:Video}
-        <div class="video post">
+        <div class="video post bottom-data">
             <div class="video-frame">{Video-500}</div>
-            {block:Caption}{Caption}{/block:Caption}
-            {block:RebloggedFrom} 
-            <div class="reblog-parent">
-                (via) <a href="{ReblogParentURL}">{ReblogParentName}</a>
+            <div class="inner-content">
+                {block:Caption}{Caption}{/block:Caption}
+                {block:RebloggedFrom} 
+                <div class="reblog-parent">
+                    (via) <a href="{ReblogParentURL}">{ReblogParentName}</a>
+                </div>
             </div>
         {/block:RebloggedFrom}
-        </div>
-        <div class="footer">
-                     {block:HasTags}
-                        <ul class="tags inline pad-top">
+        <div class="meta-content">
+                           {block:HasTags}
+                        <ul class="tags">
                             {block:Tags}
-                                <li><a href="{TagURL}">#{Tag}</a></li>
-                            {/block:Tags}
+                            <li><a href="{TagURL}">#{Tag}</a></li>{/block:Tags}
                         </ul>
-                     {/block:HasTags}
-                     <ul class="metadata-content inline">
-                                        {block:NoteCount}<li><a class="notecount" href="{Permalink}#notes">{NoteCountWithLabel}</a></li>{/block:NoteCount}
-                                        {block:ContentSource}
-                                         <li>
-                                            <a href="{SourceURL}">{lang:Source}:{block:NoSourceLogo}{SourceTitle}{/block:NoSourceLogo}
-                                        {block:SourceLogo}<img src="{BlackLogoURL}" width="{LogoWidth}"height="{LogoHeight}" alt="{SourceTitle}" />{/block:SourceLogo}</a></li>
-                                        {/block:ContentSource} 
-                                    </ul>
-                                    <ul class="like_and_reblog_buttons inline">
-                                      <li>{ReblogButton}</li>
-                                      <li>{LikeButton}</li>
-                                    </ul> 
-                 </div>
+                        {/block:HasTags}
+                            <ul class="metadata-content">
+                                {block:NoteCount}<li><a class="notecount" href="{Permalink}#notes">{NoteCountWithLabel}</a></li>{/block:NoteCount}
+                                {block:ContentSource}
+                                 <li>
+                                    <a href="{SourceURL}">{lang:Source}:{block:NoSourceLogo}{SourceTitle}{/block:NoSourceLogo}
+                                {block:SourceLogo}<img src="{BlackLogoURL}" width="{LogoWidth}"height="{LogoHeight}" alt="{SourceTitle}" />{/block:SourceLogo}</a></li>
+                                {/block:ContentSource} 
+                            </ul>
+                            <ul class="like_and_reblog_buttons">
+                              <li>{ReblogButton}</li>
+                              <li>{LikeButton}</li>
+                            </ul> 
+                        </div>
+        </div>
         {/block:Video}
 
         {block:Answer}
-        <div class="answer post">
+        <div class="answer post bottom-data">
           <div class="note-item note-item-asker">
               <div class="text-note">
                   <p class="asker"><strong>{Asker}</strong> asked:</p>
@@ -730,6 +693,26 @@ content: '';
                 (via) <a href="{ReblogParentURL}">{ReblogParentName}</a>
             </div>
         {/block:RebloggedFrom}
+        <div class="meta-content">
+                           {block:HasTags}
+                        <ul class="tags">
+                            {block:Tags}
+                            <li><a href="{TagURL}">#{Tag}</a></li>{/block:Tags}
+                        </ul>
+                        {/block:HasTags}
+                            <ul class="metadata-content">
+                                {block:NoteCount}<li><a class="notecount" href="{Permalink}#notes">{NoteCountWithLabel}</a></li>{/block:NoteCount}
+                                {block:ContentSource}
+                                 <li>
+                                    <a href="{SourceURL}">{lang:Source}:{block:NoSourceLogo}{SourceTitle}{/block:NoSourceLogo}
+                                {block:SourceLogo}<img src="{BlackLogoURL}" width="{LogoWidth}"height="{LogoHeight}" alt="{SourceTitle}" />{/block:SourceLogo}</a></li>
+                                {/block:ContentSource} 
+                            </ul>
+                            <ul class="like_and_reblog_buttons">
+                              <li>{ReblogButton}</li>
+                              <li>{LikeButton}</li>
+                            </ul> 
+                        </div>
         </div>
         {/block:Answer}
                 
@@ -769,8 +752,8 @@ content: '';
           });
         });
         $('.hover-link').css('position', 'absolute');
-        var headerHeight = $('.cd-panel-header').height() + 40;
-        $('.cd-panel-container').css('padding-top',headerHeight);
+        var headerHeight = $('.cd-panel-header').height() + 20;
+        $('.cd-panel-container').css('top',headerHeight);
     });
 </script>
 
