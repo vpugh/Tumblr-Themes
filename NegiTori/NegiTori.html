@@ -18,11 +18,16 @@
 <meta name="select:Creator" content="#888" title="Grey"/>
 <meta name="select:Creator" content="#000" title="Black"/>
 <meta name="select:Creator" content="#fff" title="White"/>
+<meta name="select:Sidebar Size" content="200" title="Thin"/>
+<meta name="select:Sidebar Size" content="300" title="Medium"/>
+<meta name="select:Sidebar Size" content="400" title="Thick"/>
 <meta name="color:Sidebar Text" content="#666"/>
 <meta name="color:Sidebar BG" content="#222"/>
 <meta name="color:Text" content="#666"/>
 <meta name="color:Links" content="#888"/>
 <meta name="color:Pagination Divider" content="#888"/>
+<meta name="if:Extra Description" content="1"/>
+<meta name="text:Extra Description Text" content=""/>
 {/block:Hidden}
 
 <link rel="shortcut icon" href="{Favicon}"/>
@@ -76,7 +81,7 @@ iframe, img, embed, object, video {max-width: 100%;}
 h1 {margin-top:0;}
 
 /* Sidebar */
-#sidebar { position:fixed;top:0; background:{color:Sidebar BG}; padding:0 30px; height:100%; width:400px; color:{color:Sidebar Text};}
+#sidebar { position:fixed;top:0; background:{color:Sidebar BG}; padding:0 30px; height:100%; width:{select:Sidebar Size}px; color:{color:Sidebar Text};}
 #masthead {background: {color:Masthead background};margin-bottom: 5%;padding: 1% 0;text-align: center; width:100%;}
 #masthead img { max-width:100%;}
 .description-row { display:block; overflow:hidden;}
@@ -86,8 +91,9 @@ h1 {margin-top:0;}
 
 /* Navigation */
 .sidebar-navigation {padding:0; width:100%; }
-.sidebar-navigation li {list-style:none; text-align:left; margin:6px 0; background:{color:Masthead Background};}
-.sidebar-navigation a {padding:7px 8px;display:block;color:{color:Masthead Text};}
+.sidebar-navigation li {list-style:none; text-align:left; margin:6px 0;}
+.sidebar-navigation a {color:{color:Masthead Text};}
+.sidebar-navigation a:hover {border-bottom:1px solid;}
  .nav-trigger, .mobile-nav, .mobile-icon {
     	display: none;
   }
@@ -222,6 +228,7 @@ a.link-title {word-break: break-word;color: #fff;font-size: 18px;text-overflow: 
         {/block:IfAvatarVisible}
         {block:Description}
         	<p>{Description}</p>
+        	{block:IfExtraDescription}<p>{text:Extra Description Text}</p>{/block:IfExtraDescription}
         {block:Description}
         </div>
         <a class="nav-trigger" href="#0">
@@ -251,6 +258,7 @@ a.link-title {word-break: break-word;color: #fff;font-size: 18px;text-overflow: 
 </aside>
 
 <div id="content">
+   
     {block:Posts}
     <article>
     	<!-- Post Header -->
@@ -262,7 +270,7 @@ a.link-title {word-break: break-word;color: #fff;font-size: 18px;text-overflow: 
         <!-- /Header -->
         
         {block:Text}
-        <div class="text post" id="{PostID}">
+        <div class="text post">
             {block:Title}<h1 class="title"><a href="{Permalink}">{Title}</a></h1>{/block:Title}
             {block:Body}{Body}{/block:Body}
             {block:RebloggedFrom} 
@@ -274,7 +282,7 @@ a.link-title {word-break: break-word;color: #fff;font-size: 18px;text-overflow: 
         {/block:Text}
 
         {block:Photo}
-        <div class="photo post" id="{PostID}">
+        <div class="photo post">
             {LinkOpenTag}<img src="{PhotoURL-HighRes}" alt="{PhotoAlt}" />{LinkCloseTag}
             {block:Caption}{Caption}{/block:Caption}
             {block:RebloggedFrom} 
@@ -286,7 +294,7 @@ a.link-title {word-break: break-word;color: #fff;font-size: 18px;text-overflow: 
         {/block:Photo}
 
         {block:Photoset}
-        <div class="photoset post" id="{PostID}">
+        <div class="photoset post">
             {Photoset-500}
             {block:Caption}{Caption}{/block:Caption}
             {block:RebloggedFrom} 
@@ -296,22 +304,9 @@ a.link-title {word-break: break-word;color: #fff;font-size: 18px;text-overflow: 
         {/block:RebloggedFrom}
         </div>
         {/block:Photoset}
-        
-        <!--{block:Photoset}
-            <div id="post" id="{PostID}">
-                    <div class="photoset">
-                        {block:Photos}
-                            <img src="{PhotoURL-HighRes}" class="highres">
-                        {/block:Photos}
-                    </div>
-                    {block:Caption}
-                        <div class="text">{Caption}</div>
-                    {/block:Caption}
-                </div>
-        {/block:Photoset}-->
 
         {block:Quote}
-        <div class="quote post" id="{PostID}">
+        <div class="quote post">
             <span class="quote-org">&#8220;{Quote}&#8221;</span>
             {block:Source}<cite> {Source} </cite>{/block:Source}
             {block:RebloggedFrom} 
@@ -323,7 +318,7 @@ a.link-title {word-break: break-word;color: #fff;font-size: 18px;text-overflow: 
         {/block:Quote}
 
         {block:Link}
-        <div class="link post" id="{PostID}">
+        <div class="link post">
             <div class="link-media">
                 <div class="link-container">
                     <div class="link-text-outer">
@@ -343,7 +338,7 @@ a.link-title {word-break: break-word;color: #fff;font-size: 18px;text-overflow: 
         {/block:Link}
 
         {block:Chat}
-        <div class="chat post" id="{PostID}">
+        <div class="chat post">
             {block:Title}<h1 class="title"><a href="{Permalink}">{Title}</a></h1>{/block:Title}
             <ul>
                 {block:Lines}<li class="{Alt}"><p>{block:Label}<strong>{Label}</strong>{/block:Label} {Line} </p></li>{/block:Lines}
@@ -357,10 +352,10 @@ a.link-title {word-break: break-word;color: #fff;font-size: 18px;text-overflow: 
         {/block:Chat}
 
         {block:Audio}
-        <div class="audio post" id="{PostID}">
+        <div class="audio post">
             {block:TrackName}<h1 class="title"><a href="{Permalink}">{TrackName}</a></h1>{/block:TrackName}
             {block:AlbumArt}<img src="{AlbumArtURL}" width="500" height="500"/>{/block:AlbumArt}
-            {AudioPlayerBlack}
+            {block:IndexPage}{AudioEmbed}{/block:IndexPage}{block:permalinkpage}{AudioEmbed-640}{/block:permalinkpage}
             {block:Caption}{Caption}{/block:Caption}
             {block:RebloggedFrom} 
             <div class="reblog-parent">
@@ -371,7 +366,7 @@ a.link-title {word-break: break-word;color: #fff;font-size: 18px;text-overflow: 
         {/block:Audio}
 
         {block:Video}
-        <div class="video post" id="{PostID}">
+        <div class="video post">
             {Video-500}
             {block:Caption}{Caption}{/block:Caption}
             {block:RebloggedFrom} 
@@ -383,7 +378,7 @@ a.link-title {word-break: break-word;color: #fff;font-size: 18px;text-overflow: 
         {/block:Video}
 
         {block:Answer}
-        <div class="answer post" id="{PostID}">
+        <div class="answer post">
           <div class="note-item note-item-asker">
               <div class="text-note">
                   <p class="asker"><strong>{Asker}</strong> asked:</p>
