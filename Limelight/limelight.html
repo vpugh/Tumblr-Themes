@@ -28,8 +28,8 @@ a{text-decoration:none;color:#000;}
 .post-wrapper{width:920px; margin:40px auto 0 auto; overflow:hidden;position:relative;}
 
 article{background:#fff;}
-article.grid-1-3{width:47%;float:left;margin:0 9px 10px 9px;}
-article.grid-1-3.single-col{width:500px;margin:0 auto;float:none;}
+article.columns{width:47%;float:left;margin:0 9px 10px 9px;}
+article.columns.single-col{width:500px;margin:0 auto;float:none;}
 
 .post{padding:10px; position:relative;}
 .search.post{background:#fff;margin:0 auto 20px auto;}
@@ -400,7 +400,7 @@ content: '';
 	            {/block:SearchPage}
 	    
     	{block:Posts}
-        	<article class="grid-1-3 {block:PermalinkPage}{block:SearchPage}single-col{/block:SearchPage}{/block:PermalinkPage}">
+        	<article class="columns {block:PermalinkPage}{block:SearchPage}single-col{/block:SearchPage}{/block:PermalinkPage}">
         	    
                     
             	{block:Text}
@@ -796,20 +796,25 @@ content: '';
         var $container = $('.post-wrapper');
         $container.imagesLoaded(function(){
           $container.masonry({
-            itemSelector : '.grid-1-3'
+            itemSelector : '.columns'
           });
         });
         $('.hover-link').css('position', 'absolute');
         var headerHeight = $('.cd-panel-header').height() + 20;
         $('.cd-panel-container').css('top',headerHeight);
         {block:SearchPage}
-            var searchTop = $('.search.post').height() + 'px';
-            $('.grid-1-3').each(function(){
-                var currentTop = $(this).css('top');
-                $(this).css('top', currentTop + searchTop);
-            });
-        {/block:SearchPage}
+            $('.columns').each(function(){
+    			var searchTop = $('.search.post').outerHeight();
+    			var currentTop = parseInt($(this).css('top'));
+    			console.log(searchTop);
+    			console.log(currentTop);
+    			var finalTop = searchTop + currentTop + 'px';
+    			console.log(finalTop);
+    			$(this).css('top', finalTop);
+			});
+    {/block:SearchPage}
     });
+    
 </script>
 {/block:IndexPage}
 
