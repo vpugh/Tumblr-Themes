@@ -22,6 +22,7 @@
 <meta name="select:Sidebar Size" content="300" title="Medium"/>
 <meta name="select:Sidebar Size" content="400" title="Thick"/>
 <meta name="color:Sidebar Text" content="#666"/>
+<meta name="color:Sidebar Link" content="#666"/>
 <meta name="color:Sidebar BG" content="#222"/>
 <meta name="color:Text" content="#666"/>
 <meta name="color:Links" content="#888"/>
@@ -49,6 +50,7 @@
 				$("#content").css("margin", sidebarHeight + "px auto 0 auto");
 			} else {
             var sidebarWidth = $('#sidebar').width() + 60;
+            $('#content').css("margin-top", 0);
             $('#content').css("margin-left", sidebarWidth + "px");
 			}
         });
@@ -86,13 +88,14 @@ h1 {margin-top:0;}
 #masthead img { max-width:100%;}
 .description-row { display:block; overflow:hidden;}
 .description-row p {margin:0;padding:0;}
+.description-row p.description-divider{border-bottom:1px solid {color:Masthead background};margin-bottom: 4px;padding-bottom: 4px;}
 .avatar-icon {float:left; clear:right; margin-right:10px; border:3px solid {color:Masthead Background};}
 .blog-name, .blog-name a {color:{color:Masthead Text}; text-decoration:none; margin:26px 0; line-height:1.05em; text-align:center; padding:0 4px;}
 
 /* Navigation */
 .sidebar-navigation {padding:0; width:100%; }
 .sidebar-navigation li {list-style:none; text-align:left; margin:6px 0;}
-.sidebar-navigation a {color:{color:Masthead Text};}
+.sidebar-navigation a {color:{color:Sidebar Link};}
 .sidebar-navigation a:hover {border-bottom:1px solid;}
  .nav-trigger, .mobile-nav, .mobile-icon {
     	display: none;
@@ -193,22 +196,25 @@ a.link-title {word-break: break-word;color: #fff;font-size: 18px;text-overflow: 
 
 @media (max-width:768px){
     aside#sidebar {width:100%; height:80px; padding:0; z-index:12;}
-    #masthead, .description-row, .theme-creation {display:none;}
+    #masthead img, .description-row, .theme-creation {display:none;}
+    .blog-name{font-size: 18px;text-align: left;margin: 20px 0 32px 123px;}
     .sidebar-navigation{margin:0; display:none;position:absolute;top:100%;}
     .sidebar-navigation li a {margin:0;padding:0;}
-    .sidebar-navigation li {margin:0;padding: 15px;border-bottom: 1px solid #888;}
+    .sidebar-navigation li {margin:0;padding: 15px;border-bottom: 1px solid #888;background:{color:Masthead background};}
     article {width:80%;margin:0 auto;}
     .text, .photo, .video, .chat, .audio, .link, .quote,.answer {width:initial;}
     .tumblr_video_container{width:100% !important;}
     .photoset.post {width:auto;}
     .metadata {width:auto;}
     .nav-trigger, .mobile-nav, .mobile-icon {display: block;}
-   .nav-trigger {position: absolute; right: 4%; top: 0; height: 100%; width: 80px; }
+   .nav-trigger {position: absolute; left: 4%; top: 0; height: 100%; width: 80px; }
     .nav-trigger .mobile-nav {color: white;text-transform: uppercase;font-weight: 700;display: none; }
-    .mobile-menu { position: absolute; right: 7px; top: 20%; padding: 9px 18px; border: 1px solid #fff;border-radius: 4px;font-weight: bold;}
+    .mobile-menu { position: absolute; left: 7px; top: 20%; padding: 9px 18px; border: 1px solid #fff;border-radius: 4px;font-weight: bold; font-size:14px;color:#fff;}
     .menu-is-open {	display:block; }
-    #pagination {width:80%;margin:0 auto;position:relative;}
-}
+    .pagination-holder{padding:20px 0 0; margin-top:40px;}
+    #pagination {width:88%;margin:0 auto;position:relative;border:none;padding: 0 0 80px 0;}
+    #pagination li {background: #ddd;padding: 20px 35px;}
+    .jump-pagination{display:none;}
 
 {CustomCSS}
 </style>
@@ -227,7 +233,7 @@ a.link-title {word-break: break-word;color: #fff;font-size: 18px;text-overflow: 
         	<div class="avatar-icon"><img src="{PortraitURL-96}"/></div>
         {/block:IfAvatarVisible}
         {block:Description}
-        	<p>{Description}</p>
+        	<p {block:IfExtraDescription}class="description-divider"{/block:IfExtraDescription}>{Description}</p>
         	{block:IfExtraDescription}<p>{text:Extra Description Text}</p>{/block:IfExtraDescription}
         {block:Description}
         </div>
