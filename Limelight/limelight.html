@@ -29,9 +29,10 @@ a{text-decoration:none;color:#000;}
 
 article{background:#fff;}
 article.grid-1-3{width:47%;float:left;margin:0 9px 10px 9px;}
-article.grid-1-3.permalink{width:500px;margin:0 auto;float:none;}
+article.grid-1-3.single-col{width:500px;margin:0 auto;float:none;}
 
 .post{padding:10px; position:relative;}
+.search.post{background:#fff;margin:0 auto 20px auto;}
 .photo.post, .photoset.post{padding:0;margin:0;}
 .photoset.post{margin:0;}
 .link.post{padding:0;}
@@ -302,7 +303,10 @@ backface-visibility: hidden;
 .cd-panel-close::after, .cd-panel-close::before {
 content: '';
 }
-
+.cd-panel-content ul {
+    margin:0;
+    padding:0;
+}
 .cd-panel-content li {
     list-style:none;
 }
@@ -311,7 +315,37 @@ content: '';
     color: #000;
     border-bottom: 1px solid;
     margin: 0 0 10px 0;
-    
+}
+.search-form input {
+    border:none;
+    margin:0 0 5px 0;
+    padding:6px 0;
+    background:transparent;
+    transition: all 0.1s ease;
+}
+::-webkit-input-placeholder {
+   color: #000;
+}
+:focus::-webkit-input-placeholder {
+   color: #888;
+}
+:-moz-placeholder { /* Firefox 18- */
+   color: #000;  
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: #000;  
+}
+
+:-ms-input-placeholder {  
+   color: #000;  
+}
+.search-form input:focus {
+    background-color: #444;
+    background-color:rgba(255, 255, 255, 0.66);
+    padding:6px 0px 6px 8px;
+    outline:none;
+    color:#222;
 }
 </style>
 
@@ -331,19 +365,24 @@ content: '';
         	            <p>{Description}</p>
 			        </div>
 			    {block:Description}
-				<li><a href="/">Home</a></li>
-                <li><a href="/archive">Archive</a></li>
-                {block:HasPages}
-                    {block:Pages}
-                        <li> <a href="{URL}">{Label}</a></li>
-                    {/block:Pages}
-                {/block:HasPages}
-                {block:SubmissionsEnabled}
-                    <li> <a href="/submit">{SubmitLabel}</a></li>
-                {/block:SubmissionsEnabled}
-                {block:AskEnabled}
-                    <li> <a href="/ask">{AskLabel}</a></li>
-                {/block:AskEnabled}
+			    <form class="search-form" action="/search" method="get">
+                    <input type="text" name="q" value="{SearchQuery}" placeholder="Search"/>
+                </form>
+                <ul>
+    				<li><a href="/">Home</a></li>
+                    <li><a href="/archive">Archive</a></li>
+                    {block:HasPages}
+                        {block:Pages}
+                            <li> <a href="{URL}">{Label}</a></li>
+                        {/block:Pages}
+                    {/block:HasPages}
+                    {block:SubmissionsEnabled}
+                        <li> <a href="/submit">{SubmitLabel}</a></li>
+                    {/block:SubmissionsEnabled}
+                    {block:AskEnabled}
+                        <li> <a href="/ask">{AskLabel}</a></li>
+                    {/block:AskEnabled}
+                </ul>
 			</div> <!-- cd-panel-content -->
 		</div> <!-- cd-panel-container -->
 	</div>
@@ -351,10 +390,18 @@ content: '';
            <div class="sidebar"></div>
        </a>
 	<div class="post-wrapper">
+	    {block:SearchPage}
+        	        <div class="search post">
+        	            <p>There are {SearchResultCount} matching results</p>
+            	        {block:NoSearchResults}
+            	            <p>No Results</p>
+            	        {/block:NoSearchResults}
+        	        </div>
+	            {/block:SearchPage}
 	    
     	{block:Posts}
-    	
-        	<article class="grid-1-3 {block:PermalinkPage}permalink{/block:PermalinkPage}">
+        	<article class="grid-1-3 {block:PermalinkPage}{block:SearchPage}single-col{/block:SearchPage}{/block:PermalinkPage}">
+        	    
                     
             	{block:Text}
                 <div class="text post bottom-data">
@@ -755,9 +802,15 @@ content: '';
         $('.hover-link').css('position', 'absolute');
         var headerHeight = $('.cd-panel-header').height() + 20;
         $('.cd-panel-container').css('top',headerHeight);
+        {block:SearchPage}
+            var searchTop = $('.search.post').height() + 'px';
+            $('.grid-1-3').each(function(){
+                var currentTop = $(this).css('top');
+                $(this).css('top', currentTop + searchTop);
+            });
+        {/block:SearchPage}
     });
 </script>
-
 {/block:IndexPage}
 
 </body>
