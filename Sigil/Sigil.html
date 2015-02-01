@@ -1,0 +1,231 @@
+<!DOCTYPE html><head>
+<meta charset="utf-8">
+<title>{Title}{block:SearchPage} ({lang:Search results for SearchQuery}){/block:SearchPage}{block:PermalinkPage}{block:PostSummary} — {PostSummary}{/block:PostSummary}{/block:PermalinkPage}</title>
+{block:Description}
+
+<!------------------------------
+--------------------------------
+Sigil
+--------------------------------
+------------------------------->
+	
+<meta name="description" content="{MetaDescription}">
+{/block:Description}
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+{block:Hidden}
+<meta name="if:Avatar Visible" content="1"/>
+<meta name="color:Description Text" content="#000">
+<meta name="color:Body Text" content="#444">
+{/block:Hidden}
+
+<link rel="shortcut icon" href="{Favicon}"/>
+<link rel="alternate" type="application/rss+xml" title="{Title} RSS" href="{RSS}"/>
+<link href='http://fonts.googleapis.com/css?family=Montserrat:700,400' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,400italic,700italic">
+<link rel="stylesheet" href="http://static.tumblr.com/hznqxps/ivOmgjf8v/normalize.css" />
+<script src="http://static.tumblr.com/2qikcqj/rJxnhj4dg/jquery-2.1.1.js"></script>
+<script>
+    
+</script>
+
+<style>
+body {font-family:'Open Sans', 'Montserrat', Helvetica, Arial, sans-serif;color:{color:Body Text};}
+a {display:inline-block; text-decoration:none;}
+img {max-width:100%;}
+
+/*Masthead - Parallax*/
+.masthead {padding:110px 10px;{block:IfAvatarVisible}padding:50px 10px;{/block:IfAvatarVisible} background-color:#963; background:url(https://farm8.staticflickr.com/7392/9594673667_76413b0b7d_k.jpg) no-repeat 40% 73% fixed; text-align:center; color:#fff;}
+.avatar-icon {margin-bottom:20px;}
+
+/* Header Navigation */
+.container {margin:0 auto; max-width:650px;padding:10px 25px;}
+.description .container {padding:30px 25px;text-align:center;}
+.content .container {background:#fff;margin-top:20px;margin-bottom:20px;}
+.description {background:#fff;background-color:#F7EADD;color:{color:Description Text};font-size:13px;}
+.description a {color:{color:Description Text}; text-decoration:underline;}
+ul.header-navigation  {margin:30px 0 0;}
+.header-navigation li {list-style:none;display:inline-block;padding:0 3px;}
+.header-navigation a {text-decoration:none;color:#777; font-size:14px; text-transform:uppercase;}
+.header-navigation a:hover {text-decoration:underline;}
+
+/* All Posts */
+article {padding:0 0 30px 0;border-bottom:1px solid #ccc;border-bottom:1px solid rgba(0,0,0,.1);margin:20px 0 0;}
+.post {padding:10px;}
+.post a {color:{color:Body Text};font-weight:bold;}
+p {font-size:16px;}
+blockquote{margin:0;padding:0 0 0 10px;border-left:1px solid #ddd;}
+blockquote p {font-size: 13px;}
+.reblog-parent {
+margin: 20px 0 0 30px;
+font-size: 12px;
+background: #F6F6F6;
+padding: 7px;
+}
+.text.post .reblog-parent {margin-left:0;}
+
+/* Text Post */
+.text.post{font-size:16px;line-height:1.25em;}
+.title {font-size:24px;line-height:1.2em;}
+.title a {color:{color:Body Text};}
+
+/* Answer */
+.asker,.answerer {font-size:12px;margin:0;}
+.answerer {margin-top:6px;}
+.asker img, .answerer img {vertical-align:middle;margin-right:6px;}
+.asker-question {margin:0;padding: 0 0 0 32px;font-weight:bold;color:#111;font-size:18px;}
+.answerer-answer {margin:0;padding: 0 0 0 32px;color:#aaa;font-size:15px;}
+.replies {padding:0 0 0 30px;margin-bottom:0;}
+.replies p {margin-bottom:0;}
+
+
+/* Footer */
+footer {overflow:hidden;}
+.tags,.metadata, .like_and_reblog_buttons {margin:0;padding:0;}
+.metadata {float:left;}
+.like_and_reblog_buttons {float:right;}
+.tags li,.metadata li, .like_and_reblog_buttons li {display:inline-block;font-size:12px;padding:0 0 0 10px;}
+.tags a {color:#999;}
+.metadata a {color:#bbb;}
+.tags a:hover, .metadata a:hover {color:#666;}
+
+{CustomCSS}
+</style>
+</head>
+
+<body>
+
+<header class="masthead">
+	{block:IfAvatarVisible}
+    	<a href="/">
+        	<div class="avatar-icon"><img src="{PortraitURL-96}"/></div>
+    	</a>
+    {/block:IfAvatarVisible}
+    <h1>{Title}</h1>
+</header>
+<header class="description">
+    <div class="container">
+        <p class="description">{Description}</p>
+        <ul class="header-navigation">
+            <li><a href="/">Home</a></li>
+            <li><a href="/archive">Archive</a></li>
+            {block:HasPages}
+                {block:Pages}
+                    <li> <a href="{URL}">{Label}</a></li>
+                {/block:Pages}
+            {/block:HasPages}
+            {block:SubmissionsEnabled}
+                <li> <a href="/submit">{SubmitLabel}</a></li>
+            {/block:SubmissionsEnabled}
+            {block:AskEnabled}
+                <li> <a href="/ask">{AskLabel}</a></li>
+            {/block:AskEnabled}
+        </ul>
+    </div>
+</header>
+<div class="content">
+   <div class="container">
+    {block:Posts}
+    <article>
+        <!-- Text Post -->
+        {block:Text}
+        <div class="text post">
+            {block:Title}
+                <h1 class="title"><a href="{Permalink}">{Title}</a></h1>
+            {/block:Title}
+            {block:Body}{Body}{/block:Body}
+            {block:RebloggedFrom}
+            <div class="reblog-parent">
+                Reblogged from <a href="{ReblogParentURL}">{ReblogParentName}</a>
+            </div>
+        {/block:RebloggedFrom}
+         </div>
+        {/block:Text}
+        
+        <!-- Photo Post -->
+        {block:Photo}
+        <div class="photo post">
+            <a href="{block:IndexPage}{Permalink}{/block:IndexPage}{block:PermalinkPage}{PhotoURL-HighRes}{/block:PermalinkPage}"><img src="{PhotoURL-HighRes}" alt="{PhotoAlt}" /></a>
+            {block:Caption}{Caption}{/block:Caption}
+            {block:RebloggedFrom}
+            <div class="reblog-parent">
+                Reblogged from <a href="{ReblogParentURL}">{ReblogParentName}</a>
+            </div>
+        {/block:RebloggedFrom}
+        </div>
+        {/block:Photo}
+        
+        <!-- Quote Post -->
+        {block:Quote}
+        <div class="quote post">
+            <span class="quote-org">&#8220;{Quote}&#8221;</span>
+            {block:Source}<cite> {Source} </cite>{/block:Source}
+            {block:RebloggedFrom}
+            <div class="reblog-parent">
+                Reblogged from <a href="{ReblogParentURL}">{ReblogParentName}</a>
+            </div>
+        {/block:RebloggedFrom}
+         </div>
+        {/block:Quote}
+        
+        <!-- Answer-->
+        {block:Answer}
+        <div class="answer post">
+          <div class="note-item note-item-asker">
+              <div class="text-note">
+                  <p class="asker"><img class="asker-avatar" src="{AskerPortraitURL-24}" alt=""><strong>{Asker}</strong> asked:</p>
+                  <div class="asker-question">{Question}</div>
+              </div>
+              <div class="avatar">
+                  
+              </div>
+          </div>
+    		{block:Answerer}
+            <div class="note-item note-item-answerer">
+                <div class="text-note">
+                    <p class="answerer"><img class="answerer-avatar" src="{AnswererPortraitURL-24}" alt=""><strong>{Answerer}</strong> answered:</p>
+                    <div class="answerer-answer">{Answer}</div>
+                </div>
+            </div>
+        	{/block:Answerer}
+        	<div class="replies">{Replies}</div>
+            {block:RebloggedFrom}
+            <div class="reblog-parent">
+                Reblogged from <a href="{ReblogParentURL}">{ReblogParentName}</a>
+            </div>
+        {/block:RebloggedFrom}
+        </div>
+        {/block:Answer}
+        
+        <!-- Footer -->
+        <footer>
+            {block:HasTags}
+                <ul class="tags">
+                    {block:Tags}<li><a href="{TagURL}">#{Tag}</a> </li>{/block:Tags}
+                </ul>
+            {/block:HasTags}
+                <ul class="metadata">
+                    {block:NoteCount}<li><a class="notecount" href="{Permalink}#notes">{NoteCountWithLabel}</a></li>{/block:NoteCount}
+                    {block:ContentSource}
+                     <li>
+                        <a href="{SourceURL}">{lang:Source}:{block:NoSourceLogo}{SourceTitle}{/block:NoSourceLogo}
+                    {block:SourceLogo}<img src="{BlackLogoURL}" width="{LogoWidth}"height="{LogoHeight}" alt="{SourceTitle}" />{/block:SourceLogo}</a></li>
+                    {/block:ContentSource} 
+                </ul>
+                <ul class="like_and_reblog_buttons">
+                  <li>{ReblogButton size="12"}</li>
+                  <li>{LikeButton size="12"}</li>
+                </ul>
+                {block:PermalinkPage}
+            {block:PostNotes}
+            	<div id="notes">{PostNotes}</div>
+            {/block:PostNotes} 
+            {/block:PermalinkPage}
+        </footer>
+        
+	</article>
+	
+    {/block:Posts}
+    </div>
+</body>
+</html>
