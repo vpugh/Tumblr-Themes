@@ -30,7 +30,7 @@ Sigil
 </script>
 
 <style>
-body {font-family:'Open Sans', 'Montserrat', Helvetica, Arial, sans-serif;color:{color:Body Text};}
+body {font-family:'Open Sans', 'Montserrat', Helvetica, Arial, sans-serif;color:{color:Body Text};line-height:1.5em;}
 a {display:inline-block; text-decoration:none;}
 img {max-width:100%;}
 
@@ -50,44 +50,83 @@ ul.header-navigation  {margin:30px 0 0;}
 .header-navigation a:hover {text-decoration:underline;}
 
 /* All Posts */
-article {padding:0 0 30px 0;border-bottom:1px solid #ccc;border-bottom:1px solid rgba(0,0,0,.1);margin:20px 0 0;}
+article {padding:50px 0;border-bottom:1px solid #ccc;border-bottom:1px solid rgba(0,0,0,.1);}
+article.perma {padding:0;}
 .post {padding:10px;}
 .post a {color:{color:Body Text};font-weight:bold;}
 p {font-size:16px;}
 blockquote{margin:0;padding:0 0 0 10px;border-left:1px solid #ddd;}
 blockquote p {font-size: 13px;}
 .reblog-parent {
-margin: 20px 0 0 30px;
+margin: 20px 0 0 0;
 font-size: 12px;
-background: #F6F6F6;
+/*border-top: 1px solid #EEEEEE;
+border-bottom: 1px solid #EEEEEE;*/
+font-style:italic;
 padding: 7px;
 }
-.text.post .reblog-parent {margin-left:0;}
 
 /* Text Post */
-.text.post{font-size:16px;line-height:1.25em;}
-.title {font-size:24px;line-height:1.2em;}
+.text.post{font-size:16px;/*line-height:1.25em;*/}
+.title {font-size:24px;line-height:1.2em;margin-top:0;}
 .title a {color:{color:Body Text};}
 
-/* Answer */
+/* Answer Post */
 .asker,.answerer {font-size:12px;margin:0;}
 .answerer {margin-top:6px;}
 .asker img, .answerer img {vertical-align:middle;margin-right:6px;}
-.asker-question {margin:0;padding: 0 0 0 32px;font-weight:bold;color:#111;font-size:18px;}
-.answerer-answer {margin:0;padding: 0 0 0 32px;color:#aaa;font-size:15px;}
-.replies {padding:0 0 0 30px;margin-bottom:0;}
+.asker-question {margin:0;padding: 15px 0;font-weight:bold;color:#111;font-size:18px;}
+.answerer-answer {margin:0;padding: 15px 0;color:#7A7A7A;font-size:15px;}
+.replies {padding:15px 0;margin-bottom:0;}
 .replies p {margin-bottom:0;}
 
+/* Quote Post */
+.quote-org {
+font-weight: bold;
+font-size: 22px;
+}
+cite {
+margin-top: 10px;
+display: block;
+}
+cite p {margin:4px 0;color:#7a7a7a;}
+
+/* Chat Post */
+.chat-list {margin:0;padding:0;}
+.chat-list li {margin:0;padding:0;list-style:none;}
+.label {font-weight:bold;margin:0;}
+.line {font-style:italic;margin:0 0 5px 0;}
 
 /* Footer */
 footer {overflow:hidden;}
-.tags,.metadata, .like_and_reblog_buttons {margin:0;padding:0;}
-.metadata {float:left;}
+.answer.post footer {margin-left:30px;}
+.tags,.date,.metadata, .like_and_reblog_buttons {margin:0;padding:0;}
+.metadata, .date {float:left;}
 .like_and_reblog_buttons {float:right;}
-.tags li,.metadata li, .like_and_reblog_buttons li {display:inline-block;font-size:12px;padding:0 0 0 10px;}
-.tags a {color:#999;}
+.tags li,.date li,.metadata li, .like_and_reblog_buttons li {display:inline-block;font-size:12px;padding:0 0 0 10px;}
+.like_and_reblog_buttons li {padding:0 0 0 5px; }
+.tags a,.date a {color:#999;}
 .metadata a {color:#bbb;}
 .tags a:hover, .metadata a:hover {color:#666;}
+
+/* Notes */
+.notes-container {
+margin: 20px 0 0;
+overflow: hidden;
+clear:both;
+}
+.notes {
+margin: 20px 0 0;
+padding: 10px;
+float: left;
+width:100%;
+}
+.notes img {
+margin-right: 7px;
+vertical-align: middle;
+}
+.notes li {padding:12px 0; font-size:14px;list-style:none;border-top: 1px solid #ededed;}
+.notes li a {color:#333;font-weight:bold;}
 
 {CustomCSS}
 </style>
@@ -126,7 +165,7 @@ footer {overflow:hidden;}
 <div class="content">
    <div class="container">
     {block:Posts}
-    <article>
+    <article {block:PermalinkPage}class="perma"{/block:PermalinkPage}>
         <!-- Text Post -->
         {block:Text}
         <div class="text post">
@@ -155,6 +194,19 @@ footer {overflow:hidden;}
         </div>
         {/block:Photo}
         
+        <!-- Photo Set -->
+        {block:Photoset}
+        <div class="photoset post">
+            {Photoset}
+            {block:Caption}{Caption}{/block:Caption}
+            {block:RebloggedFrom} 
+            <div class="reblog-parent">
+                Reblogged from <a href="{ReblogParentURL}">{ReblogParentName}</a>
+            </div>
+        {/block:RebloggedFrom}
+        </div>
+        {/block:Photoset}
+        
         <!-- Quote Post -->
         {block:Quote}
         <div class="quote post">
@@ -167,6 +219,72 @@ footer {overflow:hidden;}
         {/block:RebloggedFrom}
          </div>
         {/block:Quote}
+        
+        <!-- Link Post -->
+        {block:Link}
+        <div class="link post">
+            <div class="link-media">
+                <div class="link-container">
+                    <div class="link-text-outer">
+                        <div class="link-text">
+                            <a class="link-title" href="{URL}">{Name}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {block:Description}{Description}{/block:Description}
+            {block:RebloggedFrom} 
+            <div class="reblog-parent">
+                Reblogged from <a href="{ReblogParentURL}">{ReblogParentName}</a>
+            </div>
+        {/block:RebloggedFrom}
+         </div>
+        {/block:Link}
+        
+        <!-- Chat Post -->
+        {block:Chat}
+        <div class="chat post">
+            {block:Title}<h1 class="title"><a href="{Permalink}">{Title}</a></h1>{/block:Title}
+            <ul class="chat-list">
+                {block:Lines}
+                <li class="{Alt}"><p class="label">{block:Label}{Label}</p>{/block:Label} <p class="line">{Line}</p></li>
+                {/block:Lines}
+            </ul>
+            {block:RebloggedFrom} 
+            <div class="reblog-parent">
+                Reblogged from <a href="{ReblogParentURL}">{ReblogParentName}</a>
+            </div>
+        {/block:RebloggedFrom}
+        </div>
+        {/block:Chat}
+        
+        <!-- Audio Post -->
+        {block:Audio}
+        <div class="audio post">
+            {block:TrackName}<h1 class="title"><a href="{Permalink}">{TrackName}</a></h1>{/block:TrackName}
+            {block:AlbumArt}<img src="{AlbumArtURL}" width="500" height="500"/>{/block:AlbumArt}
+            {block:IndexPage}{AudioEmbed}{/block:IndexPage}{block:permalinkpage}{AudioEmbed-640}{/block:permalinkpage}
+            {block:Caption}{Caption}{/block:Caption}
+            {block:RebloggedFrom} 
+            <div class="reblog-parent">
+                Reblogged from <a href="{ReblogParentURL}">{ReblogParentName}</a>
+            </div>
+            {/block:RebloggedFrom}
+        </div>
+        {/block:Audio}
+        
+        <!-- Video Post -->
+        {block:Video}
+        <div class="video post">
+            {Video-500}
+            {block:Caption}{Caption}{/block:Caption}
+            {block:RebloggedFrom} 
+            <div class="reblog-parent">
+                Reblogged from <a href="{ReblogParentURL}">{ReblogParentName}</a>
+            </div>
+        {/block:RebloggedFrom}
+        </div>
+        {/block:Video}
         
         <!-- Answer-->
         {block:Answer}
@@ -204,6 +322,11 @@ footer {overflow:hidden;}
                     {block:Tags}<li><a href="{TagURL}">#{Tag}</a> </li>{/block:Tags}
                 </ul>
             {/block:HasTags}
+                <ul class="date">
+                    {block:Date} 
+                        <li>{TimeAgo}</li>
+                    {/block:Date}
+                </ul>
                 <ul class="metadata">
                     {block:NoteCount}<li><a class="notecount" href="{Permalink}#notes">{NoteCountWithLabel}</a></li>{/block:NoteCount}
                     {block:ContentSource}
@@ -218,7 +341,7 @@ footer {overflow:hidden;}
                 </ul>
                 {block:PermalinkPage}
             {block:PostNotes}
-            	<div id="notes">{PostNotes}</div>
+            	<div class="notes-container">{PostNotes}</div>
             {/block:PostNotes} 
             {/block:PermalinkPage}
         </footer>
