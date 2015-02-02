@@ -110,23 +110,19 @@ footer {overflow:hidden;}
 .tags a:hover, .metadata a:hover {color:#666;}
 
 /* Notes */
-.notes-container {
-margin: 20px 0 0;
-overflow: hidden;
-clear:both;
-}
-.notes {
-margin: 20px 0 0;
-padding: 10px;
-float: left;
-width:100%;
-}
-.notes img {
-margin-right: 7px;
-vertical-align: middle;
-}
+.notes-container {margin: 20px 0 0;overflow: hidden;clear:both;}
+.notes {margin: 20px 0 0;padding: 10px;float: left;width:100%;}
+.notes img {margin-right: 7px;vertical-align: middle;}
 .notes li {padding:12px 0; font-size:14px;list-style:none;border-top: 1px solid #ededed;}
 .notes li a {color:#333;font-weight:bold;}
+
+/* Pagination */
+#pagination ul {margin: 20px 0;padding: 20px 0;}
+li.next-page, li.prev-page {list-style: none;text-align: center;}
+li.next-page:hover, li.prev-page:hover {background:#ededed;}
+li.next-page {float:right;}
+li.prev-page {float:left;}
+.next-page a, .prev-page a {color: #222;padding: 15px;width: 290px;}
 
 {CustomCSS}
 </style>
@@ -349,6 +345,16 @@ vertical-align: middle;
 	</article>
 	
     {/block:Posts}
+    {block:Pagination}
+    <div class="pagination-holder">
+        <nav id="pagination">
+            <ul>
+                {block:PreviousPage}<li class="prev-page"><a href="{PreviousPage}">← Previous page</a></li>{/block:PreviousPage}
+                {block:NextPage}<li class="next-page"><a href="{NextPage}">Next page →</a></li>{/block:NextPage}
+            </ul>
+        </nav>
+    </div>
+    {/block:Pagination}
     </div>
 </body>
 </html>
