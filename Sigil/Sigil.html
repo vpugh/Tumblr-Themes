@@ -17,6 +17,8 @@ Sigil
 <meta name="if:Avatar Visible" content="1"/>
 <meta name="color:Description Text" content="#000">
 <meta name="color:Body Text" content="#444">
+<meta name="color:Masthead Background" content="#91AA9B">
+<meta name="color:Description Background" content="#DDF7E8">
 {/block:Hidden}
 
 <link rel="shortcut icon" href="{Favicon}"/>
@@ -35,16 +37,16 @@ a {display:inline-block; text-decoration:none;}
 img {max-width:100%;}
 
 /*Masthead - Parallax*/
-.masthead {padding:110px 10px;{block:IfAvatarVisible}padding:50px 10px;{/block:IfAvatarVisible} background-color:#963; background:url(https://farm8.staticflickr.com/7392/9594673667_76413b0b7d_k.jpg) no-repeat 40% 73% fixed; text-align:center; color:#fff;}
+.masthead {padding:110px 10px;{block:IfAvatarVisible}padding:50px 10px;{/block:IfAvatarVisible} background-color:{color:Masthead Background}; /*background:url(https://farm8.staticflickr.com/7392/9594673667_76413b0b7d_k.jpg) no-repeat 40% 73% fixed;*/ text-align:center; color:#fff;}
 .avatar-icon {margin-bottom:20px;}
 
 /* Header Navigation */
 .container {margin:0 auto; max-width:650px;padding:10px 25px;}
 .description .container {padding:30px 25px;text-align:center;}
 .content .container {background:#fff;margin-top:20px;margin-bottom:20px;}
-.description {background:#fff;background-color:#F7EADD;color:{color:Description Text};font-size:13px;}
+.description {background:#fff;background-color:{color:Description Background};color:{color:Description Text};font-size:13px;}
 .description a {color:{color:Description Text}; text-decoration:underline;}
-ul.header-navigation  {margin:30px 0 0;}
+ul.header-navigation  {margin:30px 0 0;padding:0;}
 .header-navigation li {list-style:none;display:inline-block;padding:0 3px;}
 .header-navigation a {text-decoration:none;color:#777; font-size:14px; text-transform:uppercase;}
 .header-navigation a:hover {text-decoration:underline;}
@@ -60,8 +62,6 @@ blockquote p {font-size: 13px;}
 .reblog-parent {
 margin: 20px 0 0 0;
 font-size: 12px;
-/*border-top: 1px solid #EEEEEE;
-border-bottom: 1px solid #EEEEEE;*/
 font-style:italic;
 padding: 7px;
 }
