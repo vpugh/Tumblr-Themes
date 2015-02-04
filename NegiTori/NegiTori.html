@@ -39,14 +39,15 @@
 <script>
     $(document).ready(function(){
         if($(window).width() < 768) {
-            var sidebarHeight = $("#sidebar").height() + 30;
+            var sidebarHeight = $("#sidebar").height();
             $("#content").css("margin", sidebarHeight + "px auto 0 auto");
         } else {
     var sidebarWidth = $('#sidebar').width() + 60;
     $('#content').css("margin-left", sidebarWidth + "px");
+    
 	$(window).resize(function () {
 			if($(window).width() < 768) {
-			    var sidebarHeight = $("#sidebar").height() + 30;
+			    var sidebarHeight = $("#sidebar").height();
 				$("#content").css("margin", sidebarHeight + "px auto 0 auto");
 			} else {
             var sidebarWidth = $('#sidebar').width() + 60;
@@ -193,14 +194,203 @@ a.link-title {word-break: break-word;color: #fff;font-size: 18px;text-overflow: 
    #sidebar { width:200px;}
    .avatar-icon {display:none;}
 }
+.clearit:before, .clearit:after { content: ""; display: table; }
+.clearit:after { clear: both; }
+.clearit { *zoom: 1; }
+    /* Photoset */
+
+.photo-slideshow {
+  visibility: hidden;
+}
+
+.photo-slideshow.processed {
+  visibility: visible;
+}
+
+.photo-slideshow .row {
+  clear: both;
+  width: 100%;
+}
+
+.photo-slideshow .pxu-photo {
+  display: block;
+  float: left;
+  margin-bottom: 0;
+  width: 100%;
+  overflow: hidden;
+}
+
+.photo-slideshow .pxu-photo img {
+  display: block;
+}
+
+.photo-slideshow.processed .pxu-photo img {
+  width: 100%;
+  height: auto;
+}
+
+.photo-slideshow .pxu-photo:first-child img {
+  margin-left: 0;
+}
+
+.photo-slideshow .count-1 {
+  width: 100%;
+}
+
+.photo-slideshow .count-2 {
+  width: 50%;
+}
+
+.photo-slideshow .count-3 {
+  width: 33.33%;
+}
+
+.photo-slideshow .count-4 {
+  width: 25%;
+}
+
+.photo-slideshow .count-5 {
+  width: 20%;
+}
+
+.photo-slideshow .info {
+  display: none;
+}
+
+/* Icons for EXIF Data and Zoom */
+
+.photo-data {
+  position: relative;
+  float: left;
+}
+
+.icons {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 20px;
+  height: 66px;
+  text-indent: -9999px;
+  z-index: 999;
+  visibility: hidden;
+}
+
+.icons > span, .icons .tumblr-box span {
+  width: 20px;
+  height: 20px;
+  display: block;
+  margin-bottom: 2px;
+  cursor: pointer;
+}
+
+.zoom {
+  background: url('http://static.tumblr.com/hugxd2w/kgem0so9j/zoom-icon.png');
+}
+
+.info {
+  background: url('http://static.tumblr.com/hugxd2w/ffwm0so9t/info-icon.png');
+  position: relative;
+}
+
+/* EXIF & CAPTION Data Tooltip */
+
+.pxu-data {
+  position: absolute;
+  top: 30px;
+  left: -110px;
+  width: 240px;
+  background: #000;
+  background: rgba(0,0,0,.85);
+  color: #fff;
+  font-size: 12px;
+  line-height: 1.4;
+  text-indent: 0;
+  padding: 20px;
+  display: none;
+  opacity: 0;
+  filter: alpha(opacity = 0);
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+
+  box-shadow: 2px 2px 7px rgba(0,0,0,0.55);
+
+  -webkit-border-radius: 5px;
+     -moz-border-radius: 5px;
+          border-radius: 5px;
+
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+
+}
+
+.pxu-caption {
+  margin-top: 0;
+  word-wrap: break-word;
+}
+
+.pxu-caption:before {
+  content: url('http://static.tumblr.com/hugxd2w/SSBm6wxmm/caption-icon.png');
+  opacity: 0.5;
+  filter: alpha(opacity = 50);
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+  float: left;
+  margin-right: 5px;
+}
+
+.pxu-data.caption-only .pxu-caption {
+  margin-bottom: 0;
+}
+
+.pxu-data table {
+  font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: bold;
+  width: 100%;
+}
+
+.pxu-data table tr {
+  width: 100%;
+}
+
+.pxu-data table tr td {
+  width: 50%;
+  font-weight: bold;
+  padding-bottom: 15px;
+}
+
+.pxu-data table tr:last-child td {
+  padding-bottom: 0;
+}
+
+.pxu-data .label {
+  color: #cccccc;
+  text-transform: uppercase;
+  font-size: 10px;
+  text-align: right;
+  padding-right: 12px;
+  font-weight: normal;
+}
+
+.arrow-down {
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+
+  border-bottom: 10px solid rgba(0,0,0,0.85);
+
+  position: absolute;
+  top: -10px;
+  left: 110px;
+}
+.mobile-header {display:none;}
 
 @media (max-width:768px){
     aside#sidebar {width:100%; height:80px; padding:0; z-index:12;}
-    #masthead img, .description-row, .theme-creation {display:none;}
-    .blog-name{font-size: 18px;text-align: left;margin: 20px 0 32px 123px;}
+    #masthead, .description-row, .theme-creation {display:none;}
+    .blog-name{display:none;}
     .sidebar-navigation{margin:0; display:none;position:absolute;top:100%;}
     .sidebar-navigation li a {margin:0;padding:0;}
-    .sidebar-navigation li {margin:0;padding: 15px;border-bottom: 1px solid #888;background:{color:Masthead background};}
+    .sidebar-navigation li {margin:0;padding: 15px;border-bottom: 1px solid {color:Sidebar BG};background:{color:Masthead background};}
     article {width:80%;margin:0 auto;}
     .text, .photo, .video, .chat, .audio, .link, .quote,.answer {width:initial;}
     .tumblr_video_container{width:100% !important;}
@@ -215,6 +405,13 @@ a.link-title {word-break: break-word;color: #fff;font-size: 18px;text-overflow: 
     #pagination {width:88%;margin:0 auto;position:relative;border:none;padding: 0 0 80px 0;}
     #pagination li {background: #ddd;padding: 20px 35px;}
     .jump-pagination{display:none;}
+    article:hover .metadata {
+margin-bottom: 41px;}
+.mobile-header {display:block;padding:10px 40px 40px 40px; text-align:center; background:{color:Masthead background};}
+.mobile-header p {color:{color:Sidebar Text};}
+.mobile-header .blog-name{display:block;}
+    
+}
 
 {CustomCSS}
 </style>
@@ -264,6 +461,13 @@ a.link-title {word-break: break-word;color: #fff;font-size: 18px;text-overflow: 
 </aside>
 
 <div id="content">
+    <div class="mobile-header">
+        <h1 class="blog-name"><a href="/" title="{lang:Home}">{Title}</a></h1>
+        {block:Description}
+        	<p {block:IfExtraDescription}class="description-divider"{/block:IfExtraDescription}>{Description}</p>
+        	{block:IfExtraDescription}<p>{text:Extra Description Text}</p>{/block:IfExtraDescription}
+        {block:Description}
+    </div>
    
     {block:Posts}
     <article>
@@ -299,7 +503,7 @@ a.link-title {word-break: break-word;color: #fff;font-size: 18px;text-overflow: 
         </div>
         {/block:Photo}
 
-        {block:Photoset}
+        <!--{block:Photoset}
         <div class="photoset post">
             {Photoset-500}
             {block:Caption}{Caption}{/block:Caption}
@@ -309,7 +513,30 @@ a.link-title {word-break: break-word;color: #fff;font-size: 18px;text-overflow: 
             </div>
         {/block:RebloggedFrom}
         </div>
-        {/block:Photoset}
+        {/block:Photoset}-->
+        {block:Photoset}
+        <div class="photoset post">
+<div class="photo-slideshow" id="photoset_{PostID}" data-layout="{PhotosetLayout}">
+
+  {block:Photos}
+    <div class="photo-data">
+      <div class="pxu-photo">
+        <img alt="{PhotoAlt}" src="{PhotoURL-500}" width="{PhotoWidth-500}" height="{PhotoHeight-500}" data-highres="{PhotoURL-HighRes}" data-width="{PhotoWidth-HighRes}" data-height="{PhotoHeight-HighRes}" class="{block:Exif}exif-yes {/block:Exif}{block:Caption}caption-yes{/block:Caption}" {block:Exif}data-camera="{block:Camera}{Camera}{/block:Camera}" data-iso="{block:ISO}{ISO}{/block:ISO}" data-aperture="{block:Aperture}{Aperture}{/block:Aperture}" data-exposure="{block:Exposure}{Exposure}{/block:Exposure}" data-focal="{block:FocalLength}{FocalLength}{/block:FocalLength}"{/block:Exif} {block:Caption}data-caption="{Caption}"{/block:Caption}>
+      </div>
+      <div class="icons">
+        <a class="tumblr-box" rel="post-{PostID}" href="{PhotoURL-HighRes}">
+          <span class="zoom">Zoom</span>
+        </a>
+        <span class="info">Info</span>
+      </div>
+    </div>
+  {/block:Photos}
+
+</div><!-- close SLIDESHOW -->
+
+{block:Caption}{Caption}{/block:Caption}
+</div>
+{/block:Photoset}
 
         {block:Quote}
         <div class="quote post">
@@ -465,5 +692,25 @@ a.link-title {word-break: break-word;color: #fff;font-size: 18px;text-overflow: 
     </div>
     {/block:Pagination}
 </div>
+
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" ></script>
+<script type="text/javascript" src="http://static.tumblr.com/smotcsf/Ecdn2cscy/pxuphotoset.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+    $('.photo-slideshow').pxuPhotoset({
+        'ligthbox'  : true, // uses the default Tumblr lightbox, change to false to use your own
+    'highRes'   : true, // will use high res images
+    'rounded'   : 'false', // corners, all or false
+    'exif'      : true, // display EXIF data if available (tooltip)
+    'captions'  : true, // display individual captions on photos (tooltip)
+    'gutter'    : '10px', // spacing between the images
+    'photoset'  : '.photo-slideshow', // photoset wrapper
+    'photoWrap' : '.photo-data', // photo data wrapper (includes photo, icons + exif)
+    'photo'     : '.pxu-photo' // photo wrap (includes photo only)
+    }, function() {
+        // callback
+    });
+});
+</script>
 </body>
 </html>
