@@ -15,10 +15,12 @@ Sigil
 
 {block:Hidden}
 <meta name="if:Avatar Visible" content="1"/>
-<meta name="color:Description Text" content="#000">
-<meta name="color:Body Text" content="#444">
-<meta name="color:Masthead Background" content="#91AA9B">
-<meta name="color:Description Background" content="#DDF7E8">
+<meta name="if:Drop Down Menu" content="0"/>
+<meta name="text:Drop Down Name" content="Menu Name"/>
+<meta name="color:Description Text" content="#000"/>
+<meta name="color:Body Text" content="#444"/>
+<meta name="color:Masthead Background" content="#91AA9B"/>
+<meta name="color:Description Background" content="#DDF7E8"/>
 {/block:Hidden}
 
 <link rel="shortcut icon" href="{Favicon}"/>
@@ -33,11 +35,12 @@ Sigil
 
 <style>
 body {font-family:'Open Sans', 'Montserrat', Helvetica, Arial, sans-serif;color:{color:Body Text};line-height:1.5em;}
-a {display:inline-block; text-decoration:none;}
+a {text-decoration:none;}
 img {max-width:100%;}
 
 /*Masthead - Parallax*/
 .masthead {padding:110px 10px;{block:IfAvatarVisible}padding:50px 10px;{/block:IfAvatarVisible} background-color:{color:Masthead Background}; /*background:url(https://farm8.staticflickr.com/7392/9594673667_76413b0b7d_k.jpg) no-repeat 40% 73% fixed;*/ text-align:center; color:#fff;}
+.masthead a {display:inline-block;}
 .avatar-icon {margin-bottom:20px;}
 
 /* Header Navigation */
@@ -46,10 +49,41 @@ img {max-width:100%;}
 .content .container {background:#fff;margin-top:20px;margin-bottom:20px;}
 .description {background:#fff;background-color:{color:Description Background};color:{color:Description Text};font-size:13px;}
 .description a {color:{color:Description Text}; text-decoration:underline;}
-ul.header-navigation  {margin:30px 0 0;padding:0;}
-.header-navigation li {list-style:none;display:inline-block;padding:0 3px;}
-.header-navigation a {text-decoration:none;color:#777; font-size:14px; text-transform:uppercase;}
+ul.header-navigation  {position:relative;margin:30px 0 0;padding:0;}
+.header-navigation li, .drop-li {list-style:none;display:inline-block;padding:0 3px;}
+.header-navigation a, .drop-li {position:relative;text-decoration:none;color:#777; font-size:14px; text-transform:uppercase;}
 .header-navigation a:hover {text-decoration:underline;}
+
+/* Drop Down */
+ul.drop-down {
+  padding: 0;
+  position: relative;
+  top: 48px;
+  left: 0;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  display: none;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transiton: opacity 0.2s;
+  -moz-transition: opacity 0.2s;
+  -ms-transition: opacity 0.2s;
+  -o-transition: opacity 0.2s;
+  -transition: opacity 0.2s;
+}
+ul.drop-down li { 
+  background: #555; 
+  display: block; 
+  color: #fff;
+  text-shadow: 0 -1px 0 #000;
+}
+ul.drop-down li:hover { background: #666; }
+li:hover ul.drop-down {
+  display: block;
+  opacity: 1;
+  visibility: visible;
+}
 
 /* All Posts */
 article {padding:50px 0;border-bottom:1px solid #ccc;border-bottom:1px solid rgba(0,0,0,.1);}
@@ -122,7 +156,7 @@ li.next-page, li.prev-page {list-style: none;text-align: center;}
 li.next-page:hover, li.prev-page:hover {background:#ededed;}
 li.next-page {float:right;}
 li.prev-page {float:left;}
-.next-page a, .prev-page a {color: #222;padding: 15px;width: 290px;}
+.next-page a, .prev-page a {color: #222;padding: 15px;width: 290px;display:block;}
 
 {CustomCSS}
 </style>
@@ -144,11 +178,19 @@ li.prev-page {float:left;}
         <ul class="header-navigation">
             <li><a href="/">Home</a></li>
             <li><a href="/archive">Archive</a></li>
+            {block:IfDropDownMenu}
+            <li class="drop-li">{block:IfDropDownName}{text:Drop Down Name}{/block:IfDropDownName}
+            <ul class="drop-down">
+            {/block:IfDropDownMenu}
             {block:HasPages}
                 {block:Pages}
                     <li> <a href="{URL}">{Label}</a></li>
                 {/block:Pages}
             {/block:HasPages}
+            {block:IfDropDownMenu}
+            </ul>
+            </li>
+            {/block:IfDropDownMenu}
             {block:SubmissionsEnabled}
                 <li> <a href="/submit">{SubmitLabel}</a></li>
             {/block:SubmissionsEnabled}
@@ -243,7 +285,11 @@ li.prev-page {float:left;}
             {block:Title}<h1 class="title"><a href="{Permalink}">{Title}</a></h1>{/block:Title}
             <ul class="chat-list">
                 {block:Lines}
-                <li class="{Alt}"><p class="label">{block:Label}{Label}</p>{/block:Label} <p class="line">{Line}</p></li>
+                <li class="{Alt}">
+                <p>
+                <span class="label">{block:Label}{Label}{/block:Label}</span> <span class="line">{Line}</span>
+                </p>
+                </li>
                 {/block:Lines}
             </ul>
             {block:RebloggedFrom} 
