@@ -49,41 +49,24 @@ img {max-width:100%;}
 .content .container {background:#fff;margin-top:20px;margin-bottom:20px;}
 .description {background:#fff;background-color:{color:Description Background};color:{color:Description Text};font-size:13px;}
 .description a {color:{color:Description Text}; text-decoration:underline;}
-ul.header-navigation  {position:relative;margin:30px 0 0;padding:0;}
-.header-navigation li, .drop-li {list-style:none;display:inline-block;padding:0 3px;}
-.header-navigation a, .drop-li {position:relative;text-decoration:none;color:#777; font-size:14px; text-transform:uppercase;}
+.header-navigation ul {display: none;}	
+.header-navigation li:hover > ul {display: block;background: {color:Masthead Background}; }
+ul.header-navigation  {margin:30px 0 0;padding:0;display:inline-table;position:relative;}
+.header-navigation:after {
+		content: ""; clear: both; display: block;
+	}
+.header-navigation li {list-style:none;float:left;padding:0 3px;position:relative;}
+.header-navigation a {position:relative;text-decoration:none;color:#777; font-size:14px; text-transform:uppercase;}
 .header-navigation a:hover {text-decoration:underline;}
-
-/* Drop Down */
-ul.drop-down {
-  padding: 0;
-  position: relative;
-  top: 48px;
-  left: 0;
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
-  box-shadow: none;
-  display: none;
-  opacity: 0;
-  visibility: hidden;
-  -webkit-transiton: opacity 0.2s;
-  -moz-transition: opacity 0.2s;
-  -ms-transition: opacity 0.2s;
-  -o-transition: opacity 0.2s;
-  -transition: opacity 0.2s;
-}
+.header-navigation ul {padding: 0;position: absolute; top: 100%;}
 ul.drop-down li { 
-  background: #555; 
+  position:relative;
   display: block; 
   color: #fff;
-  text-shadow: 0 -1px 0 #000;
+  font-size:14px;
+  padding:4px 6px;
 }
-ul.drop-down li:hover { background: #666; }
-li:hover ul.drop-down {
-  display: block;
-  opacity: 1;
-  visibility: visible;
-}
+ul.drop-down li a {color:#fff;}
 
 /* All Posts */
 article {padding:50px 0;border-bottom:1px solid #ccc;border-bottom:1px solid rgba(0,0,0,.1);}
@@ -97,7 +80,7 @@ blockquote p {font-size: 13px;}
 margin: 20px 0 0 0;
 font-size: 12px;
 font-style:italic;
-padding: 7px;
+padding: 7px 7px 7px 0;
 }
 
 /* Text Post */
@@ -179,7 +162,7 @@ li.prev-page {float:left;}
             <li><a href="/">Home</a></li>
             <li><a href="/archive">Archive</a></li>
             {block:IfDropDownMenu}
-            <li class="drop-li">{block:IfDropDownName}{text:Drop Down Name}{/block:IfDropDownName}
+            <li>{block:IfDropDownName}<a href="#">{text:Drop Down Name}</a>{/block:IfDropDownName}
             <ul class="drop-down">
             {/block:IfDropDownMenu}
             {block:HasPages}
