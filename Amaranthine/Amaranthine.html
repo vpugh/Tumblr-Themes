@@ -47,12 +47,16 @@ img {max-width:100%;}
 /* Header */
 .header {width:100%;padding:137px 0;background: transparent 50% 50%;background-color:rgba(229,44,81,0.75);display:inline-block; background-image:url({image:Header Image}); background-size:cover; text-align:center; }
 .header .title {font-size:36px;transition:3s;}
-.header .description {font-size:15px;display:none;transition:6s;opacity:0;}
-.header:hover .description {opacity:1;-webkit-animation:descriptionReveal 3s linear; display:block;}
+.header .description {font-size:15px;/*display:none;*/transition:6s;/*opacity:0;*/}
+.header:hover .description {opacity:1;/*-webkit-animation:descriptionReveal 3s linear;*/ display:block;}
 @-webkit-keyframes descriptionReveal {
     0% {margin-top:60px;}
     100%{margin-top:0;}
 }
+
+/* Content */
+.content {width:700px;background:#fff;margin:0 auto;}
+.main-content {width:475px;margin:45px 25px 0 0;}
 
 {CustomCSS}
 </style>
@@ -80,6 +84,29 @@ img {max-width:100%;}
     <p class="title">{Title}</p>
     <p class="description">{Description}</p>
 </header>
-
+<div class="content">
+    <div class="sidebar">
+        
+    </div>
+   <div class="main-content">
+        {block:Posts}
+    <div class="post">
+        {block:Text}
+        <div class="text post">
+            {block:Title}
+                <h1 class="title"><a href="{Permalink}">{Title}</a></h1>
+            {/block:Title}
+            {block:Body}{Body}{/block:Body}
+            {block:RebloggedFrom}
+            <div class="reblog-parent">
+                Reblogged from <a href="{ReblogParentURL}">{ReblogParentName}</a>
+            </div>
+        {/block:RebloggedFrom}
+         </div>
+        {/block:Text}
+    </div>
+    {/block:Posts}
+   </div>
+</div>
 </body>
 </html>
