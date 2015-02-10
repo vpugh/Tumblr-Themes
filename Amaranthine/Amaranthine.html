@@ -58,6 +58,7 @@ img {max-width:100%;}
 .divider {border-bottom:1px solid {color:Body Text};padding:0 0 23px 0;margin:0 0 23px 0;}
 .post.divider{margin-bottom:40px;padding-bottom:40px;}
 .permalink .post.divider {border-bottom:none;margin-bottom:20px;}
+.avatar-icon {text-align: center;}
 .sidebar-navigation ul {margin:0;padding:0;}
 .sidebar-navigation li {list-style:none;}
 .sidebar-navigation a {color:{color:Body Text}; font-size:16px;}
@@ -196,6 +197,11 @@ footer {overflow:hidden;}
 <div class="content">
     {block:IndexPage}
     <div class="sidebar">
+        {block:IfAvatarVisible}
+    	<a href="/">
+        	<div class="avatar-icon divider"><img src="{PortraitURL-128}"/></div>
+    	</a>
+    	{/block:IfAvatarVisible}
         <p class="description divider">{Description}</p>
         <nav class="sidebar-navigation divider">
         	<ul>
