@@ -1,0 +1,85 @@
+<!DOCTYPE html><head>
+<meta charset="utf-8">
+<title>{Title}{block:SearchPage} ({lang:Search results for SearchQuery}){/block:SearchPage}{block:PermalinkPage}{block:PostSummary} — {PostSummary}{/block:PostSummary}{/block:PermalinkPage}</title>
+{block:Description}
+
+<!------------------------------
+--------------------------------
+Amaranthine by Tkaa-themes
+--------------------------------
+------------------------------->
+	
+<meta name="description" content="{MetaDescription}">
+{/block:Description}
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+{block:Hidden}
+<meta name="if:Avatar Visible" content="1"/>
+<meta name="image:Header Image" content=""/>
+{/block:Hidden}
+
+<link rel="shortcut icon" href="{Favicon}"/>
+<link rel="alternate" type="application/rss+xml" title="{Title} RSS" href="{RSS}"/>
+<link href='http://fonts.googleapis.com/css?family=Montserrat:700,400' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,700,300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="http://static.tumblr.com/hznqxps/ivOmgjf8v/normalize.css" />
+<script src="http://static.tumblr.com/2qikcqj/rJxnhj4dg/jquery-2.1.1.js"></script>
+<script>
+    
+</script>
+
+<style>
+
+/* General Settings */
+body {font-family:'Roboto Slab', serif;color:{color:Body Text};line-height:1.6em;background:rgba(229,44,81,.05);}
+a {text-decoration:none;}
+img {max-width:100%;}
+
+/* Header Navigation */
+.navigation {background:#e52c51;overflow:hidden;padding:34px 0; text-align:center;}
+.navigation ul {margin:0;}
+.navigation li {list-style:none;display:inline-block;}
+.navigation li:after {content:"|";color:#fff;}
+.navigation li:last-child:after {content:"";}
+.navigation a {color:#fff;padding:0 6px;font-size:13px;text-transform:uppercase;}
+.navigation a:hover{color:rgba(255,255,255,0.5);}
+
+/* Header */
+.header {width:100%;padding:137px 0;background: transparent 50% 50%;background-color:rgba(229,44,81,0.75);display:inline-block; background-image:url({image:Header Image}); background-size:cover; text-align:center; }
+.header .title {font-size:36px;transition:3s;}
+.header .description {font-size:15px;display:none;transition:6s;opacity:0;}
+.header:hover .description {opacity:1;-webkit-animation:descriptionReveal 3s linear; display:block;}
+@-webkit-keyframes descriptionReveal {
+    0% {margin-top:60px;}
+    100%{margin-top:0;}
+}
+
+{CustomCSS}
+</style>
+</head>
+
+<body>
+<nav class="navigation">
+	<ul>
+    	<li><a href="/">Home</a></li>
+        <li><a href="/archive">Archive</a></li>
+        {block:HasPages}
+            {block:Pages}
+                <li> <a href="{URL}">{Label}</a></li>
+            {/block:Pages}
+        {/block:HasPages}
+        {block:SubmissionsEnabled}
+            <li> <a href="/submit">{SubmitLabel}</a></li>
+        {/block:SubmissionsEnabled}
+        {block:AskEnabled}
+            <li> <a href="/ask">{AskLabel}</a></li>
+        {/block:AskEnabled}
+    </ul>
+</nav>
+<header class="header">
+    <p class="title">{Title}</p>
+    <p class="description">{Description}</p>
+</header>
+
+</body>
+</html>
