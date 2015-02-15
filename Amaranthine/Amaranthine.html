@@ -15,6 +15,7 @@ Amaranthine by Tkaa-themes
 
 {block:Hidden}
 <meta name="if:Avatar Visible" content="1"/>
+<meta name="if:Header Image Visible" content="1"/>
 <meta name="image:Header Image" content=""/>
 <meta name="color:Body Text" content="#979797" />
 {/block:Hidden}
@@ -38,16 +39,36 @@ img {max-width:100%;}
 
 /* Header Navigation */
 .navigation {background:#e52c51;overflow:hidden;padding:34px 0; text-align:center;}
-.navigation ul {margin:0;}
+.navigation ul {margin:0;padding:0;}
 .navigation li {list-style:none;display:inline-block;}
 .navigation li:after {content:"|";color:#fff;}
 .navigation li:last-child:after {content:"";}
 .navigation a {color:#fff;padding:0 12px 0 6px;font-size:13px;text-transform:uppercase;}
+.navigation li:last-child a {padding:0 0 0 6px;}
 .navigation a:hover{color:rgba(255,255,255,0.5);}
 
 /* Header */
-.header {width:100%;padding:137px 0;background: transparent 50% 50%;background-color:rgba(229,44,81,0.75);display:inline-block; background-image:url({image:Header Image}); background-size:cover; text-align:center; }
+.header {width:100%;padding:137px 0;background: transparent 50% 50%;background-color:rgba(229,44,81,0.75);display:inline-block; background-image:-webkit-linear-gradient(top, rgba(0,0,0,0.6) 0%,rgba(0,0,0,0.8) 100%), url({image:Header Image}); background-size:cover; text-align:center; }
 .header .title {font-size:36px;color:#fff;}
+/*.header-overlay {
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+z-index: 2;
+opacity: 1;
+-webkit-transition: all 0.4s linear;
+-moz-transition: all 0.4s linear;
+-o-transition: all 0.4s linear;
+transition: all 0.4s linear;
+}
+.header-overlay.visible {
+opacity: 0.8;
+}
+.header-overlay {
+background-color: #000000;
+}*/
 
 /* Content */
 .content {width:700px;background:#fff;margin:0 auto; overflow:hidden;}
@@ -194,6 +215,7 @@ footer {overflow:hidden;}
 <header class="header">
     <p class="title">{Title}</p>
 </header>
+<div class="header-overlay {block:IfHeaderImageVisible}visible{/block:IfHeaderImageVisible}"></div>
 <div class="content">
     {block:IndexPage}
     <div class="sidebar">

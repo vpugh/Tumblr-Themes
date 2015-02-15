@@ -42,16 +42,17 @@ img {max-width:100%;}
 .masthead {padding:110px 10px;{block:IfAvatarVisible}padding:50px 10px;{/block:IfAvatarVisible} background-color:{color:Masthead Background}; /*background:url(https://farm8.staticflickr.com/7392/9594673667_76413b0b7d_k.jpg) no-repeat 40% 73% fixed;*/ text-align:center; color:#fff;}
 .masthead a {display:inline-block;}
 .avatar-icon {margin-bottom:20px;}
+.masthead .description{background:transparent;}
 
 /* Header Navigation */
 .container {margin:0 auto; max-width:650px;padding:10px 25px;}
 .description .container {padding:30px 25px;text-align:center;}
-.content .container {background:#fff;margin-top:20px;margin-bottom:20px;}
-.description {background:#fff;background-color:{color:Description Background};color:{color:Description Text};font-size:13px;}
+.content .container {background:#fff;margin-bottom:20px;}
+.description {background:#fff;background-color:{color:Description Background};color:{color:Description Text};font-size:13px; text-align:center;}
 .description a {color:{color:Description Text}; text-decoration:underline;}
 .header-navigation ul {display: none;}	
 .header-navigation li:hover > ul {display: block;background: {color:Masthead Background}; }
-ul.header-navigation  {margin:30px 0 0;padding:0;display:inline-table;position:relative;}
+ul.header-navigation  {padding:8px 0 0;display:inline-block;position:relative;}
 .header-navigation:after {
 		content: ""; clear: both; display: block;
 	}
@@ -92,7 +93,7 @@ padding: 7px 7px 7px 0;
 .asker,.answerer {font-size:12px;margin:0;}
 .answerer {margin-top:6px;}
 .asker img, .answerer img {vertical-align:middle;margin-right:6px;}
-.asker-question {margin:0;padding: 15px 0;font-weight:bold;color:#111;font-size:18px;}
+.asker-question {margin:0;padding: 15px 0;font-weight:bold;font-size:18px;}
 .answerer-answer {margin:0;padding: 15px 0;color:#7A7A7A;font-size:15px;}
 .replies {padding:15px 0;margin-bottom:0;}
 .replies p {margin-bottom:0;}
@@ -151,13 +152,13 @@ li.prev-page {float:left;}
 	{block:IfAvatarVisible}
     	<a href="/">
         	<div class="avatar-icon"><img src="{PortraitURL-96}"/></div>
+        	
     	</a>
     {/block:IfAvatarVisible}
     <h1>{Title}</h1>
+    <p class="description">{Description}</p>
 </header>
 <header class="description">
-    <div class="container">
-        <p class="description">{Description}</p>
         <ul class="header-navigation">
             <li><a href="/">Home</a></li>
             <li><a href="/archive">Archive</a></li>
@@ -181,7 +182,6 @@ li.prev-page {float:left;}
                 <li> <a href="/ask">{AskLabel}</a></li>
             {/block:AskEnabled}
         </ul>
-    </div>
 </header>
 <div class="content">
    <div class="container">
