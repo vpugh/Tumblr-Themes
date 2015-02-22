@@ -50,25 +50,6 @@ img {max-width:100%;}
 /* Header */
 .header {width:100%;padding:137px 0;background: transparent 50% 50%;background-color:rgba(229,44,81,0.75);display:inline-block; background-image:-webkit-linear-gradient(top, rgba(0,0,0,0.6) 0%,rgba(0,0,0,0.8) 100%), url({image:Header Image}); background-size:cover; text-align:center; }
 .header .title {font-size:36px;color:#fff;}
-/*.header-overlay {
-position: absolute;
-top: 0;
-left: 0;
-right: 0;
-bottom: 0;
-z-index: 2;
-opacity: 1;
--webkit-transition: all 0.4s linear;
--moz-transition: all 0.4s linear;
--o-transition: all 0.4s linear;
-transition: all 0.4s linear;
-}
-.header-overlay.visible {
-opacity: 0.8;
-}
-.header-overlay {
-background-color: #000000;
-}*/
 
 /* Content */
 .content {width:700px;background:#fff;margin:0 auto; overflow:hidden;}
@@ -119,7 +100,13 @@ font-size: 14px;
 }
 
 /* Link Post */
-.link-title {font-size:26px;font-weight:600;word-wrap:break-word;}
+.link-title {font-size:26px;font-weight:600;word-break:break-word;
+padding: 30px 10px;
+display: block;
+text-align: center;
+border: 1px solid #dedede;
+margin: 0 0 13px 0;
+}
 
 /* Chat Post */
 .title {
@@ -153,7 +140,8 @@ display:inline-block;
 .note-item a {color:{color:Body Text};}
 
 /* Audio Post */
-.tumblr_audio_player {width:100% !important;}
+.tumblr_audio_player, .soundcloud_audio_player {width:100% !important;}
+
 
 /* Video Post */
 .tumblr_video_container {width:100% !important; height:auto !important;}
