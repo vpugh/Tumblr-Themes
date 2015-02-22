@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+
+<!--[if IE 8]><html class="lt-ie10 lt-ie9"> <![endif]-->
+
+<!--[if IE 9]><html class="lt-ie10"> <![endif]-->
+
+<!--[if gt IE 9]><!--> <html> <!--<![endif]-->
+
+    <head>
+
+        <meta charset="utf-8">
+
+        <title>{Title}{block:SearchPage} ({lang:Search results for SearchQuery}){/block:SearchPage}{block:PermalinkPage}{block:PostSummary} — {PostSummary}{/block:PostSummary}{/block:PermalinkPage}</title>
+
+        {block:Description}
+
+        <meta name="description" content="{MetaDescription}">
+
+        {/block:Description}
+
+
+
+        {block:Hidden}
+
+        <meta name="if:Background Image" content="0">
+        <meta name="color:Background Color" content="#4d4d82">
+        <meta name="color:Body Text Color" content="#000;">
+        <meta name="color:Sidebar BG Color" content="#5e5e5d">
+        <meta name="color:Sidebar Nav Color" content="#fff">
+        <meta name="color:Masthead BG Color" content="#db0000">
+
+        {/block:Hidden}
+
+
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="shortcut icon" href="{Favicon}">
+
+        <link rel="apple-touch-icon-precomposed" href="{PortraitURL-128}">
+
+        <link rel="alternate" type="application/rss+xml" href="{RSS}">
+
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600,700' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="http://static.tumblr.com/hznqxps/ivOmgjf8v/normalize.css" />
+
+        <!-- HTML5 Shiv -->
+
+        <!--[if lt IE 9]>
+
+            <script src="http://static.tumblr.com/hriofhd/Qj0m8pn7q/html5shiv.js"></script>
+
+        <![endif]-->
+
+
+
+        <style>
+            
+            /* General Settings */
+            html{top:0!important}
+            body{margin:0 auto;color:{color:Body Text Color};font-family:"Open Sans","Helvetica Neue",HelveticaNeue,Arial,sans-serif;font-size:16px;line-height:1.4;-webkit-font-smoothing:antialiased;background:{color:Background Color}; {block:IfBackgroundImage}background:url({image:Background Image});{/block:IfBackgroundImage};}
+            img{max-width:100%;}
+            a{color:{color:Body Text Color};text-decoration:underline}
+            h1{font-size:26px;line-height:1.2;margin:20px 0 0;word-wrap:break-word}
+            h1 a{color:#444;display:block;text-decoration:underline;}
+            h1 a:active{-webkit-transform:translateY(1px);-moz-transform:translateY(1px);-ms-transform:translateY(1px);-o-transform:translateY(1px);transform:translateY(1px)}
+            iframe,img,object{vertical-align:middle}
+            
+            /* Wrapper */
+            .wrapper {width:800px; margin:13% auto 0 auto;background:#fff;overflow:hidden;display:table;}
+            
+            /* Sidebar */
+            aside {background:{color:Sidebar BG Color}; width:260px;padding:0 20px;/*float:left;*/display:table-cell;}
+            .avatar{ text-align:center; padding:18px 0;}
+            .avatar img{background:#000;border-radius:50%;}
+            .side-nav ul {padding:31px 0; background:#545454;margin:0 -20px;}
+            .side-nav li {list-style:none;font-size:18px;}
+            .side-nav li.pages {font-style:italic;}
+            .side-nav a {text-decoration:none;padding:15px 20px;display:block;color:{color:Sidebar Nav Color};}
+            .side-nav a:hover {background:{color:Sidebar BG Color};border-left:3px solid {color:Masthead BG Color}; padding-left:17px;}
+            .following {padding:31px 0;}
+            .following h2 {font-size:18px;margin:1.25em;}
+            
+            /* Main Content */
+            .maincontent {width:500px;/*float:left;*/display:table-cell;}
+            
+            /* Header */
+           header {padding:0 20px;text-align:center;height:164px;background:{color:Masthead BG Color};color:#fff;display: table-cell;vertical-align: middle;}
+           header h1 {font-size:26px;margin:0;}
+           .description {font-size:16px;font-style:italic;}
+           .description a {color:#fff;}
+           
+           /* Post */
+           .container{padding:0 40px;}
+           article{margin:30px 0 0;padding:0 0 30px 0;border-bottom:1px solid #ddd;}
+           article.photo,article.photoset,article.video{margin:0;}
+           
+           /* Responsive CSS */
+           @media (max-width:800px){
+               .wrapper{width:640px;}
+               aside{width:200px;}
+               .maincontent{width:400px;}
+           }
+           @media (max-width:640px){
+               .wrapper{margin:0;}
+               .wrapper, aside, .maincontent{width:100%;display:block;}
+               .avatar, .following{display:none;}
+           }
+           
+            /* Custom CSS */
+
+            {CustomCSS}
+
+        </style>
+
+    </head>
+
+    <body>
+    
+    	<div class="wrapper">
+        	<aside>
+            	<div class="avatar"><a href="/"><img src="{PortraitURL-128}"></a></div>
+                <nav class="side-nav">
+                	<ul>
+                    	<li><a href="/">Home</a></li>
+                        <li><a href="/archive">{lang:Archive}</a></li>
+                        {block:HasPages}
+                        	{block:Pages}
+                            	<li class="pages"><a href="{URL}">{Label}</a></li>
+                            {/block:Pages}
+                        {/block:HasPages}
+                        {block:AskEnabled}
+                        	<li><a href="/ask">{AskLabel}</a></li>
+                        {/block:AskEnabled}
+                        {block:SubmissionsEnabled}
+                            <li> <a href="/submit">{SubmitLabel}</a></li>
+                        {/block:SubmissionsEnabled}
+                    </ul>
+                </nav>
+                <section class="following">
+                    {block:Following}
+                    <h2>Blogs I follow:</h2>
+                    <ul>
+                        {block:Followed}
+                            <li>
+                                <img src="{FollowedPortraitURL-48}"/>
+                                <a href="{FollowedURL}">{FollowedName}</a>
+                            </li>
+                          {/block:Followed}
+                    </ul>
+                    {/block:Following}
+                </section>
+            </aside>
+            <section class="maincontent">
+                <header>
+                    <h1>{Title}</h1>
+                    <p class="description">{Description}</p>
+                </header>
+                <section class="post">
+                {block:Posts}
+                
+                    {block:Text}
+                        <article class="text">
+                            <div class="container">
+                            {block:Title}
+                                <h1 class="title">{Title}</h1>
+                            {/block:Title}
+                            {block:Body}{Body}{/block:Body}
+                            {block:RebloggedFrom}
+                            <div class="reblog-parent">
+                                Reblogged from <a href="{ReblogParentURL}">{ReblogParentName}</a>
+                        </div>
+                    {/block:RebloggedFrom}
+                            </div>
+                        </article>
+                    {/block:Text}
+                    
+                    {block:Photo}
+                        <article class="photo">
+                            <a href="{block:IndexPage}{Permalink}{/block:IndexPage}{block:PermalinkPage}{PhotoURL-HighRes}{/block:PermalinkPage}"><img src="{PhotoURL-HighRes}" alt="{PhotoAlt}" /></a>
+                            <div class="container">
+                            {block:Caption}{Caption}{/block:Caption}
+                            {block:RebloggedFrom}
+                            <div class="reblog-parent">
+                                Reblogged from <a href="{ReblogParentURL}">{ReblogParentName}</a>
+                            </div>
+                        {/block:RebloggedFrom}
+                            </div>
+                        </article>
+                    {/block:Photo}
+        
+                {/block:Posts}
+                </section>
+            </section>
+        </div>
+    
+    </body>
+
+</html>
+
