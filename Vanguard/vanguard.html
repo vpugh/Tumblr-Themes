@@ -27,6 +27,7 @@ Vanguard Theme by Teekaa-two
         {block:Hidden}
 
         <meta name="if:Background Image" content="0">
+        <meta name="if:Show Following" content="0">
         <meta name="image:Background Image" content="">
         <meta name="color:Background Color" content="#4d4d82">
         <meta name="color:Body Text Color" content="#000000">
@@ -86,13 +87,15 @@ Vanguard Theme by Teekaa-two
             .side-nav a:hover {background:{color:Sidebar BG Color};border-left:3px solid {color:Masthead BG Color}; padding-left:17px;}
              .nav-trigger, .mobile-nav, .mobile-icon {display: none;}
             .following {padding:31px 0;}
-            .following h2 {font-size:18px;margin:1.25em;}
+            .following h2 {font-size:18px;margin: 0;color: #FFF;}
             
             /* Main Content */
             .maincontent {width:501px;display:table-cell;}
             
             /* Header */
-           header {padding:0 20px;text-align:center;height:164px;background:{color:Masthead BG Color};color:#fff;display: table-cell;vertical-align: middle;}
+            
+           header {text-align:center;height:164px;background:{color:Masthead BG Color};color:#fff;display: table;width:100%;}
+           .header-wrapper{display:table-cell;vertical-align: middle;padding:0 20px;}
            header h1 {font-size:26px;margin:0;}
            .description {font-size:14px;font-weight:600;margin-bottom:0;}
            .description a {color:#fff;}
@@ -223,6 +226,7 @@ Vanguard Theme by Teekaa-two
                         {/block:SubmissionsEnabled}
                     </ul>
                 </nav>
+                {block:IfShowFollowing}
                 <section class="following">
                     {block:Following}
                     <h2>Blogs I follow:</h2>
@@ -236,11 +240,14 @@ Vanguard Theme by Teekaa-two
                     </ul>
                     {/block:Following}
                 </section>
+                {/block:IfShowFollowing}
             </aside>
             <section class="maincontent">
                 <header>
-                    <h1>{Title}</h1>
-                    <p class="description">{Description}</p>
+                    <div class="header-wrapper">
+                        <h1>{Title}</h1>
+                        <p class="description">{Description}</p>
+                    </div>
                 </header>
                 {block:Posts}
                 <div class="post">
