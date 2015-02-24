@@ -384,15 +384,11 @@ footer {overflow:hidden;}
                     {block:Tags}<li><a href="{TagURL}">#{Tag}</a> </li>{/block:Tags}
                 </ul>
             {/block:HasTags}
-                
+                {block:NoteCount}
                 <ul class="metadata">
-                    {block:NoteCount}<li><a class="notecount" href="{Permalink}#notes">{NoteCountWithLabel}</a></li>{/block:NoteCount}
-                    <!--{block:ContentSource}
-                     <li>
-                        <a href="{SourceURL}">{lang:Source}:{block:NoSourceLogo}{SourceTitle}{/block:NoSourceLogo}
-                    {block:SourceLogo}<img src="{BlackLogoURL}" width="{LogoWidth}"height="{LogoHeight}" alt="{SourceTitle}" />{/block:SourceLogo}</a></li>
-                    {/block:ContentSource} -->
+                    <li><a class="notecount" href="{Permalink}#notes">{NoteCountWithLabel}</a></li>
                 </ul>
+                {/block:NoteCount}
                 <ul class="date">
                     {block:Date} 
                         <li>{DayOfMonth}{DayOfMonthSuffix} {ShortMonth} {Year}</li>
