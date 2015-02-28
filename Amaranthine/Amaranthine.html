@@ -64,7 +64,58 @@ img {max-width:100%;}
 .sidebar-navigation ul {margin:0;padding:0;}
 .sidebar-navigation li {list-style:none;}
 .sidebar-navigation a {color:{color:Body Text}; font-size:16px;}
+.following ul {
+padding: 0;
+overflow:hidden;
+}
+.following li {
+list-style: none;
+float: left;
+display: inline-block;
+margin:0 3px;
+}
+ul#likes {
+                list-style-type: none;
+                margin: 0 0 0 0;
+                padding: 0 0 0 0;
+            }
 
+                li.like_post {
+                    /* Should match the width specified in the Likes tag */
+                    width: 150px;
+                    padding: 0 40px 0 0;
+                    float: left;
+                }
+
+                  li.like_post img {
+                      max-width: 100%;
+                  }
+
+                  li.like_post blockquote {
+                      margin: 0;
+                      padding: 0 0 0 10px;
+                      border-left: 1px solid #eee;
+                  }
+
+                  li.like_post ol,
+                  li.like_post ul {
+                      margin: 0 0 0 15px;
+                      padding: 0;
+                  }
+
+                  li.like_post .like_link a {
+                      font-weight: bold;
+                  }
+
+                  li.like_post .like_title {
+                      font-weight: bold;
+                  }
+
+                  li.like_post .post_info_bottom {
+                      margin: 10px 0 0 0;
+                      display: block !important;
+                  }
+li.like_post {border-top:1px solid #000;border-bottom:1px solid #000; margin:14px 0; padding:14px;}
 /* Main Content - Posts */
 .main-content {width:450px;padding:45px 25px 0 0; float:left; font-size:15px;}
 .main-content.permalink {margin: 0 auto;float: none;padding: 45px 0 0 0;}
@@ -230,19 +281,25 @@ footer {overflow:hidden;}
                 {/block:AskEnabled}
             </ul>
         </nav>
+        {block:Following}
         <div class="following">
-            {block:Following}
-            Blogs I follow:
+            Blogs I follow:<br>
+            (hover to see names)
             <ul>
                 {block:Followed}
                     <li>
-                        <img src="{FollowedPortraitURL-48}"/>
-                        <a href="{FollowedURL}">{FollowedName}</a>
+                        <a href="{FollowedURL}"><img src="{FollowedPortraitURL-48}" title="{FollowedName}"/></a>
                     </li>
                   {/block:Followed}
             </ul>
-            {/block:Following}
         </div>
+        {/block:Following}
+        {block:Likes}
+            <div id="likes_container">
+                <a href="http://www.tumblr.com/liked/by/{Name}"><h2>Stuff I like</h2></a>
+                    {Likes limit="5" summarize="100" width="150"}
+            </div>
+        {/block:Likes}
     </div>
     {/block:IndexPage}
    <div class="main-content {block:PermalinkPage}permalink{/block:PermalinkPage}">
@@ -384,11 +441,15 @@ footer {overflow:hidden;}
                     {block:Tags}<li><a href="{TagURL}">#{Tag}</a> </li>{/block:Tags}
                 </ul>
             {/block:HasTags}
-                {block:NoteCount}
+                
                 <ul class="metadata">
-                    <li><a class="notecount" href="{Permalink}#notes">{NoteCountWithLabel}</a></li>
+                    {block:NoteCount}<li><a class="notecount" href="{Permalink}#notes">{NoteCountWithLabel}</a></li>{/block:NoteCount}
+                    <!--{block:ContentSource}
+                     <li>
+                        <a href="{SourceURL}">{lang:Source}:{block:NoSourceLogo}{SourceTitle}{/block:NoSourceLogo}
+                    {block:SourceLogo}<img src="{BlackLogoURL}" width="{LogoWidth}"height="{LogoHeight}" alt="{SourceTitle}" />{/block:SourceLogo}</a></li>
+                    {/block:ContentSource} -->
                 </ul>
-                {/block:NoteCount}
                 <ul class="date">
                     {block:Date} 
                         <li>{DayOfMonth}{DayOfMonthSuffix} {ShortMonth} {Year}</li>
