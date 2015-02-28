@@ -96,9 +96,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
 ::-moz-placeholder { color: #333; font-style: normal; opacity: 1;  font-weight:400;}
 :-ms-input-placeholder { color: #333; font-style: normal;  font-weight:400;}
             .search {border-bottom:1px solid #424958; padding:0 20px;}
-            .search .fa {display:inline;margin-right:10px;}
-            .search input {background: transparent;color: #222;border: none;outline: none;width: 75%;padding: 5px 0;}
+            .search .fa {display:inline;margin-right:10px;font-size:13px;}
+            .search input {background: transparent;color: #222;border: none;outline: none;width: 75%;margin: 8px 0;}
 .search input::selection {color:#000;}
+            .search-results {text-align:center;font-size: 25px;margin: 0;
+border-bottom: 1px solid #E3E3E3;padding: 20px 0;background: #f2f2f2;}
             .side-nav ul {padding:0 20px; margin:0 -20px;}
             .side-nav li {list-style:none;font-size:14px;text-transform:uppercase;}
             .side-nav li.pages {font-style:italic;}
@@ -235,7 +237,7 @@ transition: 500ms;}
                 <div class="search">
                     <form action="/search" method="get">
                     <i class="fa fa-search"></i>
-                        <input type="text" name="q" value="{SearchQuery}" placeholder="Search" />                    </form>
+                        <input type="text" name="q" value="{SearchQuery}" />                    </form>
                 </div>
                 {/block:IfSearchShowing}
                 <nav class="side-nav">
@@ -277,6 +279,17 @@ transition: 500ms;}
                         <p class="description">{Description}</p>
                     </div>
                 </header>
+                {block:SearchPage}
+                <article class="search-results">
+                    <div class="container">
+                        {SearchResultCount}  
+                        {block:NoSearchResults}
+                            | No Search Results
+                        {/block:NoSearchResults} Found
+                    </div>
+                </article>
+                
+                {/block:SearchPage}
                 {block:Posts}
                 <div class="post">
                 
