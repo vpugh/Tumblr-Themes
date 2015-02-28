@@ -162,19 +162,17 @@ li.prev-page {float:left;}
         <ul class="header-navigation">
             <li><a href="/">Home</a></li>
             <li><a href="/archive">Archive</a></li>
-            {block:IfDropDownMenu}
-            <li>{block:IfDropDownName}<a href="#">{text:Drop Down Name}</a>{/block:IfDropDownName}
-            <ul class="drop-down">
-            {/block:IfDropDownMenu}
+            {block:IfDropDownMenu}<li>{block:IfDropDownName}<a href="#">{text:Drop Down Name}</a>{/block:IfDropDownName}
+           <ul class="drop-down">{/block:IfDropDownMenu}
+            
             {block:HasPages}
                 {block:Pages}
                     <li> <a href="{URL}">{Label}</a></li>
                 {/block:Pages}
             {/block:HasPages}
-            {block:IfDropDownMenu}
-            </ul>
-            </li>
-            {/block:IfDropDownMenu}
+            
+            {block:IfDropDownMenu}</ul>
+            </li>{block:IfDropDownMenu}
             {block:SubmissionsEnabled}
                 <li> <a href="/submit">{SubmitLabel}</a></li>
             {/block:SubmissionsEnabled}
