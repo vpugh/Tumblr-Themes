@@ -81,6 +81,9 @@ Vanguard Version 2 Theme by Teekaa-two
             
             /* Sidebar */
             aside {background:{color:Sidebar BG Color}; width:243px;padding:0;display:table-cell;vertical-align:top;}
+			
+			/* Avatar */
+			
             .avatar{ text-align:center; padding:18px 0;background: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 18%, rgba(0,0,0,0.10) 99%, rgba(0,0,0,0.10) 100%); /* FF3.6+ */
 background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0)), color-stop(18%,rgba(0,0,0,0)), color-stop(99%,rgba(0,0,0,0.10)), color-stop(100%,rgba(0,0,0,0.10))); /* Chrome,Safari4+ */
 background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0) 18%,rgba(0,0,0,0.10) 99%,rgba(0,0,0,0.10) 100%); /* Chrome10+,Safari5.1+ */
@@ -88,10 +91,14 @@ background: -o-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0) 18%,rgba(0,0,
 background: -ms-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0) 18%,rgba(0,0,0,0.10) 99%,rgba(0,0,0,0.10) 100%); /* IE10+ */
 background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0) 18%,rgba(0,0,0,0.10) 99%,rgba(0,0,0,0.10) 100%); /* W3C */
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6000000',GradientType=0 ); /* IE6-9 */ position:relative;}
-             .avatar h1 {font-size:22px;margin:0;font-weight:400;position:absolute;top:33%;opacity:1;transition:2s;}
+            .holder {display:table-cell; vertical-align:middle;width:100%;}
+             .holder h1 {font-size:22px;margin:0;font-weight:400;position:absolute;top:33%;opacity:1;transition:2s;}
              .avatar:hover h1{opacity:0;}
             .avatar img{background:#000;border-radius:50%;opacity:0; transition:3s;}
             .avatar:hover img{opacity:1;}
+			
+			/* Side Nav Search & Search Results */
+			
             ::-webkit-input-placeholder { color: #333; font-style: normal;  font-weight:400;}
 ::-moz-placeholder { color: #333; font-style: normal; opacity: 1;  font-weight:400;}
 :-ms-input-placeholder { color: #333; font-style: normal;  font-weight:400;}
@@ -99,26 +106,42 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
             .search .fa {display:inline;margin-right:10px;font-size:13px;}
             .search input {background: transparent;color: #222;border: none;outline: none;width: 75%;margin: 8px 0;}
 .search input::selection {color:#000;}
-            .search-results {text-align:center;font-size: 25px;margin: 0;
-border-bottom: 1px solid #E3E3E3;padding: 20px 0;background: #f2f2f2;}
+            .search-results {text-align:center;font-size: 25px;margin: 0;border-bottom: 1px solid #E3E3E3;padding: 20px 0;background: #f2f2f2;}
+			
+			/* Side Nav */
+			
             .side-nav ul {padding:0 20px; margin:0 -20px;}
             .side-nav li {list-style:none;font-size:14px;text-transform:uppercase;}
             .side-nav li.pages {font-style:italic;}
             .side-nav a {text-decoration:none;padding:15px 20px;display:block;color:{color:Sidebar Nav Color};}
-            .side-nav a:hover {background:{color:Sidebar Hover Color};
-border-left: 3px solid rgba(255,255,255,.5);
-transition: 500ms;}
-             .nav-trigger, .mobile-nav, .mobile-icon {display: none;}
-            .following {padding:31px 0;}
+            .side-nav a:hover {background:{color:Sidebar Hover Color};border-left: 3px solid rgba(255,255,255,.5);transition: 500ms;}
+			
+            .nav-trigger, .mobile-nav, .mobile-icon {display: none;}
+			
+			/* Following Blogs */
+			
+            .following {padding:31px 20px;background: #46505A;}
             .following h2 {font-size:18px;margin: 0;color: #FFF;}
+            .following ul {padding: 0;overflow:hidden;}
+			.following li {list-style: none;float: left;display: inline-block;margin:0 3px;}
+			ul#likes {list-style-type: none;margin: 0 0 0 0;padding: 0 0 0 0;}
+			li.like_post {width: 150px;padding: 0 40px 0 0;float: left;}
+			li.like_post img {max-width: 100%;}
+			li.like_post blockquote {margin: 0;padding: 0 0 0 10px;border-left: 1px solid #eee;}
+			li.like_post ol,li.like_post ul {margin: 0 0 0 15px;padding: 0;}
+			li.like_post .like_link a {font-weight: bold;}
+			li.like_post .like_title {font-weight: bold;}
+			li.like_post .post_info_bottom {margin: 10px 0 0 0;display: block !important;}
+			li.like_post {border-top:1px solid #000;border-bottom:1px solid #000; margin:14px 0; padding:14px;}
             
             /* Main Content */
-            .maincontent {width:501px;display:table-cell;}
+            .maincontent {max-width:501px;display:table-cell;}
             
             /* Header */
             
            header {text-align:center;padding:30px 0;color:{color:Body Text Color};display: table;width:100%;border-bottom:1px solid #e3e3e3;}
            .header-wrapper{display:table-cell;vertical-align: middle;padding:0 20px;}
+           
            header h1 {font-size:26px;margin:0;}
            .description {font-size:14px;font-weight:600;margin-bottom:0;}
            .description a {color:#{color:Body Text Color};}
@@ -194,8 +217,6 @@ transition: 500ms;}
            @media (max-width:800px){
                aside{width:200px;}
                .maincontent{width:397px;}
-               
-                
             }
            @media (max-width:640px){
                .wrapper{margin:0;}
@@ -228,7 +249,7 @@ transition: 500ms;}
     	<div class="wrapper">
         	<aside>
             	<div class="avatar">
-            	<h1>{Title}</h1>
+            	<div class="holder"><h1>{Title}</h1></div>
             	<a href="/"><img src="{PortraitURL-128}"></a></div>
             	<a class="nav-trigger" href="#0">
                   <span class="mobile-menu">Menu</span>
@@ -260,16 +281,15 @@ transition: 500ms;}
                 {block:IfShowFollowing}
                 <section class="following">
                     {block:Following}
-                    <h2>Blogs I follow:</h2>
-                    <ul>
-                        {block:Followed}
-                            <li>
-                                <img src="{FollowedPortraitURL-48}"/>
-                                <a href="{FollowedURL}">{FollowedName}</a>
-                            </li>
-                          {/block:Followed}
-                    </ul>
-                    {/block:Following}
+                            Blogs I follow:<br>
+                            <ul>
+                                {block:Followed}
+                                    <li>
+                                        <a href="{FollowedURL}"><img src="{FollowedPortraitURL-48}" title="{FollowedName}"/></a>
+                                    </li>
+                                  {/block:Followed}
+                            </ul>
+                        {/block:Following}
                 </section>
                 {/block:IfShowFollowing}
             </aside>
