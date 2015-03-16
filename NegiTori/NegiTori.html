@@ -141,6 +141,8 @@ blockquote {border-left: 3px solid #ddd;color: #555;font-style: italic;margin: 0
 
 /* Quote */
 .quote-org {font-size:24px; line-height:28px;}
+.quote-org p:before{content:"“";}
+.quote-org p:after{content:"”";}
 .quote p {margin:5px 0 0 0;}
 .quote .reblog-parent {margin:10px 0 0 0;}
 blockquote p {margin:5px 0 0 0;}
@@ -546,7 +548,7 @@ a.link-title {word-break: break-word;color: #fff;font-size: 18px;text-overflow: 
 
         {block:Quote}
         <div class="quote post">
-            <span class="quote-org">&#8220;{Quote}&#8221;</span>
+            <span class="quote-org">{Quote}</span>
             {block:Source}<cite> {Source} </cite>{/block:Source}
             {block:RebloggedFrom} 
             <div class="reblog-parent">
