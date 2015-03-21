@@ -78,7 +78,7 @@ Vanguard Version 2 Theme by Teekaa-two
             iframe{width: 100% !important;margin-bottom:25px;}
             
             /* Wrapper */
-            .wrapper {margin:10% auto 0 auto;background:#fff;overflow:hidden;display:table;}
+            .wrapper {margin:6% auto 0 auto;background:#fff;overflow:hidden;display:table;}
             
             /* Sidebar */
             aside {background:{color:Sidebar BG Color}; width:243px;padding:0;display:table-cell;vertical-align:top;}
@@ -308,18 +308,21 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
             }
            @media (max-width:640px){
                .wrapper{margin:0;}
-               aside{width:100%;display:block;height:62px;}
+               aside{width:100%;display:block;height:70px;}
                .wrapper, .maincontent{width:100%;display:block;}
-               .avatar, .following{display:none;}
+               .avatar, .following, .likes-show, .search{display:none;}
                .nav-trigger, .mobile-nav, .mobile-icon {display: block;}
-               .nav-trigger {position: absolute; left: 4%; top: 2.2%; }
+               .nav-trigger {position: absolute; left: 4%; top: 3.2%; }
                 .nav-trigger .mobile-nav {color: white;text-transform: uppercase;font-weight: 700;display: none; }
                 .mobile-menu { position: absolute; left: 7px; top: 20%; padding: 9px 18px; border: 1px solid #fff;border-radius: 4px;font-weight: bold; font-size:14px;color:#fff;}
                 .menu-is-open {	display:block !important; }
                .side-nav{margin:0; display:none;position:absolute;top:62px;width:100%;}
-               .side-nav ul {padding:0;}
                 .side-nav li a {margin:0;padding:0;}
-                .side-nav li {margin:0;padding: 15px;border-bottom: 1px solid {color:Sidebar BG};background:{color:Masthead background};}
+                .side-nav li {margin:0;padding: 15px 33px;border-bottom: 1px solid {color:Sidebar BG};background:{color:Sidebar BG Color};}
+                .side-nav a:hover{
+                    background:transparent;
+                    border:none;
+                }
                 header{padding-top:20px;padding-bottom:20px;}
                 .tumblr_video_container{width:100% !important;}
            }
