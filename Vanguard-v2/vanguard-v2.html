@@ -17,12 +17,8 @@ Vanguard Version 2 Theme by Teekaa-two
         <title>{Title}{block:SearchPage} ({lang:Search results for SearchQuery}){/block:SearchPage}{block:PermalinkPage}{block:PostSummary} — {PostSummary}{/block:PostSummary}{/block:PermalinkPage}</title>
 
         {block:Description}
-
         <meta name="description" content="{MetaDescription}">
-
         {/block:Description}
-
-
 
         {block:Hidden}
 
@@ -43,35 +39,26 @@ Vanguard Version 2 Theme by Teekaa-two
 
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
         <link rel="shortcut icon" href="{Favicon}">
-
         <link rel="apple-touch-icon-precomposed" href="{PortraitURL-128}">
-
         <link rel="alternate" type="application/rss+xml" href="{RSS}">
-
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="http://static.tumblr.com/hznqxps/ivOmgjf8v/normalize.css" />
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
         <!-- HTML5 Shiv -->
-
         <!--[if lt IE 9]>
-
             <script src="http://static.tumblr.com/hriofhd/Qj0m8pn7q/html5shiv.js"></script>
-
         <![endif]-->
-
-
 
         <style>
             
             /* General Settings */
-            html{top:0!important}
+            html{top:0 !important}
             body{margin:0 auto;color:{color:Body Text Color};font-family:"Open Sans","Helvetica Neue",HelveticaNeue,Arial,sans-serif;font-size:16px;line-height:1.4;-webkit-font-smoothing:antialiased;background:{color:Background Color}; {block:IfBackgroundImage}background:url({image:Background Image});{/block:IfBackgroundImage};}
             img{max-width:100%;}
-            a{color:{color:Body Text Color};text-decoration:underline}
-            h1{font-size:26px;line-height:1.2;margin:20px 0;word-wrap:break-word}
+            a{color:{color:Body Text Color};text-decoration:underline;}
+            h1{font-size:26px;line-height:1.2;margin:20px 0;word-wrap:break-word;}
             h1 a{color:#444;display:block;text-decoration:underline;}
             h1 a:active{-webkit-transform:translateY(1px);-moz-transform:translateY(1px);-ms-transform:translateY(1px);-o-transform:translateY(1px);transform:translateY(1px)}
             iframe,img,object{vertical-align:middle;}
@@ -83,8 +70,7 @@ Vanguard Version 2 Theme by Teekaa-two
             /* Sidebar */
             aside {background:{color:Sidebar BG Color}; width:243px;padding:0;display:table-cell;vertical-align:top;}
 			
-			/* Avatar */
-			
+			/* Masthead Avatar */
             .masthead-avatar{ background: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 18%, rgba(0,0,0,0.10) 99%, rgba(0,0,0,0.10) 100%); /* FF3.6+ */
 background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0)), color-stop(18%,rgba(0,0,0,0)), color-stop(99%,rgba(0,0,0,0.10)), color-stop(100%,rgba(0,0,0,0.10))); /* Chrome,Safari4+ */
 background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0) 18%,rgba(0,0,0,0.10) 99%,rgba(0,0,0,0.10) 100%); /* Chrome10+,Safari5.1+ */
@@ -96,140 +82,58 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
           position: relative;
           width: 243px;
           height: 243px;
-        }
-        .holder, .avatar-img {
-          position: absolute;
-          width: 100%;
-          height: 100%;
-          display:table;
-        }
-        .holder h1 {
-          font-size: 22px;
-          font-weight: 400;
-          display: table-cell;
-          vertical-align:middle;
-          padding:10px;
-          transition: 3s;
-          opacity:1;
-        }
-        .masthead-avatar:hover .holder h1 {
-            opacity:0;
-        }
-        .avatar-img {
-           display:table;
-        }
-        .avatar-img a {
-          display: table-cell;
-          vertical-align: middle;
-        }
-        .masthead-avatar img {
-          background: #000;
-          border-radius: 50%;
-          opacity: 0;
-          transition: 3s;
-        }
-        .masthead-avatar:hover img {
-          opacity: 1;
-        }
-			
+			}
+			.holder, .avatar-img {position: absolute;width: 100%;height: 100%;display:table;}
+			.holder h1 { font-size: 22px; font-weight: 400; display: table-cell; vertical-align:middle; padding:10px; transition: 3s; opacity:1;}
+			.masthead-avatar:hover .holder h1 {	opacity:0;}
+			.avatar-img {display:table;}
+			.avatar-img a { display: table-cell; vertical-align: middle;}
+			.masthead-avatar img {background: #000; border-radius: 50%;opacity: 0;transition: 3s;}
+			.masthead-avatar:hover img {opacity: 1;}
+				
 			/* Side Nav Search & Search Results */
-			
             ::-webkit-input-placeholder { color: #333; font-style: normal;  font-weight:400;}
-::-moz-placeholder { color: #333; font-style: normal; opacity: 1;  font-weight:400;}
-:-ms-input-placeholder { color: #333; font-style: normal;  font-weight:400;}
+			::-moz-placeholder { color: #333; font-style: normal; opacity: 1;  font-weight:400;}
+			:-ms-input-placeholder { color: #333; font-style: normal;  font-weight:400;}
             .search {border-bottom:1px solid #424958; padding:0 20px;}
             .search .fa {display:inline;margin-right:10px;font-size:13px;}
             .search input {background: transparent;color: #222;border: none;outline: none;width: 75%;margin: 8px 0;}
-.search input::selection {color:#000;}
+			.search input::selection {color:#000;}
             .search-results {text-align:center;font-size: 25px;margin: 0;border-bottom: 1px solid #E3E3E3;padding: 20px 0;background: #f2f2f2;}
 			
 			/* Side Nav */
-			
             .side-nav ul {padding:0 20px; margin:0 -20px;}
             .side-nav li {list-style:none;font-size:14px;text-transform:uppercase;}
             .side-nav li.pages {font-style:italic;}
             .side-nav a {text-decoration:none;padding:15px 20px;display:block;color:{color:Sidebar Nav Color};}
             .side-nav a:hover {background:{color:Sidebar Hover Color};border-left: 3px solid rgba(255,255,255,.5);transition: 500ms;}
-			
             .nav-trigger, .mobile-nav, .mobile-icon {display: none;}
 			
 			/* Following Blogs */
-			
             .following {padding:31px 20px;background: #46505A;}
             .following h2 {font-size:18px;margin: 0;color: #FFF;}
             .following ul {padding: 0;overflow:hidden;}
 			.following li {list-style: none;float: left;display: inline-block;margin:0 3px;}
-			ul#likes {list-style-type: none;margin: 0 0 0 0;padding: 0 0 0 0;}
-			li.like_post {width: 150px;padding: 0 40px 0 0;float: left;}
-			li.like_post img {max-width: 100%;}
-			li.like_post blockquote {margin: 0;padding: 0 0 0 10px;border-left: 1px solid #eee;}
-			li.like_post ol,li.like_post ul {margin: 0 0 0 15px;padding: 0;}
-			li.like_post .like_link a {font-weight: bold;}
-			li.like_post .like_title {font-weight: bold;}
-			li.like_post .post_info_bottom {margin: 10px 0 0 0;display: block !important;}
-			li.like_post {border-top:1px solid #000;border-bottom:1px solid #000; margin:14px 0; padding:14px;}
 			
 			/* Showing Likes */
 			.likes-show {padding:31px 20px;background: #4A545F;}
             .likes-show h2 {font-size:14px;margin: 0;color: #FFF;}
-			ul#likes {
-                list-style-type: none;margin: 0;padding: 0;overflow:hidden;}
-
-                li.like_post {
-                    /* Should match the width specified in the Likes tag */
-                    width: 192px;
-                    float: left;
-                    border-top:none;
-                    border-bottom: 1px solid rgba(0,0,0,0.2);
-                  margin: 14px 0;
-                  padding: 0 10px 21px 0;
-                }
-
-                  li.like_post img {
-                      max-width: 100%;
-                  }
-
-                  li.like_post blockquote {
-                      margin: 0;
-                      padding: 0 0 0 10px;
-                      border-left: 1px solid rgba(0,0,0,0.2);
-                      font-size: 14px;
-                  }
-
-                  li.like_post ol,
-                  li.like_post ul {
-                      margin: 0 0 0 15px;
-                      padding: 0;
-                  }
-
-                  li.like_post .like_link a {
-                      font-weight: bold;
-                  }
-
-                  li.like_post .like_title {
-                      font-weight: bold;
-                  }
-
-                  li.like_post .post_info_bottom {
-                      margin: 10px 0 0 0;
-                      display: block !important;
-                      font-size:12px;
-                  }
-                  .likes-show p {font-size:12px;}
-                  .stuff-like {
-                      text-decoration: none;
-                      padding: 15px 0 0 0;
-                      display: inline-block;
-                    }
+			ul#likes {list-style-type: none;margin: 0;padding: 0;overflow:hidden;}
+			li.like_post {width: 192px;	float: left;border-top:none;border-bottom: 1px solid rgba(0,0,0,0.2); margin: 14px 0; padding: 0 10px 21px 0;}
+			li.like_post blockquote {margin: 0;padding: 0 0 0 10px;border-left: 1px solid rgba(0,0,0,0.2);font-size: 14px;}
+			li.like_post ol,li.like_post ul {margin: 0 0 0 15px;padding: 0;}
+			li.like_post .like_link a {font-weight: bold;}
+			li.like_post .like_title {font-weight: bold;}
+			li.like_post .post_info_bottom {margin: 10px 0 0 0;display: block !important;font-size:12px;}
+			.likes-show p {font-size:12px;}
+			.stuff-like {text-decoration: none;padding: 15px 0 0 0;display: inline-block;			  }
             
             /* Main Content */
             .maincontent {max-width:501px;display:table-cell;}
             
-            /* Header */
-            
+            /* Header */            
            header {text-align:center;padding:30px 0;color:{color:Body Text Color};display: table;width:100%;border-bottom:1px solid #e3e3e3;}
            .header-wrapper{display:table-cell;vertical-align: middle;padding:0 20px;}
-           
            header h1 {font-size:26px;margin:0;}
            .description {font-size:14px;font-weight:600;margin-bottom:0;}
            .description a {color:#{color:Body Text Color};}
@@ -255,6 +159,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
             
             /* Link Post */
             .link-title {font-size:26px;font-weight:600;word-break:break-word;padding: 30px 10px;display: block;text-align: center;margin: 0 0 13px 0;background:{color:Masthead BG Color};color:#fff;text-decoration:none;}
+			
             /* Chat Post */
             .chat-list{padding:0;margin:0;}
             .chat h1 {margin-bottom:25px;}
@@ -266,6 +171,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
             .asker-question {margin: 0 0 20px 0;font-style: italic;}
             .asker-ask {margin: 0 0 6px 0;font-style: normal;}
             .asker-avatar, .answerer-avatar{display:inline-block;margin:0 5px 0 0;}
+			
             /* Video Post */
             .tumblr_video_container {height:auto !important;}
             
@@ -291,9 +197,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
             .notes li {padding:10px 0; font-size:14px;list-style:none;border-top: 1px solid #ededed;}
             .source_tumblelog {color:{color:Body Text Color};font-style:italic;}
             .tumblelog, .action a {color:{color:Body Text Color};font-weight:bold;}
-            .notes-container blockquote {
-  margin: 5px 0 0 24px;
-}
+            .notes-container blockquote { margin: 5px 0 0 24px;}
             
             /* Pagination */
 
@@ -322,10 +226,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
                .side-nav{margin:0; display:none;position:absolute;top:62px;width:100%;}
                 .side-nav li a {margin:0;padding:0;}
                 .side-nav li {margin:0;padding: 15px 33px;border-bottom: 1px solid {color:Sidebar BG};background:{color:Sidebar BG Color};}
-                .side-nav a:hover{
-                    background:transparent;
-                    border:none;
-                }
+                .side-nav a:hover{background:transparent;border:none;}
                 header{padding-top:20px;padding-bottom:20px;}
                 .tumblr_video_container{width:100% !important;}
            }
@@ -358,7 +259,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
                 {/block:IfSearchShowing}
                 <nav class="side-nav">
                 	<ul>
-                    	<li><a href="/">Home</a></li>
+                    	<li><a href="/">{lang:Home}</a></li>
                         <li><a href="/archive">{lang:Archive}</a></li>
                         {block:HasPages}
                         	{block:Pages}
@@ -391,12 +292,12 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
                 <section class="likes-show">
                     {block:Likes}
                         <div id="likes_container">
-                            Stuff I like
+                            {lang:Stuff I like}
             
                             {Likes limit="5" summarize="100" width="150"}
             
                             <a class="stuff-like" href="http://www.tumblr.com/liked/by/{Name}">
-                                See more stuff I like »
+                                {lang:See more stuff I like} »
                             </a>
                         </div>
                     {/block:Likes}
@@ -414,8 +315,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
                     <div class="container">
                         {SearchResultCount}  
                         {block:NoSearchResults}
-                            | No Search Results
-                        {/block:NoSearchResults} Found
+                            | {lang:Sorry no posts found}
+                        {/block:NoSearchResults}
                     </div>
                 </article>
                 
