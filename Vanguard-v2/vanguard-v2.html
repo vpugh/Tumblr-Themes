@@ -29,7 +29,7 @@ Vanguard Version 2 Theme by Teekaa-two
         <meta name="if:Background Image" content="0">
         <meta name="if:Search Showing" content="1">
         <meta name="if:Show Following" content="0">
-        <meta name="if:Like Showing" content="0">
+        <meta name="if:Show Likes" content="0">
         <meta name="image:Background Image" content="">
         <meta name="color:Background Color" content="#8e9a70">
         <meta name="color:Body Text Color" content="#000000">
@@ -85,7 +85,7 @@ Vanguard Version 2 Theme by Teekaa-two
 			
 			/* Avatar */
 			
-            .avatar{ background: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 18%, rgba(0,0,0,0.10) 99%, rgba(0,0,0,0.10) 100%); /* FF3.6+ */
+            .masthead-avatar{ background: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 18%, rgba(0,0,0,0.10) 99%, rgba(0,0,0,0.10) 100%); /* FF3.6+ */
 background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0)), color-stop(18%,rgba(0,0,0,0)), color-stop(99%,rgba(0,0,0,0.10)), color-stop(100%,rgba(0,0,0,0.10))); /* Chrome,Safari4+ */
 background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0) 18%,rgba(0,0,0,0.10) 99%,rgba(0,0,0,0.10) 100%); /* Chrome10+,Safari5.1+ */
 background: -o-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0) 18%,rgba(0,0,0,0.10) 99%,rgba(0,0,0,0.10) 100%); /* Opera 11.10+ */
@@ -112,7 +112,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
           transition: 3s;
           opacity:1;
         }
-        .avatar:hover .holder h1 {
+        .masthead-avatar:hover .holder h1 {
             opacity:0;
         }
         .avatar-img {
@@ -122,13 +122,13 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
           display: table-cell;
           vertical-align: middle;
         }
-        .avatar img {
+        .masthead-avatar img {
           background: #000;
           border-radius: 50%;
           opacity: 0;
           transition: 3s;
         }
-        .avatar:hover img {
+        .masthead-avatar:hover img {
           opacity: 1;
         }
 			
@@ -288,9 +288,12 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
             .notes-container {margin: 0;overflow: hidden;clear:both;}
             .notes {margin: 0;padding: 10px 0;float: left;width:100%;}
             .notes img {margin-right: 7px;vertical-align: middle;}
-            .notes li {padding:0; font-size:14px;list-style:none;border-top: 1px solid #ededed;}
+            .notes li {padding:10px 0; font-size:14px;list-style:none;border-top: 1px solid #ededed;}
             .source_tumblelog {color:{color:Body Text Color};font-style:italic;}
             .tumblelog, .action a {color:{color:Body Text Color};font-weight:bold;}
+            .notes-container blockquote {
+  margin: 5px 0 0 24px;
+}
             
             /* Pagination */
 
@@ -310,7 +313,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
                .wrapper{margin:0;}
                aside{width:100%;display:block;height:70px;}
                .wrapper, .maincontent{width:100%;display:block;}
-               .avatar, .following, .likes-show, .search{display:none;}
+               .masthead-avatar, .following, .likes-show, .search{display:none;}
                .nav-trigger, .mobile-nav, .mobile-icon {display: block;}
                .nav-trigger {position: absolute; left: 4%; top: 3.2%; }
                 .nav-trigger .mobile-nav {color: white;text-transform: uppercase;font-weight: 700;display: none; }
@@ -339,7 +342,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
     
     	<div class="wrapper">
         	<aside>
-            	<div class="avatar">
+            	<div class="masthead-avatar">
             	<div class="holder"><h1>{Title}</h1></div>
             	<div class="avatar-img"><a href="/"><img src="{PortraitURL-128}"></a></div>
             	</div>
@@ -384,7 +387,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
                         {/block:Following}
                 </section>
                 {/block:IfShowFollowing}
-                {block:IfLikeShowing}
+                {block:IfShowsLike}
                 <section class="likes-show">
                     {block:Likes}
                         <div id="likes_container">
@@ -398,7 +401,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
                         </div>
                     {/block:Likes}
                 </section>
-                {/block:IfLikeShowing}
+                {/block:IfShowsLike}
             </aside>
             <section class="maincontent">
                 <header>
