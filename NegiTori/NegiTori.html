@@ -80,16 +80,6 @@ Negitori by Teekaa-two
 	});
 	
 });
-        var image1 = "http://static.tumblr.com/d29d8de1b2388a99e347ab9c8542117e/2qikcqj/n4vnmcmt4/tumblr_static_cehw2pe6erwow0okk4cowk84w.gif";
-        var image2 = "http://static.tumblr.com/5a397f5f6d98165fa5a5e65f9d227260/2qikcqj/J2enmcndp/tumblr_static_9gloa1cjnako0sco08s4w8cow.gif";
-        var image3 = "http://static.tumblr.com/e5194d9b5239c633540153e8c16f1a2d/2qikcqj/qK4nmcp15/tumblr_static_80sp6xl9j7okog4k4scg8ossw.gif";
-        var mastheadImage = [image1, image2, image3];
-		var selectedImage = mastheadImage[Math.floor(Math.random()*mastheadImage.length)];
-			$("#masthead img").attr("src",selectedImage);
-			console.log(selectedImage);
-			console.log(image1);
-			console.log(image2);
-			console.log(image3);
 	</script>
 
 <style>
@@ -149,9 +139,7 @@ article:last-child {margin-bottom:20px;}
 .no-hover {display:block; transition:none; border-top:1px solid #ddd;}
 article:hover .hover-meta {display:block; transition:all 3s ease-out; border-top:1px solid #ddd; border-top: 1px solid rgba(0,0,0,.1);}
 .metadata {background: #eee;/*width: 506px;*/padding: 0 12px; overflow:hidden;margin-bottom:41px;background: rgba(255, 255, 255, .5);}
-.metadata a {
-  color: rgba(255, 255, 255, 1);
-}
+.metadata a {color: rgba(0,0,0,.6);}
 article:hover .metadata{margin-bottom:-41px;}
 .metadata-content {list-style: none;display: inline; float:left;padding:0; margin:10px 0 5px 0;}
 .metadata-content li {display:inline; float:left;}
@@ -162,7 +150,7 @@ article:hover .metadata{margin-bottom:-41px;}
 .like_and_reblog_buttons li {float:right; margin: 0;}
 
 .tag, .notes { display:inline; float:left;}
-blockquote {border-left: 1px solid #ddd;color: #555;font-style: italic;margin: 0;padding: 0 0 0 15px;}
+blockquote {border-left: 1px solid #ddd;color: #555;font-style: italic;margin: 0;padding: 0 0 0 15px; word-wrap: break-word;}
 .reblog-parent {font-size:13px; font-style:italic; display:inline-block; margin-left:15px; float:right;}
 .title {color:{color:Links}; line-height:1.02em;}
 .tags {padding:10px 0; margin:0;}
@@ -500,6 +488,12 @@ a.link-title {word-break: break-word;color: #fff;font-size: 18px;text-overflow: 
 <script type="text/javascript" src="http://static.tumblr.com/smotcsf/Ecdn2cscy/pxuphotoset.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
+     var image1 = "http://static.tumblr.com/d29d8de1b2388a99e347ab9c8542117e/2qikcqj/n4vnmcmt4/tumblr_static_cehw2pe6erwow0okk4cowk84w.gif";
+        var image2 = "http://static.tumblr.com/5a397f5f6d98165fa5a5e65f9d227260/2qikcqj/J2enmcndp/tumblr_static_9gloa1cjnako0sco08s4w8cow.gif";
+        var image3 = "http://static.tumblr.com/e5194d9b5239c633540153e8c16f1a2d/2qikcqj/qK4nmcp15/tumblr_static_80sp6xl9j7okog4k4scg8ossw.gif";
+        var mastheadImage = [image1, image2, image3];
+		var selectedImage = mastheadImage[Math.floor(Math.random()*mastheadImage.length)];
+			$("#masthead img").attr("src",selectedImage);
     $('.photo-slideshow').pxuPhotoset({
         'ligthbox'  : true, // uses the default Tumblr lightbox, change to false to use your own
     'highRes'   : true, // will use high res images
