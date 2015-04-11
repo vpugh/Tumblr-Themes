@@ -256,7 +256,8 @@ a.link-title {word-break: break-word;color: #fff;font-size: 18px;text-overflow: 
     #pagination li {background: #ddd;padding: 0; display:block; position: initial;  margin: 15px 0;}
     #pagination li a {  padding: 20px 35px;  display: block;}
     .jump-pagination{display:none;}
-
+    
+}
 {CustomCSS}
 </style>
 </head>
@@ -345,12 +346,29 @@ a.link-title {word-break: break-word;color: #fff;font-size: 18px;text-overflow: 
 
         {block:Photoset}
         <div class="photoset post">
-            {Photoset-500}
-            {block:Caption}
+            <div class="photo-slideshow" id="photoset_{PostID}" data-layout="{PhotosetLayout}">
+
+          {block:Photos}
+            <div class="photo-data">
+              <div class="pxu-photo">
+                <img alt="{PhotoAlt}" src="{PhotoURL-500}" width="{PhotoWidth-500}" height="{PhotoHeight-500}" data-highres="{PhotoURL-HighRes}" data-width="{PhotoWidth-HighRes}" data-height="{PhotoHeight-HighRes}" class="{block:Exif}exif-yes {/block:Exif}{block:Caption}caption-yes{/block:Caption}" {block:Exif}data-camera="{block:Camera}{Camera}{/block:Camera}" data-iso="{block:ISO}{ISO}{/block:ISO}" data-aperture="{block:Aperture}{Aperture}{/block:Aperture}" data-exposure="{block:Exposure}{Exposure}{/block:Exposure}" data-focal="{block:FocalLength}{FocalLength}{/block:FocalLength}"{/block:Exif} {block:Caption}data-caption="{Caption}"{/block:Caption}>
+              </div>
+              <div class="icons">
+                <a class="tumblr-box" rel="post-{PostID}" href="{PhotoURL-HighRes}">
+                  <span class="zoom">Zoom</span>
+                </a>
+                <span class="info">Info</span>
+              </div>
+            </div>
+          {/block:Photos}
+
+        </div><!-- close SLIDESHOW -->
+
+        {block:Caption}
             <div class="post-container">
                 {Caption}
             </div>
-            {/block:Caption}
+        {/block:Caption}
         </div>
         {/block:Photoset}
 
@@ -499,8 +517,6 @@ a.link-title {word-break: break-word;color: #fff;font-size: 18px;text-overflow: 
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" ></script>
 <script type="text/javascript" src="http://static.tumblr.com/smotcsf/Ecdn2cscy/pxuphotoset.min.js"></script>
 <script>
-if($(window).width() < 768) {
-	} else {
 	$(document).ready(function() {
      var image1 = "http://static.tumblr.com/d29d8de1b2388a99e347ab9c8542117e/2qikcqj/n4vnmcmt4/tumblr_static_cehw2pe6erwow0okk4cowk84w.gif";
         var image2 = "http://static.tumblr.com/5a397f5f6d98165fa5a5e65f9d227260/2qikcqj/J2enmcndp/tumblr_static_9gloa1cjnako0sco08s4w8cow.gif";
@@ -522,7 +538,6 @@ if($(window).width() < 768) {
         // callback
     });
 });
-}
 </script>
 </body>
 </html>
