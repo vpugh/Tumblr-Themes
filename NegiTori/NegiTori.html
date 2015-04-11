@@ -47,14 +47,14 @@ Negitori by Teekaa-two
 <script>
     $(document).ready(function(){
         if($(window).width() < 768) {
-            var sidebarHeight = $("#sidebar").height();
+            var sidebarHeight = $("#sidebar").height() + 35;
             $("#content").css("margin", sidebarHeight + "px auto 0 auto");
         } else {
     var sidebarWidth = $('#sidebar').width() + 60;
     $('#content').css("margin-left", sidebarWidth + "px");
 	$(window).resize(function () {
 			if($(window).width() < 768) {
-			    var sidebarHeight = $("#sidebar").height();
+			    var sidebarHeight = $("#sidebar").height() + 35;
 				$("#content").css("margin", sidebarHeight + "px auto 0 auto");
 			} else {
             var sidebarWidth = $('#sidebar').width() + 60;
@@ -95,6 +95,7 @@ body { background:{color:Body Color}; {block:IfBackgroundImage}background:url({i
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffae27', endColorstr='#de496d',GradientType=1 );}
 a {color:{color:Links}; text-decoration:none;}
 iframe, img, embed, object, video {max-width: 100%;}
+img {height:auto;}
 h1 {font-size:1.85em;}
 h2 {line-height:1.25em;}
 p {margin-top:0;}
@@ -134,10 +135,12 @@ article:last-child {margin-bottom:20px;}
 .photoset, .text, .photo, .video, .chat, .audio, .link, .quote,.answer {width:100%;}
 .photoset.post {padding:0;}
 .post-container {padding:15px;}
+.photo img {display:block;}
 
 .hover-meta {display:none; overflow:hidden;}
 .no-hover {display:block; transition:none; border-top:1px solid #ddd;}
 article:hover .hover-meta {display:block; transition:all 3s ease-out; border-top:1px solid #ddd; border-top: 1px solid rgba(0,0,0,.1);}
+article.perma-article:hover .metadata { margin-bottom: 0;}
 .metadata {background: #eee;/*width: 506px;*/padding: 0 12px; overflow:hidden;margin-bottom:41px;background: rgba(255, 255, 255, .5);}
 .metadata a {color: rgba(0,0,0,.6);}
 article:hover .metadata{margin-bottom:-41px;}
@@ -151,8 +154,8 @@ article:hover .metadata{margin-bottom:-41px;}
 
 .tag, .notes { display:inline; float:left;}
 blockquote {border-left: 1px solid #ddd;color: #555;font-style: italic;margin: 0;padding: 0 0 0 15px; word-wrap: break-word;}
-.reblog-parent {font-size:13px; font-style:italic; display:inline-block; margin-left:15px; float:right;}
-.title {color:{color:Links}; line-height:1.02em;}
+.reblog-parent {/*font-size:13px;*/ font-style:italic; display:inline-block; margin-left:15px; float:right;}
+.title {color:{color:Links}; line-height:1.02em; margin-top:0;}
 .tags {padding:10px 0; margin:0;}
 .tags li {display:inline; font-style:italic; font-size:13px; margin-right:6px;}
 
@@ -162,6 +165,7 @@ blockquote {border-left: 1px solid #ddd;color: #555;font-style: italic;margin: 0
 .quote p:last-child {display: inline;}
 .quote p:first-child {display: inline;}
 blockquote p {margin:5px 0 0 0;}
+blockquote + p {margin: 10px 0 0 0;}
 .quote-container:before { content:"“";}
 .quote-container:after{content:"”";}
 
@@ -178,8 +182,8 @@ blockquote p {margin:5px 0 0 0;}
 .answer .replies {margin-top:20px}
 
 /* Notes */
-ol.notes {padding: 0px;margin: 5px 0 0 0;list-style-type: none;border-bottom: solid 1px #ccc; width:506px;}
-ol.notes li.note {border-top: solid 1px #ccc;padding: 10px;}
+ol.notes {padding: 0px;margin: 5px 0 0 0;list-style-type: none;border-bottom: solid 1px #ccc;}
+ol.notes li.note {border-top: solid 1px rgba(0,0,0,.1);padding: 10px;}
 ol.notes li.note img.avatar {vertical-align: -4px; margin-right: 10px; width: 16px;	height: 16px;}
 ol.notes li.note span.action {font-weight: bold;}
 ol.notes li.note .answer_content {font-weight: normal;}
@@ -226,24 +230,31 @@ a.link-title {word-break: break-word;color: #fff;font-size: 18px;text-overflow: 
 
 @media (max-width:768px){
     aside#sidebar {width:100%; height:80px; padding:0; z-index:12;}
+    .masthead {margin-top:8%;}
     #masthead img, .description-row, .theme-creation {display:none;}
-    .blog-name{font-size: 18px;text-align: left;margin: 20px 0 32px 123px;}
+    .content {display:block;margin-top:125px;}
+    .blog-name{font-size: 18px;text-align: left; margin-left: 123px;}
     .sidebar-navigation{margin:0; display:none;position:absolute;top:100%;}
     .sidebar-navigation li a {margin:0;padding:0;}
-    .sidebar-navigation li {margin:0;padding: 15px;border-bottom: 1px solid #888;background:{color:Masthead background};}
+    .sidebar-navigation li {margin:0;padding: 15px;background:{color:Masthead background};}
     article {width:80%;margin:0 auto;}
     .text, .photo, .video, .chat, .audio, .link, .quote,.answer {width:initial;}
+    .post-top {margin-bottom: 10px; font-size: 14px;}
+    .reblog-parent {float:none; display:block;margin:0;}
+    .high-res {float:none;}
     .tumblr_video_container{width:100% !important;}
     .photoset.post {width:auto;}
     .metadata {width:auto;}
+    blockquote img {height:auto;}
     .nav-trigger, .mobile-nav, .mobile-icon {display: block;}
-   .nav-trigger {position: absolute; left: 4%; top: 0; height: 100%; width: 80px; }
+   .blog-name .nav-trigger {position: absolute; left: 0; top: 11%; height: 100%; width: 80px; margin:0; }
     .nav-trigger .mobile-nav {color: white;text-transform: uppercase;font-weight: 700;display: none; }
-    .mobile-menu { position: absolute; left: 7px; top: 20%; padding: 9px 18px; border: 1px solid #fff;border-radius: 4px;font-weight: bold; font-size:14px;color:#fff;}
+    .mobile-menu { position: absolute; left: 33%; top: 25%; padding: 9px 18px; border: 1px solid #fff;border-radius: 4px;font-weight: bold; font-size:14px;color:#fff;}
     .menu-is-open {	display:block; }
-    .pagination-holder{padding:20px 0 0; margin-top:40px;}
-    #pagination {width:88%;margin:0 auto;position:relative;border:none;padding: 0 0 80px 0;}
-    #pagination li {background: #ddd;padding: 20px 35px;}
+    .pagination-holder{ margin-top: 0; padding: 0;width: initial;}
+    #pagination {width:88%;margin:0 auto;position:relative;border:none;padding:0 0 20px 0;}
+    #pagination li {background: #ddd;padding: 0; display:block; position: initial;  margin: 15px 0;}
+    #pagination li a {  padding: 20px 35px;  display: block;}
     .jump-pagination{display:none;}
 
 {CustomCSS}
@@ -255,7 +266,9 @@ a.link-title {word-break: break-word;color: #fff;font-size: 18px;text-overflow: 
 <aside id="sidebar">
     <header id="masthead">
         <img src="{image:Masthead Image}"/>
-        <h1 class="blog-name"><a href="/" title="{lang:Home}">{Title}</a></h1>
+        <h1 class="blog-name"><a class="nav-trigger" href="#0">
+          <span class="mobile-menu">Menu</span>
+        </a><a href="/" title="{lang:Home}">{Title}</a></h1>
     </header>
     <div class="item">
         <div class="description-row">
@@ -267,9 +280,7 @@ a.link-title {word-break: break-word;color: #fff;font-size: 18px;text-overflow: 
         	{block:IfExtraDescription}<p>{text:Extra Description Text}</p>{/block:IfExtraDescription}
         {block:Description}
         </div>
-        <a class="nav-trigger" href="#0">
-          <span class="mobile-menu">Menu</span>
-        </a>
+        
         <nav>
             <ul class="sidebar-navigation">
                 <li><a href="/">Home</a></li>
@@ -296,7 +307,7 @@ a.link-title {word-break: break-word;color: #fff;font-size: 18px;text-overflow: 
 <div id="content">
    
     {block:Posts}
-    <article>
+    <article {block="Permalink Page"}class="perma-article"{/block:Permalink Page}>
     	<!-- Post Header -->
         <div class="post-top">
             {block:Date} 
@@ -484,10 +495,13 @@ a.link-title {word-break: break-word;color: #fff;font-size: 18px;text-overflow: 
     </div>
     {/block:Pagination}
 </div>
+ 
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" ></script>
 <script type="text/javascript" src="http://static.tumblr.com/smotcsf/Ecdn2cscy/pxuphotoset.min.js"></script>
-<script type="text/javascript">
-$(document).ready(function() {
+<script>
+if($(window).width() < 768) {
+	} else {
+	$(document).ready(function() {
      var image1 = "http://static.tumblr.com/d29d8de1b2388a99e347ab9c8542117e/2qikcqj/n4vnmcmt4/tumblr_static_cehw2pe6erwow0okk4cowk84w.gif";
         var image2 = "http://static.tumblr.com/5a397f5f6d98165fa5a5e65f9d227260/2qikcqj/J2enmcndp/tumblr_static_9gloa1cjnako0sco08s4w8cow.gif";
         var image3 = "http://static.tumblr.com/e5194d9b5239c633540153e8c16f1a2d/2qikcqj/qK4nmcp15/tumblr_static_80sp6xl9j7okog4k4scg8ossw.gif";
@@ -508,6 +522,7 @@ $(document).ready(function() {
         // callback
     });
 });
+}
 </script>
 </body>
 </html>
