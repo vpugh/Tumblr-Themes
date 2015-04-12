@@ -51,6 +51,7 @@ Negitori by Teekaa-two
 <link rel="alternate" type="application/rss+xml" title="{Title} RSS" href="{RSS}"/>
 <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,900,400italic" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="http://static.tumblr.com/hznqxps/ivOmgjf8v/normalize.css" />
+<link rel="stylesheet" href="http://static.tumblr.com/2qikcqj/Eklnmnweq/pxu-style.css" type="text/css" />
 <script src="http://static.tumblr.com/2qikcqj/rJxnhj4dg/jquery-2.1.1.js"></script>
 <script>
     $(document).ready(function(){
@@ -217,6 +218,9 @@ a.link-title {word-break: break-word;color: #fff;font-size: 18px;text-overflow: 
 .storytitle {
   margin: 10px 0;
   line-height: 1.1em;
+}
+.row.clearit:last-child {
+  margin-bottom: 0 !important;
 }
 
 /* Creator Styling */
@@ -520,13 +524,11 @@ a.link-title {word-break: break-word;color: #fff;font-size: 18px;text-overflow: 
 <script>
 	$(document).ready(function() {
 	    var empty = "http://assets.tumblr.com/images/x.gif?v=1";
-	    var imageTest = 'http://static.tumblr.com/d29d8de1b2388a99e347ab9c8542117e/2qikcqj/n4vnmcmt4/tumblr_static_cehw2pe6erwow0okk4cowk84w.gif';
-        var image1 = "http://static.tumblr.com/d29d8de1b2388a99e347ab9c8542117e/2qikcqj/n4vnmcmt4/tumblr_static_cehw2pe6erwow0okk4cowk84w.gif";
-        var image2 = "http://static.tumblr.com/5a397f5f6d98165fa5a5e65f9d227260/2qikcqj/J2enmcndp/tumblr_static_9gloa1cjnako0sco08s4w8cow.gif";
-        var image3 = "http://static.tumblr.com/e5194d9b5239c633540153e8c16f1a2d/2qikcqj/qK4nmcp15/tumblr_static_80sp6xl9j7okog4k4scg8ossw.gif";
-        var image4 = "http://assets.tumblr.com/images/x.gif?v=1";
-        var image5 = "http://assets.tumblr.com/images/x.gif?v=1";
-        console.log(imageTest, image1, image2, image3, image4, image5);
+        var image1 = "{image:Masthead Image}";
+        var image2 = "{image:Masthead Image 2}";
+        var image3 = "{image:Masthead Image 3}";
+        var image4 = "{image:Masthead Image 4}";
+        var image5 = "{image:Masthead Image 5}";
         var mastheadImage = [image1, image2, image3, image4];
         mastheadImage = jQuery.grep(mastheadImage, function( a ) {
           return a !== empty;
