@@ -14,6 +14,7 @@ Glissade by Teekaa-two
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
 <style>
 body {font-family:'Open Sans', Arial, Helvetica, sans-serif; margin:0; padding:0; background: #ADADAD; font-size:16px; color:#525151; line-height:1.5em;}
+a {text-decoration:none;}
 .theme-holder{box-shadow:1px 0px 8px rgba(2, 2, 2, 0.67); margin: 0 auto; width:1024px; display:table; background:#fff;}
 
 /* Header */
@@ -27,8 +28,8 @@ header {height:100%;margin:0 auto; background: transparent 50% 50%; background-i
 /* Main */
 
 /* Posts */
-#post-container {width:757px; display:table-cell; margin:0 auto;}
-#post-container article {width:500px; margin:0 auto; padding:70px 0; border-bottom:1px solid #f3f3f3;}
+#post-container {width:757px; display:table-cell; margin:0 auto; padding:0 0 45px 0;}
+#post-container article {width:500px; margin:0 auto; padding:70px 0; border-bottom:2px solid #F3F3F3;}
 #post-container a {color:#8a8989;}
 p a {color: #8a8989; font-weight: bold; text-decoration: none;}
 p > a { font-size: 12px; color: #bababa;}
@@ -37,15 +38,18 @@ p > a { font-size: 12px; color: #bababa;}
 }
 .title a { text-decoration:none;}
 #post-container blockquote {
-  border-left: 2px solid;
-  padding: 0 0 0 9px;
+  border-left: 1px solid #C4C4C4;
+  padding: 0 0 0 13px;
   margin: 0;
 }
 #post-container blockquote p {
   font-size: 16px;
-  margin:0;
+  margin:0 0 0 5px;
 }
-
+#post-container blockquote > blockquote {
+  margin: 0 0 8px 6px;
+  padding: 0 0 8px 15px;
+}
 #post-container .metadata a {color:#bababa; font-size:12px; text-decoration:none;}
 .metadata {display:inline-block; padding:18px 0 0 0;}
 ul {
@@ -58,15 +62,125 @@ li {
   padding: 0 4px;
 }
 
+/* Links */
+.link-media {padding:10px;border: 1px solid #E1DBDB; transition:2s;}
+.link-media:hover {background:#e1dbdb;}
+#post-container .link-media:hover a {color:#fff;}
+.link-container{height: 100%;overflow: hidden;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;}
+.link-text-outer{display: table;width: 100%;min-height: 100%;height: 108px;}
+.link-text{display: table-cell;width: 100%;vertical-align: middle;text-align: center;}
+a.link-title {word-break: break-word;color: #fff;font-size: 18px;text-overflow: ellipsis; transition:2s;}
+.storytitle {
+  margin: 10px 0;
+  line-height: 1.1em;
+}
+
+.row.clearit:last-child {
+  margin-bottom: 0 !important;
+}
+
+
 /* Aside - Sidebar */
-aside {width:267px; background:#FCFCFC; border-left:1px solid #f5f4f4; display:table-cell; vertical-align:top;}
+aside {width:267px; background:#FCFCFC; border-left:1px solid #F3F3F3; display:table-cell; vertical-align:top;}
 .sidebar {padding:60px 40px;}
+.sidebar-title {
+  font-size: 1.5em;
+}
+.sidebar-description {
+  font-size: .9em;
+  line-height: 1.5em;
+}
+/* Menu */
+.cd-primary-nav {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.96);
+  z-index: 2;
+  text-align: center;
+  padding: 50px 0;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  -webkit-transform: translateY(-100%);
+  -moz-transform: translateY(-100%);
+  -ms-transform: translateY(-100%);
+  -o-transform: translateY(-100%);
+  transform: translateY(-100%);
+  -webkit-transition-property: -webkit-transform;
+  -moz-transition-property: -moz-transform;
+  transition-property: transform;
+  -webkit-transition-duration: 0.4s;
+  -moz-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+}
+.cd-primary-nav-trigger .cd-menu-icon {
+  display: inline-block;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  bottom: auto;
+  right: auto;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -o-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  width: 18px;
+  height: 2px;
+  background-color: white;
+  -webkit-transition: background-color 0.3s;
+  -moz-transition: background-color 0.3s;
+  transition: background-color 0.3s;
+}
+.cd-primary-nav li {
+  font-size: 36px;
+  display: inline-block;
+  /*margin: 24px 0;*/
+  width: 100%;
+  padding: 24px 0;
+  border-bottom: 1px solid #f3f3f3;
+}
+.cd-primary-nav a {
+  color: #757575;
+}
+ .cd-primary-nav-trigger .cd-menu-icon.is-clicked {
+  background-color: rgba(255, 255, 255, 0);
+}
+.cd-primary-nav.is-visible {
+  transform: translateY(0);
+}
+.cd-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: transparent;
+  height: 80px;
+  width: 100%;
+  transition: background-color 0.3s;
+}
+ 
+.cd-header.is-fixed {
+  /* when the user scrolls down, we hide the header right above the viewport */
+  position: fixed;
+  top: -80px;
+  background-color: rgba(2, 23, 37, 0.96);
+  transition: transform 0.3s;
+}
+ 
+.cd-header.is-visible {
+  /* if the user changes the scrolling direction, we show the header */
+  transform: translate3d(0, 100%, 0);
+}
 </style>
 </head>
 
 <body>
 <section class="theme-holder">
-<header id="main-header" data-0="background-position-y:0px;" data-600="background-position-y:-250px;">
+<header id="main-header" data-0="background-position-y:50%;" data-600="background-position-y:0%;">
 	<section class="header-container">
     	<div class="header-content" data-0="opacity: 1" data-180="opacity: 0">
             <h1><!--<a href="/" title="{lang:Home}">{Title}</a>-->Glissade</h1>
@@ -81,135 +195,313 @@ aside {width:267px; background:#FCFCFC; border-left:1px solid #f5f4f4; display:t
 <main>
 	<section id="post-container">
     	<article class="perma-article">
-    	<!-- Post Header -->
-        <!--<div class="post-top">
-             
-                Wed February | 2 months ago
-            
-             
-            <div class="reblog-parent">
-                <svg class="reposted-logo" width="12px" height="12px" viewBox="0 0 21 21" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="rgba(0,0,0,.55)"><path d="M5.01092527,5.99908429 L16.0088498,5.99908429 L16.136,9.508 L20.836,4.752 L16.136,0.083 L16.1360004,3.01110845 L2.09985349,3.01110845 C1.50585349,3.01110845 0.979248041,3.44726568 0.979248041,4.45007306 L0.979248041,10.9999998 L3.98376463,8.30993634 L3.98376463,6.89801007 C3.98376463,6.20867902 4.71892527,5.99908429 5.01092527,5.99908429 Z"></path><path d="M17.1420002,13.2800293 C17.1420002,13.5720293 17.022957,14.0490723 16.730957,14.0490723 L4.92919922,14.0490723 L4.92919922,11 L0.5,15.806 L4.92919922,20.5103758 L5.00469971,16.9990234 L18.9700928,16.9990234 C19.5640928,16.9990234 19.9453125,16.4010001 19.9453125,15.8060001 L19.9453125,9.5324707 L17.142,12.203"></path></svg> <a href="http://aer-dna.tumblr.com/post/110096926101/shoujo-addict-f-e-m-a-l-e-e-r-e-n-by-sine-eang">aer-dna</a>
-            </div>
-            
-            
-        </div>-->
-        <!-- /Header -->
-        
-        
-
-        
-        <div class="photo post">
-            <img src="http://40.media.tumblr.com/bc444bbd5e03d9eb788bb330ebd5828d/tumblr_n215abHtx31suwgsgo1_500.png" alt="shoujo-addict:F e m a l e &nbsp;E r e n&nbsp;by&nbsp;sine-eang">
-            
-            <div class="post-container">
-                <p><a href="http://shoujo-addict.tumblr.com/post/78770014338/f-e-m-a-l-e-e-r-e-n-by-sine-eang" class="tumblr_blog">shoujo-addict</a>:</p><blockquote><p><b><a href="http://sine-eang.deviantart.com/art/Erengirl-396219015">F e m a l e &nbsp;E r e n</a></b>&nbsp;<small>by&nbsp;<b><a href="http://sine-eang.deviantart.com/">sine-eang</a></b></small></p></blockquote>
-            </div>
-            
-        </div>
-        
-
-        
-
-        
-
-        
-
-        
-
-        
-
-        
-
+            <!-- Post Header -->
+            <!--<div class="post-top">
+                 
+                    Wed February | 2 months ago
                 
-        
-        
-        <footer class="metadata">
-            
-            <ul class="tags">
-                <li><a href="http://tkaa-themes.tumblr.com/tagged/attack-on-titan">#attack on titan</a> </li><li><a href="http://tkaa-themes.tumblr.com/tagged/fem%21eren">#fem!eren</a> </li>
-            </ul>
-            
-                <div class="hover-meta">
-                <ul class="metadata-content">
-                    <li><a class="notecount" href="http://tkaa-themes.tumblr.com/post/110126274845/shoujo-addict-f-e-m-a-l-e-e-r-e-n-by-sine-eang#notes">6,766 notes</a></li>
-                    
-                     <li>
-                        <a href="http://shoujo-addict.tumblr.com/post/78770014338/f-e-m-a-l-e-e-r-e-n-by-sine-eang">Source:shoujo-addict
-                    </a></li>
-                     
-                </ul>
-                <ul class="like_and_reblog_buttons">
-                  <li><a href="https://www.tumblr.com/reblog/110126274845/HxoJkArQ" class="reblog_button" style="display: block;width:20px;height:20px;"><svg width="100%" height="100%" viewBox="0 0 21 21" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#ccc"><path d="M5.01092527,5.99908429 L16.0088498,5.99908429 L16.136,9.508 L20.836,4.752 L16.136,0.083 L16.1360004,3.01110845 L2.09985349,3.01110845 C1.50585349,3.01110845 0.979248041,3.44726568 0.979248041,4.45007306 L0.979248041,10.9999998 L3.98376463,8.30993634 L3.98376463,6.89801007 C3.98376463,6.20867902 4.71892527,5.99908429 5.01092527,5.99908429 Z"></path><path d="M17.1420002,13.2800293 C17.1420002,13.5720293 17.022957,14.0490723 16.730957,14.0490723 L4.92919922,14.0490723 L4.92919922,11 L0.5,15.806 L4.92919922,20.5103758 L5.00469971,16.9990234 L18.9700928,16.9990234 C19.5640928,16.9990234 19.9453125,16.4010001 19.9453125,15.8060001 L19.9453125,9.5324707 L17.142,12.203"></path></svg></a></li>
-                  <li><div class="like_button liked" data-post-id="110126274845" id="like_button_110126274845"><iframe id="like_iframe_110126274845" src="http://assets.tumblr.com/assets/html/like_iframe.html?_v=1af0c0fbf0ad9b4dc38445698d099106#name=tkaa-themes&amp;post_id=110126274845&amp;rk=HxoJkArQ" scrolling="no" width="20" height="20" frameborder="0" class="like_toggle" allowtransparency="true"></iframe></div></li>
-                </ul>
+                 
+                <div class="reblog-parent">
+                    <svg class="reposted-logo" width="12px" height="12px" viewBox="0 0 21 21" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="rgba(0,0,0,.55)"><path d="M5.01092527,5.99908429 L16.0088498,5.99908429 L16.136,9.508 L20.836,4.752 L16.136,0.083 L16.1360004,3.01110845 L2.09985349,3.01110845 C1.50585349,3.01110845 0.979248041,3.44726568 0.979248041,4.45007306 L0.979248041,10.9999998 L3.98376463,8.30993634 L3.98376463,6.89801007 C3.98376463,6.20867902 4.71892527,5.99908429 5.01092527,5.99908429 Z"></path><path d="M17.1420002,13.2800293 C17.1420002,13.5720293 17.022957,14.0490723 16.730957,14.0490723 L4.92919922,14.0490723 L4.92919922,11 L0.5,15.806 L4.92919922,20.5103758 L5.00469971,16.9990234 L18.9700928,16.9990234 C19.5640928,16.9990234 19.9453125,16.4010001 19.9453125,15.8060001 L19.9453125,9.5324707 L17.142,12.203"></path></svg> <a href="http://aer-dna.tumblr.com/post/110096926101/shoujo-addict-f-e-m-a-l-e-e-r-e-n-by-sine-eang">aer-dna</a>
                 </div>
                 
-        </footer>
-         
-	</article>
-    <article class="perma-article">
-    	<!-- Post Header -->
-        <!--<div class="post-top">
+                
+            </div>-->
+            <!-- /Header -->
+            
+            
+    
+            
+            <div class="photo post">
+                <img src="http://40.media.tumblr.com/bc444bbd5e03d9eb788bb330ebd5828d/tumblr_n215abHtx31suwgsgo1_500.png" alt="shoujo-addict:F e m a l e &nbsp;E r e n&nbsp;by&nbsp;sine-eang">
+                
+                <div class="post-container">
+                    <p><a href="http://shoujo-addict.tumblr.com/post/78770014338/f-e-m-a-l-e-e-r-e-n-by-sine-eang" class="tumblr_blog">shoujo-addict</a>:</p><blockquote><p><b><a href="http://sine-eang.deviantart.com/art/Erengirl-396219015">F e m a l e &nbsp;E r e n</a></b>&nbsp;<small>by&nbsp;<b><a href="http://sine-eang.deviantart.com/">sine-eang</a></b></small></p></blockquote>
+                </div>
+                
+            </div>
+            
+    
+            
+    
+            
+    
+            
+    
+            
+    
+            
+    
+            
+    
+                    
+            
+            
+            <footer class="metadata">
+                
+                <ul class="tags">
+                    <li><a href="http://tkaa-themes.tumblr.com/tagged/attack-on-titan">#attack on titan</a> </li><li><a href="http://tkaa-themes.tumblr.com/tagged/fem%21eren">#fem!eren</a> </li>
+                </ul>
+                
+                    <div class="hover-meta">
+                    <ul class="metadata-content">
+                        <li><a class="notecount" href="http://tkaa-themes.tumblr.com/post/110126274845/shoujo-addict-f-e-m-a-l-e-e-r-e-n-by-sine-eang#notes">6,766 notes</a></li>
+                        
+                         <li>
+                            <a href="http://shoujo-addict.tumblr.com/post/78770014338/f-e-m-a-l-e-e-r-e-n-by-sine-eang">Source:shoujo-addict
+                        </a></li>
+                         
+                    </ul>
+                    <ul class="like_and_reblog_buttons">
+                      <li><a href="https://www.tumblr.com/reblog/110126274845/HxoJkArQ" class="reblog_button" style="display: block;width:20px;height:20px;"><svg width="100%" height="100%" viewBox="0 0 21 21" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#ccc"><path d="M5.01092527,5.99908429 L16.0088498,5.99908429 L16.136,9.508 L20.836,4.752 L16.136,0.083 L16.1360004,3.01110845 L2.09985349,3.01110845 C1.50585349,3.01110845 0.979248041,3.44726568 0.979248041,4.45007306 L0.979248041,10.9999998 L3.98376463,8.30993634 L3.98376463,6.89801007 C3.98376463,6.20867902 4.71892527,5.99908429 5.01092527,5.99908429 Z"></path><path d="M17.1420002,13.2800293 C17.1420002,13.5720293 17.022957,14.0490723 16.730957,14.0490723 L4.92919922,14.0490723 L4.92919922,11 L0.5,15.806 L4.92919922,20.5103758 L5.00469971,16.9990234 L18.9700928,16.9990234 C19.5640928,16.9990234 19.9453125,16.4010001 19.9453125,15.8060001 L19.9453125,9.5324707 L17.142,12.203"></path></svg></a></li>
+                      <li><div class="like_button liked" data-post-id="110126274845" id="like_button_110126274845"><iframe id="like_iframe_110126274845" src="http://assets.tumblr.com/assets/html/like_iframe.html?_v=1af0c0fbf0ad9b4dc38445698d099106#name=tkaa-themes&amp;post_id=110126274845&amp;rk=HxoJkArQ" scrolling="no" width="20" height="20" frameborder="0" class="like_toggle" allowtransparency="true"></iframe></div></li>
+                    </ul>
+                    </div>
+                    
+            </footer>
              
-                Tue February | 2 months ago
+        </article>
+        <article class="perma-article">
+            <!-- Post Header -->
+            <!--<div class="post-top">
+                 
+                    Tue February | 2 months ago
+                
+                
+                
+            </div>-->
+            <!-- /Header -->
             
             
-            
-        </div>-->
-        <!-- /Header -->
-        
-        
-        <div class="text post">
-            <div class="post-container">
-            <h1 class="title"><a href="http://tkaa-themes.tumblr.com/post/110660787190/4th-theme">Working on New Theme</a></h1>
-            <p>I’m working on my third theme right now, I’m calling it Sigil for no good reason I just thought it sounded cool. My first two themes, Negitori and Limelight are working pretty well but need some gentle tweaking, more Limelight. I’m about to submit Negitori soon and see how I like how Sigil is coming.</p>
+            <div class="text post">
+                <div class="post-container">
+                <h1 class="title"><a href="http://tkaa-themes.tumblr.com/post/110660787190/4th-theme">Working on New Theme</a></h1>
+                <p>I’m working on my third theme right now, I’m calling it Sigil for no good reason I just thought it sounded cool. My first two themes, Negitori and Limelight are working pretty well but need some gentle tweaking, more Limelight. I’m about to submit Negitori soon and see how I like how Sigil is coming.</p>
+                 </div>
              </div>
-         </div>
-        
-
-        
-
-        
-
-        
-
-        
-
-        
-
-        
-
-        
-
-                
-        
-        
-        <footer class="metadata">
             
-            <ul class="tags">
-                <li><a href="http://tkaa-themes.tumblr.com/tagged/tumblr-theme">#tumblr theme</a> </li><li><a href="http://tkaa-themes.tumblr.com/tagged/custom-theme">#custom theme</a> </li>
-            </ul>
+    
             
-                <div class="hover-meta">
-                <ul class="metadata-content">
+    
+            
+    
+            
+    
+            
+    
+            
+    
+            
+    
+            
+    
                     
-                     
+            
+            
+            <footer class="metadata">
+                
+                <ul class="tags">
+                    <li><a href="http://tkaa-themes.tumblr.com/tagged/tumblr-theme">#tumblr theme</a> </li><li><a href="http://tkaa-themes.tumblr.com/tagged/custom-theme">#custom theme</a> </li>
                 </ul>
-                <ul class="like_and_reblog_buttons">
-                  <li><a href="https://www.tumblr.com/reblog/110660787190/ipJLdfEr" class="reblog_button" style="display: block;width:20px;height:20px;"><svg width="100%" height="100%" viewBox="0 0 21 21" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#ccc"><path d="M5.01092527,5.99908429 L16.0088498,5.99908429 L16.136,9.508 L20.836,4.752 L16.136,0.083 L16.1360004,3.01110845 L2.09985349,3.01110845 C1.50585349,3.01110845 0.979248041,3.44726568 0.979248041,4.45007306 L0.979248041,10.9999998 L3.98376463,8.30993634 L3.98376463,6.89801007 C3.98376463,6.20867902 4.71892527,5.99908429 5.01092527,5.99908429 Z"></path><path d="M17.1420002,13.2800293 C17.1420002,13.5720293 17.022957,14.0490723 16.730957,14.0490723 L4.92919922,14.0490723 L4.92919922,11 L0.5,15.806 L4.92919922,20.5103758 L5.00469971,16.9990234 L18.9700928,16.9990234 C19.5640928,16.9990234 19.9453125,16.4010001 19.9453125,15.8060001 L19.9453125,9.5324707 L17.142,12.203"></path></svg></a></li>
-                  <li><div class="like_button" data-post-id="110660787190" id="like_button_110660787190"><iframe id="like_iframe_110660787190" src="http://assets.tumblr.com/assets/html/like_iframe.html?_v=1af0c0fbf0ad9b4dc38445698d099106#name=tkaa-themes&amp;post_id=110660787190&amp;rk=ipJLdfEr" scrolling="no" width="20" height="20" frameborder="0" class="like_toggle" allowtransparency="true"></iframe></div></li>
-                </ul>
+                
+                    <div class="hover-meta">
+                    <ul class="metadata-content">
+                        
+                         
+                    </ul>
+                    <ul class="like_and_reblog_buttons">
+                      <li><a href="https://www.tumblr.com/reblog/110660787190/ipJLdfEr" class="reblog_button" style="display: block;width:20px;height:20px;"><svg width="100%" height="100%" viewBox="0 0 21 21" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#ccc"><path d="M5.01092527,5.99908429 L16.0088498,5.99908429 L16.136,9.508 L20.836,4.752 L16.136,0.083 L16.1360004,3.01110845 L2.09985349,3.01110845 C1.50585349,3.01110845 0.979248041,3.44726568 0.979248041,4.45007306 L0.979248041,10.9999998 L3.98376463,8.30993634 L3.98376463,6.89801007 C3.98376463,6.20867902 4.71892527,5.99908429 5.01092527,5.99908429 Z"></path><path d="M17.1420002,13.2800293 C17.1420002,13.5720293 17.022957,14.0490723 16.730957,14.0490723 L4.92919922,14.0490723 L4.92919922,11 L0.5,15.806 L4.92919922,20.5103758 L5.00469971,16.9990234 L18.9700928,16.9990234 C19.5640928,16.9990234 19.9453125,16.4010001 19.9453125,15.8060001 L19.9453125,9.5324707 L17.142,12.203"></path></svg></a></li>
+                      <li><div class="like_button" data-post-id="110660787190" id="like_button_110660787190"><iframe id="like_iframe_110660787190" src="http://assets.tumblr.com/assets/html/like_iframe.html?_v=1af0c0fbf0ad9b4dc38445698d099106#name=tkaa-themes&amp;post_id=110660787190&amp;rk=ipJLdfEr" scrolling="no" width="20" height="20" frameborder="0" class="like_toggle" allowtransparency="true"></iframe></div></li>
+                    </ul>
+                    </div>
+                    
+            </footer>
+             
+        </article>
+        <article class="perma-article">
+            <!-- Post Header -->
+            <!--<div class="post-top">
+                 
+                    Sun February | 1 month ago
+                
+                 
+                <div class="reblog-parent">
+                    <svg class="reposted-logo" width="12px" height="12px" viewBox="0 0 21 21" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="rgba(0,0,0,.55)"><path d="M5.01092527,5.99908429 L16.0088498,5.99908429 L16.136,9.508 L20.836,4.752 L16.136,0.083 L16.1360004,3.01110845 L2.09985349,3.01110845 C1.50585349,3.01110845 0.979248041,3.44726568 0.979248041,4.45007306 L0.979248041,10.9999998 L3.98376463,8.30993634 L3.98376463,6.89801007 C3.98376463,6.20867902 4.71892527,5.99908429 5.01092527,5.99908429 Z"></path><path d="M17.1420002,13.2800293 C17.1420002,13.5720293 17.022957,14.0490723 16.730957,14.0490723 L4.92919922,14.0490723 L4.92919922,11 L0.5,15.806 L4.92919922,20.5103758 L5.00469971,16.9990234 L18.9700928,16.9990234 C19.5640928,16.9990234 19.9453125,16.4010001 19.9453125,15.8060001 L19.9453125,9.5324707 L17.142,12.203"></path></svg> <a href="http://urghpadalecki.tumblr.com/post/111651144038/sweaterkittensahoy-chronicarus-lesbolution">urghpadalecki</a>
                 </div>
                 
-        </footer>
-         
-	</article>
+                
+            </div>-->
+            <!-- /Header -->
+            
+            
+            <div class="text post">
+                <div class="post-container">
+                
+                <p><a href="http://sweaterkittensahoy.tumblr.com/post/94593155744/chronicarus-lesbolution-soloontherocks" class="tumblr_blog">sweaterkittensahoy</a>:</p><blockquote><p><a href="http://chronicarus.tumblr.com/post/94577375600/lesbolution-soloontherocks" class="tumblr_blog">chronicarus</a>:</p><blockquote><p><a href="http://lesbolution.com/post/93398102856/soloontherocks-pandorantimelord-one-common" class="tumblr_blog">lesbolution</a>:</p><blockquote><p><a href="http://soloontherocks.tumblr.com/post/93388099136/pandorantimelord-one-common-misconception" class="tumblr_blog">soloontherocks</a>:</p><blockquote><p><a href="http://pandorantimelord.tumblr.com/post/93328731864/one-common-misconception-people-have-about" class="tumblr_blog">pandorantimelord</a>:</p><blockquote><p>One common misconception people have about bisexual people is that the abbreviation “bi” is short for “bisexual”, when really it stands for “Black Island”, the place where all bisexual people are born and raised by pirates. All bisexual people are pirates. Run</p></blockquote><p>did you mean</p><img src="http://38.media.tumblr.com/dbf52828202aaa1f676c7bb793b44a04/tumblr_inline_n9kgg2LVcn1rcxj8w.png" alt="image"></blockquote><p>birates</p></blockquote>
+    <p>it’s like all you gotta do is flip the p upside down</p>
+    </blockquote>
+    <p>Well, it just shows how easy it is to go both ways.</p>
+    </blockquote>
+                 </div>
+             </div>
+            
+    
+            
+    
+            
+    
+            
+    
+            
+    
+            
+    
+            
+    
+            
+    
+                    
+            
+            
+            <footer class="metadata">
+                
+                    <div class="hover-meta">
+                    <ul class="metadata-content">
+                        <li><a class="notecount" href="http://tkaa-themes.tumblr.com/post/111761607085/sweaterkittensahoy-chronicarus-lesbolution#notes">125,136 notes</a></li>
+                        
+                         <li>
+                            <a href="http://actualclaptrap.tumblr.com/post/93328731864/one-common-misconception-people-have-about">Source:actualclaptrap
+                        </a></li>
+                         
+                    </ul>
+                    <ul class="like_and_reblog_buttons">
+                      <li><a href="https://www.tumblr.com/reblog/111761607085/gqn6vOM4" class="reblog_button" style="display: block;width:20px;height:20px;"><svg width="100%" height="100%" viewBox="0 0 21 21" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#ccc"><path d="M5.01092527,5.99908429 L16.0088498,5.99908429 L16.136,9.508 L20.836,4.752 L16.136,0.083 L16.1360004,3.01110845 L2.09985349,3.01110845 C1.50585349,3.01110845 0.979248041,3.44726568 0.979248041,4.45007306 L0.979248041,10.9999998 L3.98376463,8.30993634 L3.98376463,6.89801007 C3.98376463,6.20867902 4.71892527,5.99908429 5.01092527,5.99908429 Z"></path><path d="M17.1420002,13.2800293 C17.1420002,13.5720293 17.022957,14.0490723 16.730957,14.0490723 L4.92919922,14.0490723 L4.92919922,11 L0.5,15.806 L4.92919922,20.5103758 L5.00469971,16.9990234 L18.9700928,16.9990234 C19.5640928,16.9990234 19.9453125,16.4010001 19.9453125,15.8060001 L19.9453125,9.5324707 L17.142,12.203"></path></svg></a></li>
+                      <li><div class="like_button liked" data-post-id="111761607085" id="like_button_111761607085"><iframe id="like_iframe_111761607085" src="http://assets.tumblr.com/assets/html/like_iframe.html?_v=1af0c0fbf0ad9b4dc38445698d099106#name=tkaa-themes&amp;post_id=111761607085&amp;rk=gqn6vOM4" scrolling="no" width="20" height="20" frameborder="0" class="like_toggle" allowtransparency="true"></iframe></div></li>
+                    </ul>
+                    </div>
+                    
+            </footer>
+             
+        </article>
+        <article class="perma-article">
+            <!-- Post Header -->
+            <!--<div class="post-top">
+                 
+                    Tue February | 2 months ago
+                
+                 
+                <div class="reblog-parent">
+                    <svg class="reposted-logo" width="12px" height="12px" viewBox="0 0 21 21" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="rgba(0,0,0,.55)"><path d="M5.01092527,5.99908429 L16.0088498,5.99908429 L16.136,9.508 L20.836,4.752 L16.136,0.083 L16.1360004,3.01110845 L2.09985349,3.01110845 C1.50585349,3.01110845 0.979248041,3.44726568 0.979248041,4.45007306 L0.979248041,10.9999998 L3.98376463,8.30993634 L3.98376463,6.89801007 C3.98376463,6.20867902 4.71892527,5.99908429 5.01092527,5.99908429 Z"></path><path d="M17.1420002,13.2800293 C17.1420002,13.5720293 17.022957,14.0490723 16.730957,14.0490723 L4.92919922,14.0490723 L4.92919922,11 L0.5,15.806 L4.92919922,20.5103758 L5.00469971,16.9990234 L18.9700928,16.9990234 C19.5640928,16.9990234 19.9453125,16.4010001 19.9453125,15.8060001 L19.9453125,9.5324707 L17.142,12.203"></path></svg> <a href="http://youruncleirohlovesyou.tumblr.com/post/109684995873/good-afternoon">youruncleirohlovesyou</a>
+                </div>
+                
+                
+            </div>-->
+            <!-- /Header -->
+            
+            
+    
+            
+    
+            
+    
+            
+    
+            
+            <div class="link post">
+                <div class="link-media">
+                    <div class="link-container">
+                        <div class="link-text-outer">
+                            <div class="link-text">
+                                <a class="link-title" href="http://youruncleirohlovesyou.tumblr.com/post/109684995873/good-afternoon">Good afternoon!</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="post-container">
+                    <p><a href="http://youruncleirohlovesyou.tumblr.com/post/109684995873/good-afternoon" class="tumblr_blog">youruncleirohlovesyou</a>:</p><blockquote>
+    <p>I hope you’re all waking up to a bright and lovely day. Don’t forget to eat a healthy breakfast, if you have access to one. If not, then the best you can manage will be quite good enough for the time being. Don’t forget to stay hydrated. </p>
+    <p>Is there anyone to whom you should say “thank you” today?…</p>
+    </blockquote>
+                </div>
+                
+             </div>
+            
+    
+            
+    
+            
+    
+            
+    
+                    
+            
+            
+            <footer class="metadata">
+                
+                <ul class="tags">
+                    <li><a href="http://tkaa-themes.tumblr.com/tagged/uncle-iroh">#uncle iroh</a> </li>
+                </ul>
+                
+                    <div class="hover-meta">
+                    <ul class="metadata-content">
+                        <li><a class="notecount" href="http://tkaa-themes.tumblr.com/post/109972593095/good-afternoon#notes">11 notes</a></li>
+                         
+                    </ul>
+                    <ul class="like_and_reblog_buttons">
+                      <li><a href="https://www.tumblr.com/reblog/109972593095/BKbxP2ey" class="reblog_button" style="display: block;width:20px;height:20px;"><svg width="100%" height="100%" viewBox="0 0 21 21" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#ccc"><path d="M5.01092527,5.99908429 L16.0088498,5.99908429 L16.136,9.508 L20.836,4.752 L16.136,0.083 L16.1360004,3.01110845 L2.09985349,3.01110845 C1.50585349,3.01110845 0.979248041,3.44726568 0.979248041,4.45007306 L0.979248041,10.9999998 L3.98376463,8.30993634 L3.98376463,6.89801007 C3.98376463,6.20867902 4.71892527,5.99908429 5.01092527,5.99908429 Z"></path><path d="M17.1420002,13.2800293 C17.1420002,13.5720293 17.022957,14.0490723 16.730957,14.0490723 L4.92919922,14.0490723 L4.92919922,11 L0.5,15.806 L4.92919922,20.5103758 L5.00469971,16.9990234 L18.9700928,16.9990234 C19.5640928,16.9990234 19.9453125,16.4010001 19.9453125,15.8060001 L19.9453125,9.5324707 L17.142,12.203"></path></svg></a></li>
+                      <li><div class="like_button liked" data-post-id="109972593095" id="like_button_109972593095"><iframe id="like_iframe_109972593095" src="http://assets.tumblr.com/assets/html/like_iframe.html?_v=1af0c0fbf0ad9b4dc38445698d099106#name=tkaa-themes&amp;post_id=109972593095&amp;rk=BKbxP2ey" scrolling="no" width="20" height="20" frameborder="0" class="like_toggle" allowtransparency="true"></iframe></div></li>
+                    </ul>
+                    </div>
+                    
+            </footer>
+             
+        </article>
     </section>
+    
+    <!-- Sidebar -->
     <aside>
     	<div class="sidebar">
-        	A minimalist theme, parallax header, full-size menu.
+        	<div data-280="opacity: 0; transform: translate(0,20%);" data-410="opacity: 1; transform: translate(0,0%);;">
+                <h1 class="sidebar-title"><!--<a href="/" title="{lang:Home}">{Title}</a>-->Glissade</h1>
+                <p class="sidebar-description">A minimalist theme, parallax header, full-size menu.</p>
+                <p class="sidebar-description"><em>Glissading is the act of descending a steep snow- or scree-covered slope via a controlled slide on one's feet or buttocks. It is an alternative to other descent methods such as plunge stepping, and may be used to expedite a descent, or simply for the thrill.</em></p>
+                <!--{block:Description}
+                    <p>{Description}</p>
+                {block:Description}-->
+            </div>
+            <div class="menu">
+            	<a class="cd-primary-nav-trigger" href="#0">
+                    <span class="cd-menu-text">Menu</span><span class="cd-menu-icon"></span>
+                </a> <!-- cd-primary-nav-trigger -->
+            </div>
         </div>
     </aside>
+    <nav>
+	<ul class="cd-primary-nav">
+    	<!--<ul class="sidebar-navigation">-->
+                <li><a href="/">Home</a></li>
+                <li><a href="/archive">Archive</a></li>
+                
+                    
+                        <li> <a href="/negitori-theme">Negitori</a></li>
+                    
+                        <li> <a href="/limelight-theme">Limelight</a></li>
+                    
+                        <li> <a href="/sigil-theme">Sigil</a></li>
+                    
+                        <li> <a href="/amaranthine">Amaranthine</a></li>
+                    
+                        <li> <a href="/vanguard-theme">Vanguard</a></li>
+                    
+                
+                
+                
+                    <li> <a href="/ask">Ask me anything</a></li>
+                
+            <!--</ul>-->
+	</ul>
+</nav>
 </main>
 </section>
 </body>
@@ -217,5 +509,54 @@ aside {width:267px; background:#FCFCFC; border-left:1px solid #f5f4f4; display:t
 <script type="text/javascript" src="http://static.tumblr.com/2qikcqj/bXdnn57er/skrollr.js"></script>
 <script type="text/javascript">
 	skrollr.init();
+</script>
+<script type="text/javascript">
+	jQuery(document).ready(function($){
+	//if you change this breakpoint in the style.css file (or _layout.scss if you use SASS), don't forget to update this value as well
+	var MQL = 1170;
+
+	//primary navigation slide-in effect
+	if($(window).width() > MQL) {
+		var headerHeight = $('.cd-header').height();
+		$(window).on('scroll',
+		{
+	        previousTop: 0
+	    }, 
+	    function () {
+		    var currentTop = $(window).scrollTop();
+		    //check if user is scrolling up
+		    if (currentTop < this.previousTop ) {
+		    	//if scrolling up...
+		    	if (currentTop > 0 && $('.cd-header').hasClass('is-fixed')) {
+		    		$('.cd-header').addClass('is-visible');
+		    	} else {
+		    		$('.cd-header').removeClass('is-visible is-fixed');
+		    	}
+		    } else {
+		    	//if scrolling down...
+		    	$('.cd-header').removeClass('is-visible');
+		    	if( currentTop > headerHeight && !$('.cd-header').hasClass('is-fixed')) $('.cd-header').addClass('is-fixed');
+		    }
+		    this.previousTop = currentTop;
+		});
+	}
+
+	//open/close primary navigation
+	$('.cd-primary-nav-trigger').on('click', function(){
+		$('.cd-menu-icon').toggleClass('is-clicked'); 
+		$('.cd-header').toggleClass('menu-is-open');
+		
+		//in firefox transitions break when parent overflow is changed, so we need to wait for the end of the trasition to give the body an overflow hidden
+		if( $('.cd-primary-nav').hasClass('is-visible') ) {
+			$('.cd-primary-nav').removeClass('is-visible').one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend',function(){
+				$('body').removeClass('overflow-hidden');
+			});
+		} else {
+			$('.cd-primary-nav').addClass('is-visible').one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend',function(){
+				$('body').addClass('overflow-hidden');
+			});	
+		}
+	});
+});
 </script>
 </html>
