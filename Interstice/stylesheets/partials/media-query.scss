@@ -1,0 +1,12 @@
+$desktop: 1024px;
+$lrg-screen: 1200px;
+@mixin desktop {
+  @media (min-width: #{$desktop}) {
+    @content;
+  }
+}
+@mixin lrg-screen {
+  @media (min-width: #{$lrg-screen}) {
+    @content;
+  }
+}
