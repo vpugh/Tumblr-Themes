@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="lt-ie10 lt-ie9"> <![endif]-->
+<!--[if IE 9]><html class="lt-ie10"> <![endif]-->
+<!--[if gt IE 9]><!--> <html> <!--<![endif]-->
+<head>
+{MobileAppHeaders}
+<meta charset="utf-8">
+<title>{Title}{block:SearchPage} ({lang:Search results for SearchQuery}){/block:SearchPage}{block:PermalinkPage}{block:PostSummary} — {PostSummary}{/block:PostSummary}{/block:PermalinkPage}</title>
+{block:Description}
+<meta name="description" content="{MetaDescription}">
+{/block:Description}
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<!--<link rel="stylesheet" href="stylesheets/style.css">-->
+<style>
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after {
+  content: '';
+  content: none; }
+
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Cardo", serif;
+  font-size: 16px;
+  color: #434343; }
+
+.overflow {
+  overflow: hidden; }
+
+header {
+  position: relative;
+  z-index: 100; }
+  header .avatar {
+    position: absolute;
+    top: 20px;
+    left: 20px; 
+    border-radius:50%;
+    overflow:hidden;
+    height:96px;
+  }
+  @media (min-width: 1024px) {
+    header .avatar {
+      position: fixed; } }
+  header h1 {
+    position: absolute;
+    font-family: "Lato", sans-serif; }
+  @media (min-width: 1024px) {
+    header h1 {
+      position: fixed;
+      top: 0;
+      left: 40px; } }
+  header h1 a {
+    color: #fff;
+    text-decoration: none; }
+
+.cd-primary-nav-trigger {
+  position: fixed;
+  right: 10%;
+  top: 45px;
+  height: 44px;
+  width: 44px;
+  z-index: 100;
+  overflow: hidden;
+  text-indent: 100%;
+  white-space: nowrap; }
+  @media (min-width: 1024px) {
+    .cd-primary-nav-trigger {
+      right: 55%; } }
+  .cd-primary-nav-trigger::before {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
+    -webkit-transition-duration: 0.3s;
+    -moz-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-delay: 0.4s;
+    -moz-transition-delay: 0.4s;
+    transition-delay: 0.4s;
+    background-color: #000;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+    height: 100%;
+    width: 100%; }
+
+.cd-icon {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  bottom: auto;
+  right: auto;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -o-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  display: inline-block;
+  width: 18px;
+  height: 3px;
+  background-color: #ffffff;
+  z-index: 10; }
+  .cd-icon::before, .cd-icon::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    content: '';
+    background-color: #ffffff;
+    -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    -o-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transition: -webkit-transform .3s;
+    -moz-transition: -moz-transform .3s;
+    transition: transform .3s; }
+  .cd-icon::before {
+    -webkit-transform: translateY(-6px) rotate(0deg);
+    -moz-transform: translateY(-6px) rotate(0deg);
+    -ms-transform: translateY(-6px) rotate(0deg);
+    -o-transform: translateY(-6px) rotate(0deg);
+    transform: translateY(-6px) rotate(0deg); }
+  .cd-icon:after {
+    -webkit-transform: translateY(6px) rotate(0deg);
+    -moz-transform: translateY(6px) rotate(0deg);
+    -ms-transform: translateY(6px) rotate(0deg);
+    -o-transform: translateY(6px) rotate(0deg);
+    transform: translateY(6px) rotate(0deg); }
+  .cd-icon.is-clicked {
+    background-color: rgba(0, 0, 0, 0); }
+  .cd-icon.is-clicked::before {
+    top: 0;
+    -webkit-transform: rotate(135deg);
+    -moz-transform: rotate(135deg);
+    -ms-transform: rotate(135deg);
+    -o-transform: rotate(135deg);
+    transform: rotate(135deg); }
+  .cd-icon.is-clicked::after {
+    top: 0;
+    -webkit-transform: rotate(-135deg);
+    -moz-transform: rotate(-135deg);
+    -ms-transform: rotate(-135deg);
+    -o-transform: rotate(-135deg);
+    transform: rotate(-135deg); }
+
+.cd-primary-nav {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  transform: translateX(-100%);
+  transition-property: transform;
+  transition-duration: 0.4s;
+  z-index: 95;
+  background-color: rgba(173, 202, 138, 0.87);
+  margin: 0;
+  color: #fff;
+  padding: 140px 0;
+  text-align: center;
+  font-family: "Lato", sans-serif; }
+  @media (min-width: 1024px) {
+    .cd-primary-nav {
+      width: 50%; } }
+  @media (min-width: 1200px) {
+    .cd-primary-nav {
+      font-size: 1rem;
+      width: 50%; } }
+  .cd-primary-nav li {
+    font-size: 1.8rem;
+    padding: 7px 0; }
+    .cd-primary-nav li a {
+      text-decoration: none;
+      color: #fff; }
+      .cd-primary-nav li a:hover {
+        color: rgba(255, 255, 255, 0.5); }
+  .cd-primary-nav.is-visible {
+    transform: translateX(0); }
+  .cd-primary-nav .description {
+    padding: 30px 50px;
+    font-size: 1.3rem;
+    line-height: 1.8rem; }
+
+.image {
+  background-image: url(https://c2.staticflickr.com/8/7381/8888501318_85c8690333_h.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  width: 100%;
+  height: 50vw;
+  position: relative; }
+  @media (min-width: 1024px) {
+    .image {
+      position: fixed;
+      width: 50%;
+      height: 100vh;
+      left: 0;
+      top: 0;
+      z-index: 90; } }
+
+.posts {
+  padding: 30px 0;
+  overflow: hidden; }
+
+article {
+  display: block; }
+  @media (min-width: 1024px) {
+    article {
+      width: 43%;
+      margin-left: 54%; } }
+
+.post {
+  padding-bottom: 40px;
+  margin-bottom: 40px;
+  border-bottom: 1px solid #ddd; }
+  .post img {
+    max-width: 100%;
+    margin: 0 auto;
+    display: block;
+    padding-bottom: 30px; }
+
+.header, .post {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto; }
+
+.header a {
+  font-family: "Lato", sans-serif;
+  padding-bottom: .5rem;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: inherit;
+  display: inline-block;
+  text-decoration: none; }
+
+.text {
+  line-height: 1.5rem;
+  color: #666; }
+
+.post-top {
+  padding-bottom: 20px;
+  color: #777;
+  font-size: .8rem; }
+  .post-top a {
+    color: inherit;
+    text-decoration: none;
+    font-weight: 600; }
+
+.reblog-parent {
+  font-style: italic;
+  display: inline-block;
+  margin-left: 15px;
+  float: right; }
+  
+  .chat li {
+      padding:5px 0;
+  }
+  .chat li p strong {
+      font-weight:700;
+  }
+  .photo img {
+      margin:0;
+  }
+  .photo .caption p:first-child {
+    font-size: 12px;
+    padding-bottom:6px;
+}
+.caption a {
+    color:inherit;
+    padding-bottom:3px;
+    display:inline-block;
+}
+.text p {
+    padding-bottom: 7px;
+}
+.text a, .text p a {
+    color:inherit;
+}
+.text h2, .text h1 {
+    font-size:18px;
+    font-weight:700;
+}
+blockquote {
+        display: block;
+    border-left: 1px dashed rgba(72,72,72,.25);
+    padding: 12px 0 12px 17px;
+}
+
+.pagination {
+  width: 43%;
+  margin-left: 52.25%;
+  padding: 0 30px;
+  text-align: center; }
+
+.page-btn {
+  background-color: #adca8a;
+  color: #000;
+  font-family: "Lato", sans-serif;
+  text-decoration: none; }
+  @media (min-width: 1024px) {
+    .page-btn {
+      width: 40%;
+      float: left;
+      padding: 20px;
+      margin-right: 10px; } }
+  .page-btn:hover {
+    background-color: rgba(173, 202, 138, 0.7); }
+
+footer {
+  overflow: hidden; }
+  footer ul {
+    margin: 0;
+    padding: 20px 0 0;
+    float: left; }
+  footer li {
+    float: left;
+    padding-right: 10px;
+    list-style: none; }
+  footer a {
+    text-decoration: none;
+    color: inherit; }
+
+.like_and_reblog_buttons {
+  float: right; }
+  .like_and_reblog_buttons li {
+    padding-right: 0;
+    padding-left: 10px; }
+
+.tags a {
+  font-family: "Lato", sans-serif;
+  background-color: #dddddd;
+  display: inline-block;
+  margin: 0 4px 10px 4px;
+  font-size: 13px;
+  padding: 5px 8px;
+  border-radius: 6px; }
+  .tags a:hover {
+    background-color: rgba(221, 221, 221, 0.5); }
+
+</style>
+
+</head>
+<body>
+<header>
+  <div class="avatar"><a href="/"><img src="{PortraitURL-96}"/></a></div>
+  <!--<h1 class="blog-name"><a href="/" title="Home">Tumblr Theme Experiments</a></h1>-->
+  <a class="cd-primary-nav-trigger" href="#0">
+		<span class="cd-menu-text">Menu</span><span class="cd-icon"></span>
+	</a> <!-- cd-primary-nav-trigger -->
+</header>
+<nav>
+	<ul class="cd-primary-nav">
+      <li class="description">{Description}</li>
+      <li><a href="/">Home</a></li>
+      <li><a href="/ask">Message</a></li>
+      <li><a href="/archive">Archive</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/random">Random</a></li>
+	</ul>
+</nav>
+<div class="image"></div>
+{block:Posts}
+<div class="posts">
+  <article>
+  	{block:Title}<div class="header"><a href="{Permalink}">{Title}</a></div>{/block:Title}
+    <div class="post">
+      <div class="post-top">
+        <!--<a class="post-page" href="#">5 months ago</a>-->
+        <a class="post-page" href="{Permalink}">{TimeAgo}</a>
+        <!--<div class="reblog-parent">
+            <svg class="reposted-logo" width="12px" height="12px" viewBox="0 0 21 21" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="rgba(0,0,0,.55)"><path d="M5.01092527,5.99908429 L16.0088498,5.99908429 L16.136,9.508 L20.836,4.752 L16.136,0.083 L16.1360004,3.01110845 L2.09985349,3.01110845 C1.50585349,3.01110845 0.979248041,3.44726568 0.979248041,4.45007306 L0.979248041,10.9999998 L3.98376463,8.30993634 L3.98376463,6.89801007 C3.98376463,6.20867902 4.71892527,5.99908429 5.01092527,5.99908429 Z"></path><path d="M17.1420002,13.2800293 C17.1420002,13.5720293 17.022957,14.0490723 16.730957,14.0490723 L4.92919922,14.0490723 L4.92919922,11 L0.5,15.806 L4.92919922,20.5103758 L5.00469971,16.9990234 L18.9700928,16.9990234 C19.5640928,16.9990234 19.9453125,16.4010001 19.9453125,15.8060001 L19.9453125,9.5324707 L17.142,12.203"></path></svg> <a href="#">ironinkpen</a>
+        </div>-->
+        {block:RebloggedFrom} 
+            <div class="reblog-parent">
+                <svg class="reposted-logo" width="12px" height="12px" viewBox="0 0 21 21" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="rgba(0,0,0,.55)" ><path d="M5.01092527,5.99908429 L16.0088498,5.99908429 L16.136,9.508 L20.836,4.752 L16.136,0.083 L16.1360004,3.01110845 L2.09985349,3.01110845 C1.50585349,3.01110845 0.979248041,3.44726568 0.979248041,4.45007306 L0.979248041,10.9999998 L3.98376463,8.30993634 L3.98376463,6.89801007 C3.98376463,6.20867902 4.71892527,5.99908429 5.01092527,5.99908429 Z"></path><path d="M17.1420002,13.2800293 C17.1420002,13.5720293 17.022957,14.0490723 16.730957,14.0490723 L4.92919922,14.0490723 L4.92919922,11 L0.5,15.806 L4.92919922,20.5103758 L5.00469971,16.9990234 L18.9700928,16.9990234 C19.5640928,16.9990234 19.9453125,16.4010001 19.9453125,15.8060001 L19.9453125,9.5324707 L17.142,12.203"></path></svg> <a href="{ReblogParentURL}">{ReblogParentName}</a>
+            </div>
+            {/block:RebloggedFrom}
+      </div>
+      
+      {block:Text}
+      <!--<div class="text">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis non risus odio. Duis est tortor, pretium ut risus quis, vestibulum tincidunt turpis. Proin tortor nulla, placerat in congue in, rhoncus quis nulla. Ut non nulla id ipsum convallis tristique. Proin hendrerit tempor tellus, feugiat luctus lorem condimentum quis. Maecenas suscipit dui at elit luctus scelerisque. Integer quis nisi sit amet sem pulvinar tempus id id leo. Mauris facilisis, felis imperdiet mollis ultrices, elit elit bibendum ex, quis condimentum sem tellus quis elit. Fusce cursus nibh at semper dapibus. Vivamus faucibus blandit semper.
+      </div>-->
+      {block:Body}<div class="text">{Body}</div>{/block:Body}
+      {/block:Text}
+      
+      {block:Photo}
+      <div class="photo">
+          {LinkOpenTag}<img src="{PhotoURL-HighRes}" alt="{PhotoAlt}" />{LinkCloseTag}
+          {block:Caption}
+          <div class="caption">
+              {Caption}
+          </div>
+          {/block:Caption}
+      </div>
+      {/block:Photo}
+      
+      {block:Photoset}
+      	{Photoset}
+      {/block:Photoset}
+      
+      {block:Quote}
+        <div class="quote">
+            <span class="quote-org"><div class="quote-container">{Quote}</div></span>
+            {block:Source}<cite> {Source} </cite>{/block:Source}
+        </div>
+        {/block:Quote}
+        
+        {block:Link}
+        
+        {/block:Link}
+        
+        {block:Chat}
+        <div class="chat">
+        <ul>
+            {block:Lines}<li class="{Alt}"><p>{block:Label}<strong>{Label}</strong>{/block:Label} {Line} </p></li>{/block:Lines}
+        </ul>
+        </div>
+        {/block:Chat}
+        
+        {block:Audio}
+        <div class="audio">
+            {block:TrackName}<h1 class="title"><a href="{Permalink}">{TrackName}</a></h1>{/block:TrackName}
+            {block:AlbumArt}<img src="{AlbumArtURL}" width="500" height="500"/>{/block:AlbumArt}
+            {block:IndexPage}{AudioEmbed}{/block:IndexPage}{block:permalinkpage}{AudioEmbed-640}{/block:permalinkpage}
+            {block:Caption}{Caption}{/block:Caption}
+        </div>
+        {/block:Audio}
+
+        {block:Video}
+        <div class="video">
+            {Video-500}
+            {block:Caption}
+                {Caption}
+            {/block:Caption}
+        </div>
+        {/block:Video}
+        
+        {block:Answer}
+        <div class="answer post">
+            <div class="post-container">
+              <div class="note-item note-item-asker">
+                  <div class="text-note">
+                      <p class="asker"><strong>{Asker}</strong> asked:</p>
+                      <div class="asker-question">{Question}</div>
+                  </div>
+                  <div class="avatar">
+                      <img class="asker-avatar" src="{AskerPortraitURL-96}" alt="">
+                  </div>
+              </div>
+    		{block:Answerer}
+            <div class="note-item note-item-answerer">
+                <div class="text-note">
+                    <p class="answerer"><strong>{Answerer}</strong> answered:</p>
+                    <div class="answerer-answer">{Answer}</div>
+                </div>
+                <div class="avatar">
+                    <img class="answerer-avatar" src="{AnswererPortraitURL-96}" alt="">
+                </div>
+            </div>
+        	{/block:Answerer}
+        	<div class="replies">{Replies}</div>
+            
+            </div>
+        </div>
+        {/block:Answer}
+      
+      
+      <!--<footer class="metadata">            
+          <ul class="metadata-content">
+              <li><a class="notecount" href="#">1,231 notes</a></li>
+               <li>
+                  <a href="#">Source:allthebestofmemes
+              </a></li>
+          </ul>
+          <ul class="like_and_reblog_buttons">
+            <li class="reblog"><a href="#" class="reblog_button" style="display: block;width:20px;height:20px;"><svg width="100%" height="100%" viewBox="0 0 21 21" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#ccc"><path d="M5.01092527,5.99908429 L16.0088498,5.99908429 L16.136,9.508 L20.836,4.752 L16.136,0.083 L16.1360004,3.01110845 L2.09985349,3.01110845 C1.50585349,3.01110845 0.979248041,3.44726568 0.979248041,4.45007306 L0.979248041,10.9999998 L3.98376463,8.30993634 L3.98376463,6.89801007 C3.98376463,6.20867902 4.71892527,5.99908429 5.01092527,5.99908429 Z"></path><path d="M17.1420002,13.2800293 C17.1420002,13.5720293 17.022957,14.0490723 16.730957,14.0490723 L4.92919922,14.0490723 L4.92919922,11 L0.5,15.806 L4.92919922,20.5103758 L5.00469971,16.9990234 L18.9700928,16.9990234 C19.5640928,16.9990234 19.9453125,16.4010001 19.9453125,15.8060001 L19.9453125,9.5324707 L17.142,12.203"></path></svg></a></li>
+            <li class="like"><div class="like_button" data-post-id="130386949067" id="like_button_130386949067"><iframe id="like_iframe_130386949067" src="http://assets.tumblr.com/assets/html/like_iframe.html?_v=601261b2518f51f6bfefd24af85edb0c#name=teekaa-two&amp;post_id=130386949067&amp;rk=SaF4YUFv" scrolling="no" width="20" height="20" frameborder="0" class="like_toggle" allowtransparency="true" name="like_iframe_130386949067"></iframe></div>
+                <!--<svg width="16px" height="16px" viewBox="0 0 19 16" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#000000"><path d="M14.0425097,0.000920262799 C16.1435097,-0.0400797372 18.8835097,1.28192026 18.9635097,5.36992026 C19.0525097,9.95492026 15.1985097,13.3079203 9.48350967,16.2089203 C3.76650967,13.3079203 -0.0874903349,9.95492026 0.00150966509,5.36992026 C0.0815096651,1.28192026 2.82150967,-0.0400797372 4.92250967,0.000920262799 C7.02450967,0.0419202628 8.87050967,2.26592026 9.46950967,2.92792026 C10.0945097,2.26592026 11.9405097,0.0419202628 14.0425097,0.000920262799 Z"></path></svg> -- >
+            </li>
+          </ul>
+          <ul class="tags">
+              <li><a href="#">#felis imperdiet</a> </li><li><a href="#">#sem tellus quis</a> </li><li><a href="#">#Proin tortor nulla</a> </li>
+          </ul>                
+      </footer>-->
+      
+      <footer class="metadata">
+      <ul class="metadata-content">
+      {block:NoteCount}<li><a class="notecount" href="{Permalink}#notes">{NoteCountWithLabel}</a></li>{/block:NoteCount}
+      {block:ContentSource}
+       <li>
+          <a href="{SourceURL}">{lang:Source}:{block:NoSourceLogo}{SourceTitle}{/block:NoSourceLogo}
+      {block:SourceLogo}<img src="{BlackLogoURL}" width="{LogoWidth}"height="{LogoHeight}" alt="{SourceTitle}" />{/block:SourceLogo}</a></li>
+      {/block:ContentSource} 
+      </ul>
+      <ul class="like_and_reblog_buttons">
+        <li>{ReblogButton}</li>
+        <li>{LikeButton}</li>
+      </ul>
+      {block:HasTags}
+      <ul class="tags">
+          {block:Tags}<li><a href="{TagURL}">#{Tag}</a> </li>{/block:Tags}
+      </ul>
+      {/block:HasTags}
+      {block:PermalinkPage}
+          {block:PostNotes}
+              <div id="notes">{PostNotes}</div>
+          {/block:PostNotes} 
+      {/block:PermalinkPage}
+      </footer>
+      
+      
+    </div>
+  </article>
+  {/block:Posts}
+  <!--<div class="pagination">
+    <a href="#" class="left page-btn">Newer</a>
+    <a href="#" class="right page-btn">Older</a>
+  </div>-->
+  {block:Pagination}
+    <div class="pagination-holder">
+        <nav id="pagination">
+            <ul class="pagination">
+                {block:PreviousPage}<li class="left page-btn"><a href="{PreviousPage}">← Previous page</a></li>{/block:PreviousPage}
+                {block:NextPage}<li class="right page-btn"><a href="{NextPage}">Next page →</a></li>{/block:NextPage}
+            </ul>
+        </nav>
+    </div>
+    {/block:Pagination}
+</div>
+
+<script src="http://static.tumblr.com/2qikcqj/rJxnhj4dg/jquery-2.1.1.js"></script>
+<script type="text/javascript">
+	var toggleNav = $('.cd-primary-nav-trigger'),
+    navigation = $('.cd-primary-nav'),
+    icon = $('.cd-icon');
+toggleNav.click(function() {
+    navigation.toggleClass('is-visible');
+    toggleNav.toggleClass('is-open');
+    icon.toggleClass('is-clicked');
+    if ($(window).innerWidth() < 768) {
+      $(document.body).addClass("overflow")
+    } else {
+      
+    }
+});
+</script>
+</body>
+</html>
