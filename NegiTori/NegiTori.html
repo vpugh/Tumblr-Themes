@@ -17,15 +17,33 @@ Negitori by Teekaa-two
 <meta name="if:Gradient Background" content="1"/>
 <meta name="if:Show Masthead Image" content="1"/>
 <meta name="if:Masthead Random" content="1"/>
-<meta name="text:Gradient Entry" content=" background: rgb(255,174,39); background: -moz-linear-gradient(-45deg, rgba(255,174,39,1) 0%, rgba(222,73,109,1) 100%);
+<meta name="if:Gradient Presets" content="1"/>
+<meta name="text:Gradient Entry" content=""/>
+<meta name="select:Gradient Presets" content="background: rgb(255,174,39); background: -moz-linear-gradient(-45deg, rgba(255,174,39,1) 0%, rgba(222,73,109,1) 100%);
   background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,rgba(255,174,39,1)), color-stop(100%,rgba(222,73,109,1)));
   background: -webkit-linear-gradient(-45deg, rgba(255,174,39,1) 0%,rgba(222,73,109,1) 100%);
   background: -o-linear-gradient(-45deg, rgba(255,174,39,1) 0%,rgba(222,73,109,1) 100%);
   background: -ms-linear-gradient(-45deg, rgba(255,174,39,1) 0%,rgba(222,73,109,1) 100%);
   background: linear-gradient(135deg, rgba(255,174,39,1) 0%,rgba(222,73,109,1) 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffae27', endColorstr='#de496d',GradientType=1 ); "/>
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffae27', endColorstr='#de496d',GradientType=1 );" title="Preset 1"/>
+  <meta name="select:Gradient Presets" content="background: #ede574; background: -moz-linear-gradient(-180deg, #ede574 0%, #f9d423 40%, #fc913a 70%, #ff4e50 100%);
+  background: -webkit-linear-gradient(-180deg, #ede574 0%, #f9d423 40%, #fc913a 70%, #ff4e50 100%);
+  background: -o-linear-gradient(-180deg, #ede574 0%, #f9d423 40%, #fc913a 70%, #ff4e50 100%);
+  background: -ms-linear-gradient(-180deg, #ede574 0%, #f9d423 40%, #fc913a 70%, #ff4e50 100%);
+  background: linear-gradient(-180deg, #ede574 0%, #f9d423 40%, #fc913a 70%, #ff4e50 100%);" title="Preset 2"/>
+<meta name="select:Gradient Presets" content="background: #ede574; background: -moz-linear-gradient(-180deg, #cff09e 0%, #a8dba8 40%, #79bd9a 70%, #3b8686 100%);
+  background: -webkit-linear-gradient(-180deg, #cff09e 0%, #a8dba8 40%, #79bd9a 70%, #3b8686 100%);
+  background: -o-linear-gradient(-180deg, #cff09e 0%, #a8dba8 40%, #79bd9a 70%, #3b8686 100%);
+  background: -ms-linear-gradient(-180deg, #cff09e 0%, #a8dba8 40%, #79bd9a 70%, #3b8686 100%);
+  background: linear-gradient(-180deg, #cff09e 0%, #a8dba8 40%, #79bd9a 70%, #3b8686 100%);" title="Preset 3"/>
+<meta name="select:Gradient Presets" content="background: #ede574; background: -moz-linear-gradient(-180deg, #df405a 0%, #87314e 40%, #512645 70%, #311e3e 100%);
+  background: -webkit-linear-gradient(-180deg, #df405a 0%, #87314e 40%, #512645 70%, #311e3e 100%);
+  background: -o-linear-gradient(-180deg, #df405a 0%, #87314e 40%, #512645 70%, #311e3e 100%);
+  background: -ms-linear-gradient(-180deg, #df405a 0%, #87314e 40%, #512645 70%, #311e3e 100%);
+  background: linear-gradient(-180deg, #df405a 0%, #87314e 40%, #512645 70%, #311e3e 100%);" title="Preset 4"/>
 <meta name="image:Background Image" content=""/>
 <meta name="color:Body Color" content="#ddd"/>
+<meta name="image:Masthead Image" content=""/>
 <meta name="image:Masthead Image 2" content=""/>
 <meta name="image:Masthead Image 3" content=""/>
 <meta name="image:Masthead Image 4" content=""/>
@@ -72,7 +90,23 @@ Negitori by Teekaa-two
 			}
         });
 	}
-	$('.nav-trigger').on('click', function(){
+	{block:IfMastheadRandom}
+        var image1 = "{image:Masthead Image}";
+        var image2 = "{image:Masthead Image 2}";
+        var image3 = "{image:Masthead Image 3}";
+        var image4 = "{image:Masthead Image 4}";
+        var image5 = "{image:Masthead Image 5}";
+        console.log(image1, image2, image3, image4, image5);
+        var mastheadImage = [image1, image2, image3, image4, image5];
+        var empty = "http://assets.tumblr.com/images/x.gif?v=1";
+         mastheadImage = jQuery.grep(mastheadImage, function( a ) {
+          return a !== empty;
+        });
+console.log(mastheadImage);
+		var selectedImage = mastheadImage[Math.floor(Math.random()*mastheadImage.length)];
+			$("#masthead img").attr("src",selectedImage);
+		{/block:IfMastheadRandom}
+	    $('.nav-trigger').on('click', function(){
 		$('.mobile-menu').toggleClass('is-clicked'); 
 		$('.sidebar-navigation').toggleClass('menu-is-open');
 		
@@ -95,13 +129,7 @@ Negitori by Teekaa-two
 <style>
 
 /* Overall Setting */
-body { background:#ddd; color:#666; font-size:16px; line-height:1.3em; font-family:"Lato", Helvetica, Arial, sans-serif; background: -moz-linear-gradient(-45deg, rgba(255,174,39,1) 0%, rgba(222,73,109,1) 100%);
-  background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,rgba(255,174,39,1)), color-stop(100%,rgba(222,73,109,1)));
-  background: -webkit-linear-gradient(-45deg, rgba(255,174,39,1) 0%,rgba(222,73,109,1) 100%);
-  background: -o-linear-gradient(-45deg, rgba(255,174,39,1) 0%,rgba(222,73,109,1) 100%);
-  background: -ms-linear-gradient(-45deg, rgba(255,174,39,1) 0%,rgba(222,73,109,1) 100%);
-  background: linear-gradient(135deg, rgba(255,174,39,1) 0%,rgba(222,73,109,1) 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffae27', endColorstr='#de496d',GradientType=1 );}
+body { color:#666; font-size:16px; line-height:1.3em; font-family:"Lato", Helvetica, Arial, sans-serif; {block:ifGradientPresets}{select:Gradient Presets}{/block:GradientPresets} {block:ifGradientBackground}{text:Gradient Entry}{/block:ifGradientBackground}}
 body.short-page {padding-bottom:5%;}
 a {color:#888; text-decoration:none;}
 iframe, img, embed, object, video {max-width: 100%;}
@@ -118,6 +146,9 @@ p {margin-top:0;}
 .description-row p {margin:0;padding:0;line-height: 1.4em;}
 .description-row p.description-divider{border-bottom:1px solid #333;margin-bottom: 10px;padding-bottom: 14px;}
 .avatar-icon {float:left; clear:right; margin-right:10px; border:3px solid #333;}
+.visible-avatar {
+    text-align: left;
+}
 .blog-name, .blog-name a {color:#fff; text-decoration:none; margin:0; line-height:1.05em; text-align:center; padding:26px 4px; font-size:22px; font-weight:normal;}
 .item { padding:25px 30px; text-align:center;}
 
@@ -133,7 +164,7 @@ p {margin-top:0;}
   }
 
 /* Posts */
-
+#content {padding-top: 30px;}
 article  {width:500px; margin:0 auto;margin-bottom:41px;}
 article:last-child {margin-bottom:20px;}
 
@@ -146,13 +177,13 @@ a.post-page {text-decoration:none;}
 .post {background:#fff;}
 .photoset, .text, .photo, .video, .chat, .audio, .link, .quote,.answer {width:100%;}
 .photoset.post {padding:0;}
-.post-container {padding:15px; box-shadow: 0 1px 4px rgba(0,0,0, .5);}
+.post-container {padding:25px; -webkit-box-shadow: 0 1px 4px rgba(0,0,0, .5); -moz-box-shadow: 0 1px 4px rgba(0,0,0, .5); box-shadow: 0 1px 4px rgba(0,0,0, .5)}
 .photo img {display:block;}
 
 .hover-meta {overflow:hidden;}
 .no-hover {display:block; transition:none; border-top:1px solid #ddd;}
 article.perma-article:hover .metadata { margin-bottom: 0;}
-.metadata {background: #eee;padding: 10px 12px; overflow:hidden;margin-bottom:41px;background: rgba(255, 255, 255, .7);}
+.metadata {background: #eee;padding: 10px 12px; overflow:hidden;margin-bottom:41px;background: rgba(255, 255, 255, .7); -webkit-box-shadow: 0 1px 4px rgba(0,0,0, .5); -moz-box-shadow: 0 1px 4px rgba(0,0,0, .5); box-shadow: 0 1px 4px rgba(0,0,0, .5);}
 .metadata a {color: rgba(0,0,0,.6);}
 .metadata-content {list-style: none;display: inline; float:left;padding:0; margin:0;}
 .metadata-content li {display:inline; float:left;}
@@ -161,6 +192,8 @@ article.perma-article:hover .metadata { margin-bottom: 0;}
 
 .like_and_reblog_buttons {list-style: none; float:right; margin:0; padding-top:6px;}
 .like_and_reblog_buttons li {float:right; margin: 0;}
+/*.like_button { position: absolute; top: 0; opacity: 0; }*/
+.like svg {fill: rgba(0,0,0,.6); margin-top: 3px;}
 .like_button svg, #like_wrapper svg, .reblog_button svg {fill:rgba(0,0,0,.6);}
 
 .tag, .notes { display:inline; float:left;}
@@ -171,7 +204,7 @@ blockquote {border-left: 1px solid #ddd;color: #555;font-style: italic;margin: 0
 .tags li {display:inline; font-style:italic; font-size:13px; margin-right:6px;}
 
 /* Quote */
-.quote-org {font-size:24px; line-height:28px;}
+.quote-org {font-size:30px; line-height:1.1em;}
 .quote p {margin:5px 0 0 0;}
 .quote p:last-child {display: inline;}
 .quote p:first-child {display: inline;}
@@ -191,6 +224,7 @@ blockquote + p {margin: 10px 0 0 0;}
 .note-item .avatar{position:absolute;top:2px;right:0}
 .note-item .avatar img{border-radius:2px;width:40px;height:40px}
 .answer .replies {margin-top:20px}
+.replies h2 {font-size:16px;}
 
 /* Notes */
 ol.notes {padding: 0px;margin: 5px 0 0 0;list-style-type: none;border-bottom: solid 1px #ccc;}
@@ -243,6 +277,7 @@ a.link-title {word-break: break-word;color: #fff;font-size: 18px;text-overflow: 
 }
 
 @media (max-width:768px){
+    #content {padding-top: 0;}
     aside#sidebar {width:100%; height:80px; padding:0; z-index:12;}
     .masthead {margin-top:8%;}
     #masthead img, .description-row, .theme-creation {display:none;}
@@ -489,7 +524,7 @@ a.link-title {word-break: break-word;color: #fff;font-size: 18px;text-overflow: 
         	<div class="avatar-icon"><img src="{PortraitURL-96}"/></div>
         {/block:IfAvatarVisible}
         {block:Description}
-        	<p {block:IfExtraDescription}class="description-divider"{/block:IfExtraDescription}>{Description}</p>
+        	<p class="{block:IfExtraDescription}description-divider{/block:IfExtraDescription} {block:IfAvatarVisible}visible-avatar{/block:IfAvatarVisible}">{Description}</p>
         	{block:IfExtraDescription}<p>{text:Extra Description Text}</p>{/block:IfExtraDescription}
         {block:Description}
         </div>
@@ -513,7 +548,7 @@ a.link-title {word-break: break-word;color: #fff;font-size: 18px;text-overflow: 
         </nav>
     </div>
     <div class="theme-creation">
-    	Theme created by <a href="http://tkaa-themes.tumblr.com">Tkaa Themes</a> by <a href="http://teekaa-two.tumblr.com">Teekaa-two</a>
+    	<a href="negitori.tumblr.com" target="_blank">Negitori Theme</a> created by <a href="http://tkaa-themes.tumblr.com">Tkaa Themes</a>
     </div>
 </aside>
 
@@ -691,8 +726,10 @@ a.link-title {word-break: break-word;color: #fff;font-size: 18px;text-overflow: 
                     {/block:ContentSource} 
                 </ul>
                 <ul class="like_and_reblog_buttons">
-                  <li>{ReblogButton}</li>
-                  <li>{LikeButton}</li>
+                  <li class="reblog">{ReblogButton}</li>
+                  <li class="like">{LikeButton}
+                      <!--<svg width="16px" height="16px" viewBox="0 0 19 16" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#000000"><path d="M14.0425097,0.000920262799 C16.1435097,-0.0400797372 18.8835097,1.28192026 18.9635097,5.36992026 C19.0525097,9.95492026 15.1985097,13.3079203 9.48350967,16.2089203 C3.76650967,13.3079203 -0.0874903349,9.95492026 0.00150966509,5.36992026 C0.0815096651,1.28192026 2.82150967,-0.0400797372 4.92250967,0.000920262799 C7.02450967,0.0419202628 8.87050967,2.26592026 9.46950967,2.92792026 C10.0945097,2.26592026 11.9405097,0.0419202628 14.0425097,0.000920262799 Z"></path></svg> -->
+                  </li>
                 </ul>
                 </div>
                 {block:PermalinkPage}
@@ -730,22 +767,6 @@ a.link-title {word-break: break-word;color: #fff;font-size: 18px;text-overflow: 
 <script type="text/javascript" src="http://static.tumblr.com/smotcsf/Ecdn2cscy/pxuphotoset.min.js"></script>
 <script>
 	$(document).ready(function() {
-	    {block:IfMastheadRandom}
-	    var empty = "http://assets.tumblr.com/images/x.gif?v=1";
-	    var imageTest = 'http://static.tumblr.com/d29d8de1b2388a99e347ab9c8542117e/2qikcqj/n4vnmcmt4/tumblr_static_cehw2pe6erwow0okk4cowk84w.gif';
-        var image1 = "{image:Masthead Image 1}";
-        var image2 = "{image:Masthead Image 2}";
-        var image3 = "{image:Masthead Image 3}";
-        var image4 = "{image:Masthead Image 4}";
-        var image5 = "{image:Masthead Image 5}";
-        console.log(imageTest, image1, image2, image3, image4, image5);
-        var mastheadImage = [image1, image2, image3, image4, image5];
-        mastheadImage = jQuery.grep(mastheadImage, function( a ) {
-          return a !== empty;
-        });
-		var selectedImage = mastheadImage[Math.floor(Math.random()*mastheadImage.length)];
-			$("#masthead img").attr("src",selectedImage);
-		{/block:IfMastheadRandom}
     $('.photo-slideshow').pxuPhotoset({
         'ligthbox'  : true, // uses the default Tumblr lightbox, change to false to use your own
     'highRes'   : true, // will use high res images
