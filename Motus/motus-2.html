@@ -20,12 +20,16 @@
   line-height: 1.5em;
   padding: 0;
   margin: 0; }
+<<<<<<< HEAD
   
   a.source {
       text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
   background-image: linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 2px, #333333 2px, #333333 3px, rgba(0, 0, 0, 0) 3px);
   }
   
+=======
+
+>>>>>>> origin/master
 .hidden {
   position: absolute;
   overflow: hidden;
@@ -161,6 +165,7 @@ article {
   border-bottom: 1px solid #EFEFEF;
   overflow: hidden; }
 
+<<<<<<< HEAD
 .photo, .photoset, .video, .audio, .chat, .answer, .link {
   padding-top: 2em; }
 
@@ -175,6 +180,14 @@ article {
   q::after {
       content:"”";
   }
+=======
+.photo, .photoset, .video {
+  padding-top: 2em; }
+
+.quote-container {
+  font-size: 24px;
+  line-height: 1.5em; }
+>>>>>>> origin/master
 
 .text a, .text p a, .video p a, .audio p a, .link p a, cite a {
   color: inherit; }
@@ -265,6 +278,7 @@ blockquote {
     float: left;
 }
 .reblog-button svg path { fill: #666; }
+<<<<<<< HEAD
 .reblog-button:hover svg path { fill:{color:Theme Color}; }
 .tags a {
     text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
@@ -362,6 +376,9 @@ a.more_notes_link {
     }
 }
 
+=======
+.reblog-button:hover svg path { fill:{color:Theme Color};
+>>>>>>> origin/master
 </style>
 
 </head>
@@ -461,6 +478,7 @@ a.more_notes_link {
         </div>
         {/block:Video}
         
+<<<<<<< HEAD
         {block:Link}
         <div class="link">
             <div class="link-media">
@@ -494,6 +512,22 @@ a.more_notes_link {
                 <img class="answerer-avatar" src="{AnswererPortraitURL-96}" alt="">
                 <p><strong>{Answerer}</strong> answered:</p>
             </div>
+=======
+        {block:Answer}
+        <div class="answer">
+            <div class="asker-container">
+            	<p class="asker">
+					<img class="asker-avatar" src="{AskerPortraitURL-96}" alt="">
+	                <strong>{Asker}</strong> asked:
+                </p>
+                <div class="asker-question">{Question}</div>
+            </div>    
+    		{block:Answerer}
+            <p class="answerer">
+                <img class="answerer-avatar" src="{AnswererPortraitURL-96}" alt="">
+                <strong>{Answerer}</strong> answered:
+            </p>
+>>>>>>> origin/master
             <div class="answerer-answer">{Answer}</div>
         	{/block:Answerer}
         	<div class="replies">{Replies}</div>
@@ -506,10 +540,15 @@ a.more_notes_link {
 	      <li><a class="notecount" href="{Permalink}#notes">{NoteCountWithLabel}</a></li>
 	      {/block:NoteCount}
 	      {block:ContentSource}
+<<<<<<< HEAD
 	       {block:permalinkpage}
 	       <li><a class="source" href="{SourceURL}">{lang:Source}:{block:NoSourceLogo}{SourceTitle}{/block:NoSourceLogo}
 	      {block:SourceLogo}<img src="{BlackLogoURL}" width="{LogoWidth}"height="{LogoHeight}" alt="{SourceTitle}" />{/block:SourceLogo}</a></li>
 	      {/block:permalinkpage}
+=======
+	       <li><a href="{SourceURL}">{lang:Source}:{block:NoSourceLogo}{SourceTitle}{/block:NoSourceLogo}
+	      {block:SourceLogo}<img src="{BlackLogoURL}" width="{LogoWidth}"height="{LogoHeight}" alt="{SourceTitle}" />{/block:SourceLogo}</a></li>
+>>>>>>> origin/master
 	      {/block:ContentSource} 
       </ul>
       {block:IndexPage}<ul class="like_and_reblog_buttons">
