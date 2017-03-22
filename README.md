@@ -4,20 +4,18 @@ A collection of themes for Tumblr, a way to keep up on my skills and for fun.
 
 > I'll be testing my themes at [tkaa-themes.tumblr.com](http://www.tkaa-themes.tumblr.com).
 
-## List of Themes
+### List of Themes
 
-<ul>
-	<li>[Amaranthine](#Amaranthine)</li>
-	<li>[Calvary](#calvary)</li>
-	<li>[Glissade](#glissade)</li>
-	<li>[Interstice](#interstice)</li>
-	<li>[Limelight](#limelight)</li>
-	<li>[Motus](#motus)</li>
-	<li>[NegiTori](#negiTori)</li>
-	<li>[Sigil](#sigil)</li>
-	<li>[Vanguard-v2](#vanguard-v2)</li>
-	<li>[Vanguard](#vanguard)</li>
-</ul>
+* [Amaranthine](#Amaranthine)
+* [Calvary](#calvary)
+* [Glissade](#glissade)
+* [Interstice](#interstice)
+* [Limelight](#limelight)
+* [Motus](#motus)
+* [NegiTori](#negiTori)
+* [Sigil](#sigil)
+* [Vanguard-v2](#vanguard-v2)
+* [Vanguard](#vanguard)
 
 ## Amaranthine
 
