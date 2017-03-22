@@ -4,7 +4,7 @@ A collection of themes for Tumblr, a way to keep up on my skills and for fun.
 
 > I'll be testing my themes at [tkaa-themes.tumblr.com](http://www.tkaa-themes.tumblr.com).
 
-### List of Themes
+## List of Themes
 
 * [Amaranthine](#amaranthine)
 * [Calvary](#calvary)
