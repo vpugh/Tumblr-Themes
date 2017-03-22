@@ -20,7 +20,7 @@ A collection of themes for Tumblr, a way to keep up on my skills and for fun.
 ## Amaranthine
 
 <img alt="Screenshot of Amaranthine Theme" src="http://victoriapugh.net/images/gallery/amaranthine/iMac-site.png">
-[Live Site](http://amaranthine-theme.tumblr.com/)
+<a href="http://amaranthine-theme.tumblr.com/" target="_blank">Live Site</a>
 
 ## Calvary
 
@@ -31,7 +31,7 @@ Underdevelopment
 ## Interstice
 
 <img alt="Screenshot of Interstice Theme" src="http://victoriapugh.net/images/gallery/interstice/window-1.jpg">
-[Live Site](http://interstice-theme.tumblr.com/)
+<a href="http://interstice-theme.tumblr.com/" target="_blank">Live Site</a>
 
 ## Limelight
 
@@ -41,7 +41,7 @@ Image Coming Soon
 ## Motus
 
 <img alt="Screenshot of Motus Theme" src="http://victoriapugh.net/images/gallery/motus/window-1.jpg">
-[Live Site](http://motus-theme.tumblr.com/)
+<a href="http://motus-theme.tumblr.com/" target="_blank">Live Site</a>
 
 ## Negitori
 
